@@ -10,6 +10,7 @@ import { addLocaleData, IntlProvider } from 'react-intl';
 import en from 'react-intl/locale-data/fr';
 import messages from 'app/translation/message';
 import Landing from 'app/pages/Auth/Landing';
+import App from 'app/pages/App';
 import { store, persistor } from '../configureStore'; //eslint-disable-line
 
 addLocaleData(en);
@@ -21,7 +22,8 @@ const Application = () => (
       <IntlProvider locale="en" messages={messages.en} textComponent={Text}>
         <RouterWithRedux>
           <Scene key="root" hideNavBar>
-            <Scene key="landing" component={Landing} initial />
+            <Scene key="landing" component={Landing} />
+            <Scene key="app" component={App} initial />
           </Scene>
         </RouterWithRedux>
       </IntlProvider>
