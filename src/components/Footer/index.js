@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text } from 'react-native';
 import { MARGINS, COLORS, FONT_SIZES, HEADER_HEIGHT } from 'app/constants/design';
+import { injectIntl } from 'react-intl';
 
 const styles = {
   body: {
@@ -21,19 +22,23 @@ const styles = {
   },
 };
 
-const Footer = () => (
+type Props = {
+  intl: any,
+};
+
+const Footer = (props: Props) => (
   <View style={styles.footer}>
     <View style={styles.body}>
-      <Text style={styles.title}>Left</Text>
+      <Text style={styles.title}>{props.intl.formatMessage({ id: 'Footer.home' })}</Text>
     </View>
     <View style={styles.body}>
-      <Text style={styles.title}>Center</Text>
+      <Text style={styles.title}>{props.intl.formatMessage({ id: 'Footer.messages' })}</Text>
     </View>
     <View style={styles.body}>
-      <Text style={styles.title}>Right</Text>
+      <Text style={styles.title}>{props.intl.formatMessage({ id: 'Footer.profile' })}</Text>
     </View>
   </View>
 );
-export default Footer;
+export default injectIntl(Footer);
 export { Footer };
 
