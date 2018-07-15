@@ -1,6 +1,5 @@
 import React, { type Node } from 'react';
 import { StatusBar, View } from 'react-native';
-import { injectIntl } from 'react-intl';
 import Nav from 'app/components/Nav';
 
 type Props = {|
@@ -17,5 +16,4 @@ const BasicLayout = (props: Props) => (
   </View>
 );
 
-export default injectIntl(BasicLayout);
-export { BasicLayout };
+export default BasicLayout;
