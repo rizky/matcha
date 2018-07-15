@@ -28,7 +28,7 @@ const styles = {
   },
   title: {
     color: COLORS.BLUE_DARKER,
-    fontSize: FONT_SIZES.BIG,
+    fontSize: FONT_SIZES.MEDIUM2,
     textAlign: 'center',
   },
 };
@@ -37,18 +37,16 @@ type Props = {
   intl: any,
 };
 
-const Header = (props: Props) => (
+const Footer = (props: Props) => (
   <View style={styles.header}>
-    <View style={styles.left}>
-      <Icon name="chevron-left" size={20} color={COLORS.BLUE_DARKER} />
-    </View>
+    <View style={styles.left} />
     <View style={styles.body}>
-      <Text style={styles.title}>{props.intl.formatMessage({ id: 'App.title' })}</Text>
+      <Text style={styles.title}>{props.intl.formatMessage({ id: 'Footer.title' })}</Text>
     </View>
     <View style={styles.right}>
-      <Icon name="ellipsis-h" size={20} color={COLORS.BLUE_DARKER} />
+      <Icon name="github" size={20} color={COLORS.BLUE_DARKER} />
     </View>
   </View>
 );
-export default injectIntl(Header);
-export { Header };
+export default injectIntl(Footer);
+export { Footer };

@@ -1,7 +1,8 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, TouchableOpacity } from 'react-native';
 import { MARGINS, COLORS, FONT_SIZES, HEADER_HEIGHT } from 'app/constants/design';
 import { injectIntl } from 'react-intl';
+import { Actions } from 'react-native-router-flux';
 
 const styles = {
   body: {
@@ -28,18 +29,18 @@ type Props = {
 
 const Nav = (props: Props) => (
   <View style={styles.nav}>
-    <View style={styles.body}>
+    <TouchableOpacity style={styles.body} onPress={() => Actions.replace('feed')}>
       <Text style={styles.title}>{props.intl.formatMessage({ id: 'Nav.home' })}</Text>
-    </View>
-    <View style={styles.body}>
+    </TouchableOpacity>
+    <TouchableOpacity style={styles.body} onPress={() => Actions.replace('discover')}>
       <Text style={styles.title}>{props.intl.formatMessage({ id: 'Nav.discover' })}</Text>
-    </View>
-    <View style={styles.body}>
+    </TouchableOpacity>
+    <TouchableOpacity style={styles.body} onPress={() => Actions.replace('messages')}>
       <Text style={styles.title}>{props.intl.formatMessage({ id: 'Nav.messages' })}</Text>
-    </View>
-    <View style={styles.body}>
+    </TouchableOpacity>
+    <TouchableOpacity style={styles.body} onPress={() => Actions.replace('profile')}>
       <Text style={styles.title}>{props.intl.formatMessage({ id: 'Nav.profile' })}</Text>
-    </View>
+    </TouchableOpacity>
   </View>
 );
 export default injectIntl(Nav);

@@ -20,6 +20,7 @@ exports[`Layout render test should render 1`] = `
       }
     }
   />
+  <InjectIntl(Nav) />
 </Component>
 `;
 
@@ -43,5 +44,6 @@ exports[`Layout render test should render 2`] = `
       }
     }
   />
+  <InjectIntl(Footer) />
 </Component>
 `;
