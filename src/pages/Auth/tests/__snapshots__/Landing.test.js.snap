@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Landing render test should render 1`] = `
+<Component
+  style={
+    Object {
+      "alignItems": "center",
+      "backgroundColor": "#fff",
+      "flex": 1,
+      "justifyContent": "center",
+    }
+  }
+>
+  <Text
+    accessible={true}
+    allowFontScaling={true}
+    ellipsizeMode="tail"
+  >
+    LandingPage.welcome
+  </Text>
+  <Button
+    onPress={[Function]}
+    title="LandingPage.login"
+  />
+  <Button
+    onPress={[Function]}
+    title="LandingPage.signUp"
+  />
+</Component>
+`;

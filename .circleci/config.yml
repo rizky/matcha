@@ -1,0 +1,75 @@
+version: 2
+
+refs:
+  docker: &docker
+    docker:
+      - image: circleci/node:10
+
+  work_dir: &work_dir
+    working_directory: '~/matcha-mobile'
+
+  yarn_key: &yarn_key
+    v1-yarn-lock-{{ checksum "yarn.lock" }}
+
+  save_dependencies: &save_dependencies
+    save_cache:
+      key: *yarn_key
+      paths:
+        - ./yarn.lock
+        - ./node_modules/
+
+  restore_dependencies: &restore_dependencies
+    restore_cache:
+      key: *yarn_key
+
+  env_setup: &env_setup
+    environment:
+      CI: "true"
+      TERM: xterm
+
+  jobs_setup: &job_setup
+    <<: *docker
+    <<: *work_dir
+    <<: *env_setup
+
+jobs:
+  install:
+    <<: *job_setup
+    steps:
+      - checkout
+      - *restore_dependencies
+      - run: yarn install --pure-lockfile
+      - *save_dependencies
+  test:
+    <<: *job_setup
+    steps:
+      - checkout
+      - *restore_dependencies
+      - run: yarn test:ci
+  lint:
+    <<: *job_setup
+    steps:
+      - checkout
+      - *restore_dependencies
+      - run: yarn lint
+  flow:
+    <<: *job_setup
+    steps:
+      - checkout
+      - *restore_dependencies
+      - run: yarn flow check
+
+workflows:
+  version: 2
+  build_test:
+    jobs:
+      - install
+      - test:
+          requires:
+            - install
+      - lint:
+          requires:
+            - install
+      - flow:
+          requires:
+            - install
