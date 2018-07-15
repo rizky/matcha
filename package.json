@@ -39,7 +39,8 @@
     "test:ci": "jest --ci --maxWorkers 1 --no-watchman",
     "web": "webpack-dev-server -d --config ./webpack.config.js  --inline --hot --colors --content-base public/ --history-api-fallback",
     "build": "NODE_ENV=production webpack -p --config ./webpack.config.js",
-    "lint": "eslint src/"
+    "lint": "eslint src/",
+    "api": "cd api && docker-compose up"
   },
   "jest": {
     "preset": "react-native",

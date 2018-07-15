@@ -1,0 +1,26 @@
+version: '3.1'
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: npm start
+    volumes:
+      - '.:/usr/src/app/api'
+      - '/usr/src/app/api/node_modules'
+    ports:
+      - '81:3001'
+    environment:
+      - NODE_ENV=development
+
+  db:
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - "3306:3306"
+    volumes:
+        - ./db/schema.sql:/docker-entrypoint-initdb.d/schema.sql
+  #docker-compose up
