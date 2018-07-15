@@ -1,0 +1,16 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: debian:stretch
+    steps:
+      - checkout
+      - run:
+          name: Lint
+          command: yarn lint
+      - run:
+          name: Flow
+          command: yarn flow
+      - run:
+          name: Test
+          command: yarn test

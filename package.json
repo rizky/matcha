@@ -39,7 +39,11 @@
     "lint": "eslint src/"
   },
   "jest": {
-    "preset": "react-native"
+    "preset": "react-native",
+    "transformIgnorePatterns": [
+      "node_modules/(?!react-native|expo|react-navigation|native-base-shoutem-theme|@shoutem/theme|@shoutem/animation|@shoutem/ui|tcomb-form-native|native-base|@expo/vector-icons)"
+    ],
+    "setupTestFrameworkScriptFile": "<rootDir>/src/setupTests.js"
   },
   "dependencies": {
     "expo-web": "^0.0.12",
@@ -60,6 +64,10 @@
     "redux-persist": "^5.9.1",
     "redux-saga": "^0.16.0",
     "reselect": "^3.0.1",
+    "deep-freeze": "^0.0.1",
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
+    "enzyme-to-json": "^3.3.3",
     "webpack": "^3.11.0",
     "webpack-dev-server": "2.9.4"
   }
