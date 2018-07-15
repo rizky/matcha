@@ -8,7 +8,7 @@ const styles = {
     flex: 1,
     justifyContent: 'center',
   },
-  footer: {
+  nav: {
     backgroundColor: COLORS.BACKGROUND,
     flexDirection: 'row',
     height: HEADER_HEIGHT,
@@ -26,19 +26,22 @@ type Props = {
   intl: any,
 };
 
-const Footer = (props: Props) => (
-  <View style={styles.footer}>
+const Nav = (props: Props) => (
+  <View style={styles.nav}>
     <View style={styles.body}>
-      <Text style={styles.title}>{props.intl.formatMessage({ id: 'Footer.home' })}</Text>
+      <Text style={styles.title}>{props.intl.formatMessage({ id: 'Nav.home' })}</Text>
     </View>
     <View style={styles.body}>
-      <Text style={styles.title}>{props.intl.formatMessage({ id: 'Footer.messages' })}</Text>
+      <Text style={styles.title}>{props.intl.formatMessage({ id: 'Nav.discover' })}</Text>
     </View>
     <View style={styles.body}>
-      <Text style={styles.title}>{props.intl.formatMessage({ id: 'Footer.profile' })}</Text>
+      <Text style={styles.title}>{props.intl.formatMessage({ id: 'Nav.messages' })}</Text>
+    </View>
+    <View style={styles.body}>
+      <Text style={styles.title}>{props.intl.formatMessage({ id: 'Nav.profile' })}</Text>
     </View>
   </View>
 );
-export default injectIntl(Footer);
-export { Footer };
+export default injectIntl(Nav);
+export { Nav };
 
