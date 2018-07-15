@@ -12,7 +12,6 @@ const styles = StyleSheet.create({
   },
 });
 
-
 type Props = {
     intl: any,
 };
