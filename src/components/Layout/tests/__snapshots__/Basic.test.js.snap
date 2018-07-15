@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Layout render test should render 1`] = `
+<Component
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <StatusBar
+    animated={false}
+    showHideTransition="fade"
+  />
+  <InjectIntl(Header) />
+  <Component
+    style={
+      Object {
+        "flex": 1,
+      }
+    }
+  />
+  <InjectIntl(Nav) />
+</Component>
+`;
+
+exports[`Layout render test should render 2`] = `
+<Component
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <StatusBar
+    animated={false}
+    showHideTransition="fade"
+  />
+  <InjectIntl(Nav) />
+  <Component
+    style={
+      Object {
+        "flex": 1,
+      }
+    }
+  />
+  <InjectIntl(Footer) />
+</Component>
+`;

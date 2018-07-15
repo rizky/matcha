@@ -2,8 +2,7 @@ import React from 'react';
 import { View, Text } from 'react-native';
 import { MARGINS, COLORS, FONT_SIZES, HEADER_HEIGHT } from 'app/constants/design';
 import { injectIntl } from 'react-intl';
-import ThreeDots from 'app/components/Icons/ThreeDots';
-import ChevronLeft from 'app/components/Icons/ChevronLeft';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 const styles = {
   body: {
@@ -41,13 +40,13 @@ type Props = {
 const Header = (props: Props) => (
   <View style={styles.header}>
     <View style={styles.left}>
-      <ChevronLeft size={20} color={COLORS.BLUE_DARKER} />
+      <Icon name="chevron-left" size={20} color={COLORS.BLUE_DARKER} />
     </View>
     <View style={styles.body}>
       <Text style={styles.title}>{props.intl.formatMessage({ id: 'App.title' })}</Text>
     </View>
     <View style={styles.right}>
-      <ThreeDots size={20} color={COLORS.BLUE_DARKER} />
+      <Icon name="ellipsis-h" size={20} color={COLORS.BLUE_DARKER} />
     </View>
   </View>
 );
