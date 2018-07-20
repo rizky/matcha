@@ -1,0 +1,61 @@
+title {label: "Matcha ER Diagram", size: "20"}
+
+# Entities
+
+[User]
+*id
+username
+name
+password
+email
+picture
+dob
+subscribed
+lat
+long
+gender
+preferences
+activeAt
+createdAt
+updatedAt
+deleted
+tokenValidated
+tokenLost
+
+[Thread]
+*id
++user1
++user2
+matcher
+read
+lastInteraction
+createdAt
+updatedAt
+deleted
+
+[Photo]
+*id
++user
+url
+createdAt
+updatedAt
+deleted
+
+[Message]
+*id
++thread
++photo
+from
+to
+match
+like
+message
+read
+createdAt
+updatedAt
+deleted
+
+Photo *--1 User
+User 1--* Thread
+Message *--1 Photo
+Thread 1--* Message
