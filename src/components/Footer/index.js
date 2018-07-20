@@ -7,7 +7,6 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 const styles = {
   body: {
     alignItems: 'center',
-    flex: 1,
     justifyContent: 'center',
   },
   header: {
@@ -18,11 +17,13 @@ const styles = {
   },
   left: {
     alignItems: 'flex-start',
+    flex: 1,
     justifyContent: 'center',
     paddingHorizontal: MARGINS.SMALL,
   },
   right: {
     alignItems: 'flex-end',
+    flex: 1,
     justifyContent: 'center',
     paddingHorizontal: MARGINS.SMALL,
   },

@@ -1,5 +1,5 @@
 import { takeEvery, put, call } from 'redux-saga/effects';
-import { loadPhotos, ON_LOAD_PHOTOS } from 'app/components/Photos/actions';
+import { loadPhotos, ON_LOAD_PHOTOS } from 'app/pages/Feed/actions';
 
 function* onLoadPhotos() {
   try {

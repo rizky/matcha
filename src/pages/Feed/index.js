@@ -1,20 +1,38 @@
-import React from 'react';
-import { View, Text } from 'react-native';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { View } from 'react-native';
 import Layout from 'app/components/Layout/Basic';
-import { injectIntl } from 'react-intl';
 import Photos from 'app/components/Photos';
+import { onLoadPhotos } from 'app/pages/Feed/actions';
+import { selectPhotos } from 'app/pages/Feed/selector';
+import type { Photo } from 'app/types/Photo';
 
 type Props = {
-  intl: any,
+  photos: Array<Photo>,
 };
 
-const Feed = (props: Props) => (
-  <Layout>
-    <Text>{props.intl.formatMessage({ id: 'Nav.home' })}</Text>
-    <Photos />
-    <View style={{ flex: 1 }} />
-  </Layout>
-);
+class Feed extends Component<Props> {
+  componentWillMount() {
+    this.props.onLoadPhotos();
+  }
 
-export default injectIntl(Feed);
+  render() {
+    return (
+      <Layout>
+        <Photos photos={this.props.photos} />
+        <View style={{ flex: 1 }} />
+      </Layout>
+    );
+  }
+}
+
+const mapStateToProps = (state) => ({
+  photos: selectPhotos(state),
+});
+
+const mapDispatchToProps = {
+  onLoadPhotos,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Feed);
 export { Feed };

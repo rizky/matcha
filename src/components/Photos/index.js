@@ -1,35 +1,20 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React from 'react';
 import { Text, View } from 'react-native';
-import { onLoadPhotos } from 'app/components/Photos/actions';
-import { selectPhotos } from 'app/components/Photos/selector';
-import { injectIntl } from 'react-intl';
+import type { Photo } from 'app/types/Photo';
 
-class Photos extends Component {
-  componentWillMount() {
-    this.props.onLoadPhotos();
-  }
-
-  render() {
-    return (
-      <View>
-        {
-          (this.props.photos)
-            ? this.props.photos.map((photo) => (<Text key={photo.id}>{photo.url}</Text>))
-            : null
-        }
-      </View>
-    );
-  }
-}
-
-const mapStateToProps = (state) => ({
-  photos: selectPhotos(state),
-});
-
-const mapDispatchToProps = {
-  onLoadPhotos,
+type Props = {
+  photos: Array<Photo>,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(injectIntl(Photos));
+const Photos = (props: Props) => (
+  <View>
+    {
+      (props.photos)
+        ? props.photos.map((photo) => (<Text key={photo.id}>{photo.url}</Text>))
+        : null
+    }
+  </View>
+);
+
+export default Photos;
 export { Photos };

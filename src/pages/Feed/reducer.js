@@ -1,4 +1,4 @@
-import { LOAD_PHOTOS } from 'app/components/Photos/actions';
+import { LOAD_PHOTOS } from 'app/pages/Feed/actions';
 import type { Photo } from 'app/types/Photo';
 
 type State = {
