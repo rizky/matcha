@@ -12,7 +12,13 @@ const styles = StyleSheet.create({
   mainPanel: {
     backgroundColor: COLORS.BACKGROUND,
     flex: 1,
+    marginVertical: MARGINS.TINY,
+  },
+  sidePanel: {
+    backgroundColor: COLORS.BACKGROUND,
+    flex: 0,
     margin: MARGINS.TINY,
+    width: 300,
   },
 });
 
@@ -27,10 +33,12 @@ class Messages extends Component<Props> {
 
   render() {
     return (
-      <Layout>
-        <ScrollView style={styles.mainPanel}>
+      <Layout style={{ flexDirection: 'row' }}>
+        <ScrollView style={styles.sidePanel}>
           <Threads threads={this.props.threads} />
         </ScrollView>
+        <ScrollView style={styles.mainPanel} />
+        <ScrollView style={styles.sidePanel} />
       </Layout>
     );
   }

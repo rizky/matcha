@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { View } from 'react-native';
+import { ScrollView } from 'react-native';
 import Layout from 'app/components/Layout/Basic';
 import Users from 'app/components/Users';
 import { onLoadUsers } from 'app/pages/Discover/actions';
@@ -19,8 +19,9 @@ class Discover extends Component<Props> {
   render() {
     return (
       <Layout>
-        <Users users={this.props.users} />
-        <View style={{ flex: 1 }} />
+        <ScrollView style={{ flex: 1 }}>
+          <Users users={this.props.users} />
+        </ScrollView>
       </Layout>
     );
   }

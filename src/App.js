@@ -27,9 +27,9 @@ const Application = () => (
         <RouterWithRedux>
           <Scene key="root" hideNavBar>
             <Scene key="landing" component={Landing} />
-            <Scene key="feed" component={Feed} initial />
+            <Scene key="feed" component={Feed} />
             <Scene key="discover" component={Discover} />
-            <Scene key="messages" component={Messages} />
+            <Scene key="messages" component={Messages} initial />
             <Scene key="profile" component={Profile} />
           </Scene>
         </RouterWithRedux>

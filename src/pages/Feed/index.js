@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { View } from 'react-native';
+import { ScrollView } from 'react-native';
 import Layout from 'app/components/Layout/Basic';
 import Photos from 'app/components/Photos';
 import { onLoadPhotos } from 'app/pages/Feed/actions';
@@ -19,8 +19,9 @@ class Feed extends Component<Props> {
   render() {
     return (
       <Layout>
-        <Photos photos={this.props.photos} />
-        <View style={{ flex: 1 }} />
+        <ScrollView style={{ flex: 1 }}>
+          <Photos photos={this.props.photos} />
+        </ScrollView>
       </Layout>
     );
   }

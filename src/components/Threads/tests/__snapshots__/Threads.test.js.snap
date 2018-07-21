@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Threads render test should render 1`] = `
+<Component
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <ScrollView
+    horizontal={true}
+    style={
+      Object {
+        "flexDirection": "row",
+      }
+    }
+  />
+  <Component
+    style={
+      Object {
+        "flex": 1,
+      }
+    }
+  />
+</Component>
+`;
