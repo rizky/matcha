@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Feed render test should render 1`] = `
+<BasicLayout>
+  <Photos />
+  <Component
+    style={
+      Object {
+        "flex": 1,
+      }
+    }
+  />
+</BasicLayout>
+`;

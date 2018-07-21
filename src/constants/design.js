@@ -9,7 +9,7 @@ export const COLORS = {
   GREEN_ACCENT: 'green',
   GREY: '#d8d8d8',
   GREY_ACCENT: 'grey',
-  GREY_DARK: '#333333',
+  GREY_DARK: '#757575',
   GREY_LIGHT: '#666666',
   GREY_LIGHTEST: '#eaeaea',
   PRIMARY_GREEN: '#66bb00',
