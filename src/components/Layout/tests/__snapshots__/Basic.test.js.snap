@@ -39,9 +39,12 @@ exports[`Layout render test should render 2`] = `
   <InjectIntl(Nav) />
   <Component
     style={
-      Object {
-        "flex": 1,
-      }
+      Array [
+        Object {
+          "flex": 1,
+        },
+        Object {},
+      ]
     }
   />
   <InjectIntl(Footer) />

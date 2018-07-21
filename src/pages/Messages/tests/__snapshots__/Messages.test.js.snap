@@ -6,8 +6,8 @@ exports[`Messages render test should render 1`] = `
     style={
       Object {
         "backgroundColor": "white",
+        "flex": 1,
         "margin": 5,
-        "width": 300,
       }
     }
   >
