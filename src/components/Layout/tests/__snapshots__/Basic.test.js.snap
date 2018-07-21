@@ -37,7 +37,7 @@ exports[`Layout render test should render 2`] = `
     showHideTransition="fade"
   />
   <InjectIntl(Nav) />
-  <Component
+  <ScrollView
     style={
       Object {
         "flex": 1,

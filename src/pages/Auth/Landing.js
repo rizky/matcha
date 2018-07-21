@@ -2,11 +2,12 @@ import React from 'react';
 import { StyleSheet, Text, View, Button } from 'react-native';
 import { injectIntl } from 'react-intl';
 import { Actions } from 'react-native-router-flux';
+import { COLORS } from 'app/constants/design';
 
 const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
-    backgroundColor: '#fff',
+    backgroundColor: COLORS.BACKGROUND,
     flex: 1,
     justifyContent: 'center',
   },

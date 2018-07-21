@@ -1,5 +1,5 @@
 import React, { type Node } from 'react';
-import { StatusBar, View } from 'react-native';
+import { StatusBar, View, ScrollView } from 'react-native';
 import Nav from 'app/components/Nav';
 import Footer from 'app/components/Footer';
 
@@ -11,9 +11,9 @@ const BasicLayout = (props: Props) => (
   <View style={{ flex: 1 }}>
     <StatusBar />
     <Nav />
-    <View style={{ flex: 1 }}>
+    <ScrollView style={{ flex: 1 }}>
       {props.children}
-    </View>
+    </ScrollView>
     <Footer />
   </View>
 );
