@@ -1,18 +1,39 @@
-import React from 'react';
-import { View, Text } from 'react-native';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { ScrollView } from 'react-native';
 import Layout from 'app/components/Layout/Basic';
-import { injectIntl } from 'react-intl';
+import Threads from 'app/components/Threads';
+import { onLoadThreads } from 'app/pages/Messages/actions';
+import { selectThreads } from 'app/pages/Messages/selector';
+import type { Thread } from 'app/types/Thread';
 
 type Props = {
-  intl: any,
+  threads: Array<Thread>,
 };
 
-const Messages = (props: Props) => (
-  <Layout>
-    <Text>{props.intl.formatMessage({ id: 'Nav.messages' })}</Text>
-    <View style={{ flex: 1 }} />
-  </Layout>
-);
+class Messages extends Component<Props> {
+  componentWillMount() {
+    this.props.onLoadThreads();
+  }
 
-export default injectIntl(Messages);
+  render() {
+    return (
+      <Layout>
+        <ScrollView style={{ width: 300 }}>
+          <Threads threads={this.props.threads} />
+        </ScrollView>
+      </Layout>
+    );
+  }
+}
+
+const mapStateToProps = (state) => ({
+  threads: selectThreads(state),
+});
+
+const mapDispatchToProps = {
+  onLoadThreads,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Messages);
 export { Messages };

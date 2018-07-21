@@ -2,13 +2,14 @@
 
 exports[`Feed render test should render 1`] = `
 <BasicLayout>
-  <Photos />
-  <Component
+  <ScrollView
     style={
       Object {
         "flex": 1,
       }
     }
-  />
+  >
+    <Photos />
+  </ScrollView>
 </BasicLayout>
 `;
