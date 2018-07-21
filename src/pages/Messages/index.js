@@ -6,6 +6,7 @@ import Threads from 'app/components/Threads';
 import { onLoadThreads } from 'app/pages/Messages/actions';
 import { selectThreads } from 'app/pages/Messages/selector';
 import type { Thread } from 'app/types/Thread';
+import { COLORS, MARGINS } from 'app/constants/design';
 
 type Props = {
   threads: Array<Thread>,
@@ -19,7 +20,7 @@ class Messages extends Component<Props> {
   render() {
     return (
       <Layout>
-        <ScrollView style={{ width: 300 }}>
+        <ScrollView style={{ backgroundColor: COLORS.BACKGROUND, margin: MARGINS.TINY, width: 300 }}>
           <Threads threads={this.props.threads} />
         </ScrollView>
       </Layout>
