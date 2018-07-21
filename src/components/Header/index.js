@@ -18,11 +18,13 @@ const styles = {
   },
   left: {
     alignItems: 'flex-start',
+    flex: 1,
     justifyContent: 'center',
     paddingHorizontal: MARGINS.SMALL,
   },
   right: {
     alignItems: 'flex-end',
+    flex: 1,
     justifyContent: 'center',
     paddingHorizontal: MARGINS.SMALL,
   },
@@ -39,9 +41,7 @@ type Props = {
 
 const Header = (props: Props) => (
   <View style={styles.header}>
-    <View style={styles.left}>
-      <Icon name="chevron-left" size={20} color={COLORS.BLUE_DARKER} />
-    </View>
+    <View style={styles.left} />
     <View style={styles.body}>
       <Text style={styles.title}>{props.intl.formatMessage({ id: 'App.title' })}</Text>
     </View>

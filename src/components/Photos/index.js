@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
   },
   photoProfile: {
     backgroundColor: COLORS.GREY_DARK,
-    borderRadius: 20,
+    borderRadius: 10,
     height: 20,
     marginRight: MARGINS.SMALL,
     width: 20,
@@ -50,10 +50,10 @@ type PhotoProps = {
 const Photo = (props: PhotoProps) => (
   <View style={styles.photoContainer}>
     <View style={styles.photoHeader}>
-      <Image style={styles.photoProfile} source={props.photo.user.picture} />
+      <Image style={styles.photoProfile} source={{ uri: props.photo.user.picture }} />
       <Text>{props.photo.user.username}</Text>
     </View>
-    <Image style={styles.photoImage} source={props.photo.url} />
+    <Image style={styles.photoImage} source={{ uri: props.photo.url }} />
     <View style={styles.photoControl}>
       <Icon style={{ marginRight: MARGINS.SMALL }} name="heart" size={20} color={COLORS.GREY_DARK} />
       <Icon name="comment" size={20} color={COLORS.GREY_DARK} />
