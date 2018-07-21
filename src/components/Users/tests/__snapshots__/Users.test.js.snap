@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Users render test should render 1`] = `
+<Component
+  style={
+    Object {
+      "flex": 1,
+      "flexDirection": "row",
+      "flexWrap": "wrap",
+      "justifyContent": "space-around",
+    }
+  }
+/>
+`;

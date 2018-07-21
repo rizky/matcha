@@ -1,18 +1,38 @@
-import React from 'react';
-import { View, Text } from 'react-native';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { View } from 'react-native';
 import Layout from 'app/components/Layout/Basic';
-import { injectIntl } from 'react-intl';
+import Users from 'app/components/Users';
+import { onLoadUsers } from 'app/pages/Discover/actions';
+import { selectUsers } from 'app/pages/Discover/selector';
+import type { User } from 'app/types/User';
 
 type Props = {
-  intl: any,
+  users: Array<User>,
 };
 
-const Discover = (props: Props) => (
-  <Layout>
-    <Text>{props.intl.formatMessage({ id: 'Nav.discover' })}</Text>
-    <View style={{ flex: 1 }} />
-  </Layout>
-);
+class Discover extends Component<Props> {
+  componentWillMount() {
+    this.props.onLoadUsers();
+  }
 
-export default injectIntl(Discover);
+  render() {
+    return (
+      <Layout>
+        <Users users={this.props.users} />
+        <View style={{ flex: 1 }} />
+      </Layout>
+    );
+  }
+}
+
+const mapStateToProps = (state) => ({
+  users: selectUsers(state),
+});
+
+const mapDispatchToProps = {
+  onLoadUsers,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Discover);
 export { Discover };
