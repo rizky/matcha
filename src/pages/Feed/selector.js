@@ -1,3 +1,3 @@
 import { createSelector } from 'reselect';
 
-export const selectPhotos = createSelector((state) => state.photos, (photos) => photos.photos);
+export const selectPhotos = createSelector((state) => state.feed, (feed) => feed.photos);
