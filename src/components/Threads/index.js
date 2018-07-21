@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View, StyleSheet, Image, ScrollView } from 'react-native';
+import { Text, View, StyleSheet, Image, ScrollView, TouchableOpacity } from 'react-native';
 import type { ThreadType } from 'app/types/Thread';
 import { MARGINS, COLORS } from 'app/constants/design';
 import moment from 'moment';
@@ -36,6 +36,8 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   threadsMatchContainer: {
+    borderBottomWidth: 1,
+    borderColor: COLORS.GREY,
     flexDirection: 'row',
   },
 });
@@ -69,6 +71,7 @@ const ThreadMatch = (props: ThreadMatchProps) => (
 
 type ThreadsProps = {
   threads: Array<ThreadType>,
+  onSelectThread: (string) => {}, //eslint-disable-line
 };
 
 const Threads = (props: ThreadsProps) => (
@@ -76,8 +79,10 @@ const Threads = (props: ThreadsProps) => (
     <ScrollView horizontal style={styles.threadsMatchContainer}>
       {props.threads.map((thread) =>
         (
-          thread.lastMessage.match.data[0]
-            ? <ThreadMatch key={thread.id} thread={thread} />
+          thread.lastMessage.match.data[0] ?
+            <TouchableOpacity onPress={() => props.onSelectThread(thread.id)}>
+              <ThreadMatch key={thread.id} thread={thread} />
+            </TouchableOpacity>
             : null
         ))
       }
@@ -85,8 +90,10 @@ const Threads = (props: ThreadsProps) => (
     <View style={styles.threadsContainer}>
       {props.threads.map((thread) =>
         (
-          !thread.lastMessage.match.data[0]
-            ? <Thread key={thread.id} thread={thread} />
+          !thread.lastMessage.match.data[0] ?
+            <TouchableOpacity onPress={() => props.onSelectThread(thread.id)}>
+              <Thread key={thread.id} thread={thread} />
+            </TouchableOpacity>
             : null
         ))
       }

@@ -12,6 +12,8 @@ exports[`Threads render test should render 1`] = `
     horizontal={true}
     style={
       Object {
+        "borderBottomWidth": 1,
+        "borderColor": "#d8d8d8",
         "flexDirection": "row",
       }
     }
