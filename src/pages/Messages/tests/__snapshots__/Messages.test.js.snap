@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Messages render test should render 1`] = `
+<BasicLayout>
+  <ScrollView
+    style={
+      Object {
+        "backgroundColor": "white",
+        "margin": 5,
+        "width": 300,
+      }
+    }
+  >
+    <Threads />
+  </ScrollView>
+</BasicLayout>
+`;

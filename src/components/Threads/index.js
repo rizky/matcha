@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View, StyleSheet, Image } from 'react-native';
+import { Text, View, StyleSheet, Image, ScrollView } from 'react-native';
 import type { ThreadType } from 'app/types/Thread';
 import { MARGINS, COLORS } from 'app/constants/design';
 import moment from 'moment';
@@ -18,6 +18,13 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     marginBottom: MARGINS.TINY,
   },
+  threadMatchProfile: {
+    backgroundColor: COLORS.GREY_DARK,
+    borderRadius: 30,
+    height: 60,
+    margin: MARGINS.SMALL,
+    width: 60,
+  },
   threadProfile: {
     backgroundColor: COLORS.GREY_DARK,
     borderRadius: 20,
@@ -27,8 +34,9 @@ const styles = StyleSheet.create({
   },
   threadsContainer: {
     flex: 1,
-    flexWrap: 'wrap',
-    justifyContent: 'space-around',
+  },
+  threadsMatchContainer: {
+    flexDirection: 'row',
   },
 });
 
@@ -42,7 +50,7 @@ const Thread = (props: ThreadProps) => (
     <View style={{ flex: 1 }}>
       <View style={styles.threadHeader}>
         <Text>{props.thread.user2.name}</Text>
-        <Text style={{ flex: 1, textAlign: 'end' }}>
+        <Text style={{ flex: 1, textAlign: 'right' }}>
           {moment(props.thread.createdAt).fromNow()}
         </Text>
       </View>
@@ -51,22 +59,40 @@ const Thread = (props: ThreadProps) => (
   </View>
 );
 
+type ThreadMatchProps = {
+  thread: ThreadType,
+};
+
+const ThreadMatch = (props: ThreadMatchProps) => (
+  <Image style={styles.threadMatchProfile} source={{ uri: props.thread.user2.picture }} />
+);
+
 type ThreadsProps = {
   threads: Array<ThreadType>,
 };
 
 const Threads = (props: ThreadsProps) => (
   <View style={styles.threadsContainer}>
-    {
-      props.threads.map((thread) =>
+    <ScrollView horizontal style={styles.threadsMatchContainer}>
+      {props.threads.map((thread) =>
+        (
+          thread.lastMessage.match.data[0]
+            ? <ThreadMatch key={thread.id} thread={thread} />
+            : null
+        ))
+      }
+    </ScrollView>
+    <View style={styles.threadsContainer}>
+      {props.threads.map((thread) =>
         (
           !thread.lastMessage.match.data[0]
             ? <Thread key={thread.id} thread={thread} />
             : null
         ))
-    }
+      }
+    </View>
   </View>
 );
 
 export default Threads;
-export { Threads };
+export { Threads, Thread, ThreadMatch };
