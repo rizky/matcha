@@ -4,6 +4,7 @@ export default {
   'LandingPage.login': 'Login',
   'LandingPage.signUp': 'Sign Up',
   'LandingPage.welcome': 'Welcome to Matcha',
+  'Messages.match': 'You are a match',
   'Nav.discover': 'Discover',
   'Nav.home': 'Home',
   'Nav.messages': 'Messages',

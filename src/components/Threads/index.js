@@ -80,8 +80,8 @@ const Threads = (props: ThreadsProps) => (
       {props.threads.map((thread) =>
         (
           thread.lastMessage.match.data[0] ?
-            <TouchableOpacity onPress={() => props.onSelectThread(thread.id)}>
-              <ThreadMatch key={thread.id} thread={thread} />
+            <TouchableOpacity key={thread.id} onPress={() => props.onSelectThread(thread.id)}>
+              <ThreadMatch thread={thread} />
             </TouchableOpacity>
             : null
         ))
@@ -91,8 +91,8 @@ const Threads = (props: ThreadsProps) => (
       {props.threads.map((thread) =>
         (
           !thread.lastMessage.match.data[0] ?
-            <TouchableOpacity onPress={() => props.onSelectThread(thread.id)}>
-              <Thread key={thread.id} thread={thread} />
+            <TouchableOpacity key={thread.id} onPress={() => props.onSelectThread(thread.id)}>
+              <Thread thread={thread} />
             </TouchableOpacity>
             : null
         ))

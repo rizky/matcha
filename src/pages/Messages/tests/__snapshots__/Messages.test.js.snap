@@ -1,7 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Messages render test should render 1`] = `
-<BasicLayout>
+<BasicLayout
+  hasBack={false}
+  headerActions={Array []}
+  noTabs={false}
+>
   <ScrollView
     style={
       Object {
@@ -11,7 +15,9 @@ exports[`Messages render test should render 1`] = `
       }
     }
   >
-    <Threads />
+    <Threads
+      onSelectThread={[Function]}
+    />
   </ScrollView>
 </BasicLayout>
 `;

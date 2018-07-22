@@ -1,13 +1,13 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, TouchableOpacity } from 'react-native';
 import { MARGINS, COLORS, FONT_SIZES, HEADER_HEIGHT } from 'app/constants/design';
 import { injectIntl } from 'react-intl';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import { Actions } from 'react-native-router-flux';
 
 const styles = {
   body: {
     alignItems: 'center',
-    flex: 1,
     justifyContent: 'center',
   },
   header: {
@@ -37,18 +37,40 @@ const styles = {
 
 type Props = {
   intl: any,
+  hasBack?: boolean,
+  title?: string,
+  actions?: Array<Node>,
 };
 
 const Header = (props: Props) => (
   <View style={styles.header}>
-    <View style={styles.left} />
+    <View style={styles.left}>
+      { props.hasBack &&
+        <TouchableOpacity onPress={() => Actions.pop()}>
+          <Icon name="chevron-left" size={20} color={COLORS.BLUE_DARKER} />
+        </TouchableOpacity>
+      }
+    </View>
     <View style={styles.body}>
-      <Text style={styles.title}>{props.intl.formatMessage({ id: 'App.title' })}</Text>
+      <Text style={styles.title}>
+        {
+          props.title
+            ? props.title
+            : props.intl.formatMessage({ id: 'App.title' })
+        }
+      </Text>
     </View>
     <View style={styles.right}>
-      <Icon name="ellipsis-h" size={20} color={COLORS.BLUE_DARKER} />
+      {props.actions.map((action) => action)}
     </View>
   </View>
 );
+
+Header.defaultProps = {
+  actions: [],
+  hasBack: false,
+  title: undefined,
+};
+
 export default injectIntl(Header);
 export { Header };
