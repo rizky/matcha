@@ -12,7 +12,10 @@ exports[`Layout render test should render 1`] = `
     animated={false}
     showHideTransition="fade"
   />
-  <InjectIntl(Header) />
+  <InjectIntl(Header)
+    actions={Array []}
+    hasBack={false}
+  />
   <Component
     style={
       Object {

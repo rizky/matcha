@@ -8,12 +8,13 @@ type Props = {|
   noTabs?: boolean,
   hasBack?: boolean,
   title?: string,
+  headerActions?: Array<Node>,
 |};
 
 const BasicLayout = (props: Props) => (
   <View style={{ flex: 1 }}>
     <StatusBar />
-    <Header hasBack={props.hasBack} title={props.title} />
+    <Header hasBack={props.hasBack} title={props.title} actions={props.headerActions} />
     <View style={{ flex: 1 }}>
       {props.children}
     </View>
@@ -23,6 +24,7 @@ const BasicLayout = (props: Props) => (
 
 BasicLayout.defaultProps = {
   hasBack: false,
+  headerActions: [],
   noTabs: false,
   title: undefined,
 };

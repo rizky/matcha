@@ -39,6 +39,7 @@ type Props = {
   intl: any,
   hasBack?: boolean,
   title?: string,
+  actions?: Array<Node>,
 };
 
 const Header = (props: Props) => (
@@ -60,12 +61,13 @@ const Header = (props: Props) => (
       </Text>
     </View>
     <View style={styles.right}>
-      <Icon name="ellipsis-h" size={20} color={COLORS.BLUE_DARKER} />
+      {props.actions.map((action) => action)}
     </View>
   </View>
 );
 
 Header.defaultProps = {
+  actions: [],
   hasBack: false,
   title: undefined,
 };
