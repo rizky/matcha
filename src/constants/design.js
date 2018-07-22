@@ -4,7 +4,7 @@ export const COLORS = {
   BLACK_TRANSPARENT: 'rgba(0,0,0,0.5)',
   BLUE_DARK: '#1272ff',
   BLUE_DARKER: '#005be1',
-  BLUE_LIGHT: '#22a9ff',
+  BLUE_LIGHT: '#298cfa',
   GREEN: '#d9eebf',
   GREEN_ACCENT: 'green',
   GREY: '#d8d8d8',

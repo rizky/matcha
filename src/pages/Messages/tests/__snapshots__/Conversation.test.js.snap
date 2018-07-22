@@ -24,7 +24,7 @@ exports[`Conversation render test should render 1`] = `
       }
     }
   >
-    <Messages />
+    <InjectIntl(Messages) />
   </ScrollView>
 </BasicLayout>
 `;
