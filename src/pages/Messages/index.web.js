@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { ScrollView, StyleSheet } from 'react-native';
 import Layout from 'app/components/Layout/Basic';
 import Threads from 'app/components/Threads';
-import MessageComponent from 'app/components/Messages';
+import MessagesComponent from 'app/components/Messages';
 import { onLoadThreads, onSelectThread } from 'app/pages/Messages/actions';
 import { selectThreads, selectMessages, selectThread } from 'app/pages/Messages/selector';
 import type { Thread } from 'app/types/Thread';
@@ -50,7 +50,7 @@ class Messages extends Component<Props> {
           <Threads threads={this.props.threads} onSelectThread={this.props.onSelectThread} />
         </ScrollView>
         <ScrollView style={styles.mainPanel}>
-          <MessageComponent messages={this.props.messages} />
+          <MessagesComponent messages={this.props.messages} />
         </ScrollView>
         { this.props.selectedThread &&
           <ScrollView style={styles.rightPanel}>

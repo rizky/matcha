@@ -13,6 +13,7 @@ import Landing from 'app/pages/Auth/Landing';
 import Feed from 'app/pages/Feed';
 import Discover from 'app/pages/Discover';
 import Messages from 'app/pages/Messages';
+import Conversation from 'app/pages/Messages/Conversation';
 import Profile from 'app/pages/Profile';
 
 import { store, persistor } from '../configureStore'; //eslint-disable-line
@@ -30,6 +31,7 @@ const Application = () => (
             <Scene key="feed" component={Feed} />
             <Scene key="discover" component={Discover} />
             <Scene key="messages" component={Messages} initial />
+            <Scene key="conversation" component={Conversation} />
             <Scene key="profile" component={Profile} />
           </Scene>
         </RouterWithRedux>
