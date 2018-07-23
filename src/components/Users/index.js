@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View, StyleSheet, ImageBackground } from 'react-native';
+import { Text, View, StyleSheet, Image } from 'react-native';
 import type { UserType } from 'app/types/User';
 import { MARGINS, COLORS } from 'app/constants/design';
 import Icon from 'react-native-vector-icons/FontAwesome';
@@ -15,8 +15,11 @@ const styles = StyleSheet.create({
     padding: MARGINS.SMALL,
   },
   userControl: {
+    alignSelf: 'center',
+    bottom: 50,
     flexDirection: 'row',
     marginBottom: MARGINS.SMALL,
+    position: 'absolute',
   },
   userHeader: {
     flexDirection: 'row',
@@ -66,12 +69,7 @@ const User = (props: UserProps) => (
       <Text>{props.user.name}</Text>
     </View>
     {/* eslint-disable-next-line */}
-    <ImageBackground style={styles.userImage} source={require('app/assets/images/no-pic.jpg')}>
-      <View style={styles.userControl}>
-        <Icon style={{ marginRight: MARGINS.SMALL }} name="heart" size={40} color={COLORS.RED} />
-        <Icon name="times-circle" size={40} color={COLORS.RED} />
-      </View>
-    </ImageBackground>
+    <Image style={styles.userImage} source={require('app/assets/images/no-pic.jpg')} />
     <Text>{getDistance(props.user.lat, props.user.long, props.currentUser.lat, props.currentUser.long)}</Text>
     <Text>{moment(props.user.activeAt).fromNow()}</Text>
   </View>
@@ -86,8 +84,14 @@ const Users = (props: UsersProps) => (
   <View style={styles.usersContainer}>
     {
       props.users.map((user) =>
-        (user.id !== props.currentUser.id
-          ? <User key={user.id} user={user} currentUser={props.currentUser} />
+        (user.id !== props.currentUser.id ?
+          <View>
+            <User key={user.id} user={user} currentUser={props.currentUser} />
+            <View style={styles.userControl}>
+              <Icon style={{ marginRight: MARGINS.SMALL }} name="heart" size={40} color={COLORS.RED} />
+              <Icon name="times-circle" size={40} color={COLORS.RED} />
+            </View>
+          </View>
           : null
         ))
     }

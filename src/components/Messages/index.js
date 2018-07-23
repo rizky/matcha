@@ -15,7 +15,6 @@ const styles = StyleSheet.create({
     alignSelf: 'flex-start',
     backgroundColor: COLORS.GREY_LIGHTEST,
     borderRadius: 20,
-    flex: 1,
     flexDirection: 'row',
     flexWrap: 'wrap',
     paddingHorizontal: MARGINS.SMALL,
@@ -80,7 +79,7 @@ const Message = (props: MessageProps) => (
         <View style={styles.leftBubble}>
           <Image style={styles.photoProfile} source={{ uri: props.message.from.picture }} />
           <View style={styles.leftBubbleText}>
-            <Text style={{ flexWrap: 'wrap', maxWidth: 325 }}>{props.message.message}</Text>
+            <Text style={{ flexWrap: 'wrap', maxWidth: 250 }}>{props.message.message}</Text>
           </View>
         </View>
     }

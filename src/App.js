@@ -29,8 +29,8 @@ const Application = () => (
           <Scene key="root" hideNavBar>
             <Scene key="landing" component={Landing} />
             <Scene key="feed" component={Feed} />
-            <Scene key="discover" component={Discover} />
-            <Scene key="messages" component={Messages} initial />
+            <Scene key="discover" component={Discover} initial />
+            <Scene key="messages" component={Messages} />
             <Scene key="conversation" component={Conversation} />
             <Scene key="profile" component={Profile} />
           </Scene>
