@@ -1,18 +1,35 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { connect } from 'react-redux';
+import { ScrollView, StyleSheet } from 'react-native';
 import Layout from 'app/components/Layout/Basic';
-import { injectIntl } from 'react-intl';
+import { selectCurrentUser } from 'app/pages/Auth/selector';
+import type { UserType } from 'app/types/User';
+import { COLORS, MARGINS } from 'app/constants/design';
+import { User } from 'app/components/Users';
+
+const styles = StyleSheet.create({
+  container: {
+    backgroundColor: COLORS.BACKGROUND,
+    flex: 0,
+    margin: MARGINS.TINY,
+  },
+});
 
 type Props = {
-  intl: any,
+  currentUser: UserType,
 };
 
 const Profile = (props: Props) => (
-  <Layout>
-    <Text>{props.intl.formatMessage({ id: 'Nav.profile' })}</Text>
-    <View style={{ flex: 1 }} />
+  <Layout style={{ flexDirection: 'row', justifyContent: 'center' }}>
+    <ScrollView style={styles.container}>
+      <User user={props.currentUser} />
+    </ScrollView>
   </Layout>
 );
 
-export default injectIntl(Profile);
+const mapStateToProps = (state) => ({
+  currentUser: selectCurrentUser(state),
+});
+
+export default connect(mapStateToProps)(Profile);
 export { Profile };

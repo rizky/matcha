@@ -1,36 +1,31 @@
-export const SET_USER_ID = '@AUTH_REDUCER/SET_USER_ID';
+import type { UserType } from 'app/types/User';
+
+export const SET_USER = '@AUTH_REDUCER/SET_USER';
+export const UNSET_USER = '@AUTH_REDUCER/UNSET_USER';
 export const LOGIN = '@AUTH_SAGA/LOGIN';
 export const LOGOUT = '@AUTH_SAGA/LOGOUT';
-export const CLEAR_USER_ID = '@AUTH_REDUCER/CLEAR_USER_ID';
-export const UPDATE_LOGIN_FORM = '@AUTH_REDUCER/UPDATE_LOGIN_FORM';
-export const ON_RESET_PASSWORD = '@AUTH_SAGA/ON_RESET_PASSWORD';
+export const RESET_PASSWORD = '@AUTH_SAGA/RESET_PASSWORD';
 
-export const setUserId = (userId: string) => ({
-  type: SET_USER_ID,
-  userId,
+export const setUser = (user: UserType) => ({
+  type: SET_USER,
+  user,
 });
 
-export const login = (userId: string) => ({
+export const unsetUser = () => ({
+  type: UNSET_USER,
+});
+
+export const login = (email: string, password: string) => ({
+  email,
+  password,
   type: LOGIN,
-  userId,
 });
 
 export const logout = () => ({
   type: LOGOUT,
 });
 
-export const clearUserId = () => ({
-  type: CLEAR_USER_ID,
-});
-
-export const updateLoginForm = (path: string, value: string) => ({
-  path,
-  type: UPDATE_LOGIN_FORM,
-  value,
-});
-
 export const resetPassword = (email: string) => ({
   email,
-  type: ON_RESET_PASSWORD,
+  type: RESET_PASSWORD,
 });
-

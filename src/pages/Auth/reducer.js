@@ -1,40 +1,24 @@
-import set from 'lodash/set';
+import type { UserType } from 'app/types/User';
 import {
-  CLEAR_USER_ID,
-  UPDATE_LOGIN_FORM,
-  SET_USER_ID,
+  SET_USER,
+  UNSET_USER,
 } from 'app/pages/Auth/actions';
+import { currentUser } from 'app/pages/Auth/constants';
 
 type State = {
-  loginForm?: {
-    username: ?string,
-    password: ?string,
-  },
-  userId: ?string,
+  user: UserType,
 };
 
 const initialState: State = {
-  loginForm: {
-    password: undefined,
-    username: undefined,
-  },
-  userId: undefined,
-};
-
-const setIn = (state: State, path: Array<any>, value: string): State => {
-  const mutatedState: State = set(state, path, value);
-  return { ...mutatedState };
+  user: currentUser,
 };
 
 export default (state: State = initialState, action: any): State => {
-  if (action.type === SET_USER_ID) {
-    return { ...state, userId: action.userId };
+  if (action.type === SET_USER) {
+    return { ...state, user: action.user };
   }
-  if (action.type === CLEAR_USER_ID) {
-    return { ...state, userId: undefined };
-  }
-  if (action.type === UPDATE_LOGIN_FORM) {
-    return setIn(state, action.path, action.value);
+  if (action.type === UNSET_USER) {
+    return { ...state, user: undefined };
   }
   return state;
 };

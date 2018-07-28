@@ -5,10 +5,12 @@ import Layout from 'app/components/Layout/Basic';
 import Users from 'app/components/Users';
 import { onLoadUsers } from 'app/pages/Discover/actions';
 import { selectUsers } from 'app/pages/Discover/selector';
-import type { User } from 'app/types/User';
+import type { UserType } from 'app/types/User';
+import { selectCurrentUser } from 'app/pages/Auth/selector';
 
 type Props = {
-  users: Array<User>,
+  users: Array<UserType>,
+  currentUser: UserType,
 };
 
 class Discover extends Component<Props> {
@@ -20,7 +22,7 @@ class Discover extends Component<Props> {
     return (
       <Layout>
         <ScrollView style={{ flex: 1 }}>
-          <Users users={this.props.users} />
+          <Users users={this.props.users} currentUser={this.props.currentUser} />
         </ScrollView>
       </Layout>
     );
@@ -28,6 +30,7 @@ class Discover extends Component<Props> {
 }
 
 const mapStateToProps = (state) => ({
+  currentUser: selectCurrentUser(state),
   users: selectUsers(state),
 });
 
