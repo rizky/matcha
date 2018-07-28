@@ -69,7 +69,7 @@ const User = (props: UserProps) => (
       <Text>{props.user.name}</Text>
     </View>
     {/* eslint-disable-next-line */}
-    <Image style={styles.userImage} source={require('app/assets/images/no-pic.jpg')} />
+    <Image style={styles.userImage} source={props.user.picture} defaultSource={require('app/assets/images/no-pic.jpg')} />
     {
       props.currentUser &&
       <Text>{getDistance(props.user.lat, props.user.long, props.currentUser.lat, props.currentUser.long)}</Text>
