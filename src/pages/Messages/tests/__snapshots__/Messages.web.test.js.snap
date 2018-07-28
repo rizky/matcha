@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Messages render test should render 1`] = `
+<BasicLayout
+  hasBack={false}
+  headerActions={Array []}
+  noTabs={false}
+  style={
+    Object {
+      "flexDirection": "row",
+    }
+  }
+>
+  <ScrollView
+    style={
+      Object {
+        "backgroundColor": "white",
+        "flex": 0,
+        "margin": 5,
+        "width": 325,
+      }
+    }
+  >
+    <Threads />
+  </ScrollView>
+  <ScrollView
+    style={
+      Object {
+        "backgroundColor": "white",
+        "flex": 1,
+        "marginVertical": 5,
+        "minWidth": 325,
+      }
+    }
+  >
+    <InjectIntl(Messages) />
+  </ScrollView>
+</BasicLayout>
+`;

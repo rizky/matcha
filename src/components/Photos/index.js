@@ -50,7 +50,8 @@ type PhotoProps = {
 const Photo = (props: PhotoProps) => (
   <View style={styles.photoContainer}>
     <View style={styles.photoHeader}>
-      <Image style={styles.photoProfile} source={{ uri: props.photo.user.picture }} />
+      {/* eslint-disable-next-line */}
+      <Image style={styles.photoProfile} source={{ uri: props.photo.user.picture }} defaultSource={require('app/assets/images/no-pic.jpg')} />
       <Text>{props.photo.user.username}</Text>
     </View>
     <Image style={styles.photoImage} source={{ uri: props.photo.url }} />

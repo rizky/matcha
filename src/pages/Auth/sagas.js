@@ -3,16 +3,13 @@ import { Actions } from 'react-native-router-flux';
 import {
   LOGIN,
   LOGOUT,
-  ON_RESET_PASSWORD,
-  clearUserId,
-  setUserId,
+  setUser,
+  unsetUser,
 } from 'app/pages/Auth/actions';
-import { setScreen } from 'app/pages/App/actions';
-import { SCREENS } from 'app/pages/App/constants';
 
 // worker Saga: will be fired on LOGIN action
-function* onLogin(loginAction) {
-  yield put(setUserId(loginAction.userId));
+function* onLogin(action) {
+  yield put(setUser(action.user));
   yield Actions.home();
 }
 
@@ -22,8 +19,7 @@ function* loginSaga() {
 
 // worker Saga: will be fired on LOGOUT action
 function* onLogout() {
-  yield put(clearUserId());
-  yield put(setScreen(SCREENS.HOME));
+  yield put(unsetUser());
   yield Actions.reset('login');
 }
 
@@ -31,12 +27,4 @@ function* logoutSaga() {
   yield takeLatest(LOGOUT, onLogout);
 }
 
-function* onResetPassword(action) {
-  console.log(action);
-}
-
-function* resetPassword() {
-  yield takeLatest(ON_RESET_PASSWORD, onResetPassword);
-}
-
-export default [loginSaga, logoutSaga, resetPassword];
+export default [loginSaga, logoutSaga];

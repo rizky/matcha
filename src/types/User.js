@@ -6,6 +6,7 @@ export type User = {
   id: string,
   lat: number,
   long: number,
+  picture: string,
   subscribed: boolean,
   updatedAt: ?string,
   username: any,

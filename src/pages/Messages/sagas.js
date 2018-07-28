@@ -1,4 +1,4 @@
-import { takeEvery, put, call } from 'redux-saga/effects';
+import { takeEvery, put, call, select } from 'redux-saga/effects';
 import {
   loadThreads,
   ON_LOAD_THREADS,
@@ -9,6 +9,8 @@ import {
   onLoadMessages,
   ON_LOAD_MESSAGES,
 } from 'app/pages/Messages/actions';
+import { onLoadPhotosUser } from 'app/pages/Feed/actions';
+import { selectThread as selectThreadSelector } from 'app/pages/Messages/selector';
 
 function* onLoadMessagesWorker(action) {
   const { thread } = action;
@@ -27,6 +29,8 @@ function* onSelectThreadWorker(action) {
   try {
     yield put(onLoadMessages(thread));
     yield put(selectThread(thread));
+    const selectedThread = yield select(selectThreadSelector);
+    yield put(onLoadPhotosUser(selectedThread.user2.id));
   } catch (e) {
     console.log(e);
   }

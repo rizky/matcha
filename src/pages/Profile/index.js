@@ -1,18 +1,41 @@
-import React from 'react';
-import { View, Text } from 'react-native';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import Layout from 'app/components/Layout/Basic';
-import { injectIntl } from 'react-intl';
+import { selectCurrentUser } from 'app/pages/Auth/selector';
+import type { UserType } from 'app/types/User';
+import { onLoadPhotosUser } from 'app/pages/Feed/actions';
+import ProfileComponent from 'app/components/Users/Profile';
+import { selectPhotosUser } from 'app/pages/Feed/selector';
+import type { PhotoType } from 'app/types/Photo';
 
 type Props = {
-  intl: any,
+  currentUser: UserType,
+  onLoadPhotosUser: Function,
+  photos: Array<PhotoType>,
 };
 
-const Profile = (props: Props) => (
-  <Layout>
-    <Text>{props.intl.formatMessage({ id: 'Nav.profile' })}</Text>
-    <View style={{ flex: 1 }} />
-  </Layout>
-);
+class Profile extends Component<Props> {
+  componentWillMount() {
+    this.props.onLoadPhotosUser(this.props.currentUser.id);
+  }
 
-export default injectIntl(Profile);
+  render() {
+    return (
+      <Layout style={{ flexDirection: 'row', justifyContent: 'center' }}>
+        <ProfileComponent user={this.props.currentUser} photos={this.props.photos} />
+      </Layout>
+    );
+  }
+}
+
+const mapStateToProps = (state) => ({
+  currentUser: selectCurrentUser(state),
+  photos: selectPhotosUser(state),
+});
+
+const mapDispatchToProps = {
+  onLoadPhotosUser,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Profile);
 export { Profile };

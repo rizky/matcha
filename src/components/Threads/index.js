@@ -48,7 +48,8 @@ type ThreadProps = {
 
 const Thread = (props: ThreadProps) => (
   <View style={styles.threadContainer}>
-    <Image style={styles.threadProfile} source={{ uri: props.thread.user2.picture }} />
+    {/* eslint-disable-next-line */}
+    <Image style={styles.threadProfile} source={{ uri: props.thread.user2.picture }} defaultSource={require('app/assets/images/no-pic.jpg')} />
     <View style={{ flex: 1 }}>
       <View style={styles.threadHeader}>
         <Text>{props.thread.user2.name}</Text>
@@ -66,7 +67,7 @@ type ThreadMatchProps = {
 };
 
 const ThreadMatch = (props: ThreadMatchProps) => (
-  <Image style={styles.threadMatchProfile} source={{ uri: props.thread.user2.picture }} />
+  <Image style={styles.threadMatchProfile} source={{ uri: props.thread.user2.picture }} defaultSource={require('app/assets/images/no-pic.jpg')} /> //eslint-disable-line
 );
 
 type ThreadsProps = {
