@@ -6,10 +6,12 @@ import Threads from 'app/components/Threads';
 import MessagesComponent from 'app/components/Messages';
 import { onLoadThreads, onSelectThread } from 'app/pages/Messages/actions';
 import { selectThreads, selectMessages, selectThread } from 'app/pages/Messages/selector';
-import type { Thread } from 'app/types/Thread';
-import type { Message } from 'app/types/Message';
+import type { ThreadType } from 'app/types/Thread';
+import type { MessageType } from 'app/types/Message';
 import { COLORS, MARGINS } from 'app/constants/design';
-import { User } from 'app/components/Users';
+import ProfileComponent from 'app/components/Users/Profile';
+import type { PhotoType } from 'app/types/Photo';
+import { selectPhotosUser } from 'app/pages/Feed/selector';
 
 const styles = StyleSheet.create({
   leftPanel: {
@@ -32,10 +34,11 @@ const styles = StyleSheet.create({
 });
 
 type Props = {
-  threads: Array<Thread>,
-  messages: Array<Message>,
+  threads: Array<ThreadType>,
+  messages: Array<MessageType>,
   onSelectThread: (string) => {},
-  selectedThread: Thread,
+  selectedThread: ThreadType,
+  photosUser: Array<PhotoType>,
 };
 
 class Messages extends Component<Props> {
@@ -53,9 +56,7 @@ class Messages extends Component<Props> {
           <MessagesComponent messages={this.props.messages} />
         </ScrollView>
         { this.props.selectedThread &&
-          <ScrollView style={styles.rightPanel}>
-            <User user={this.props.selectedThread.user2} />
-          </ScrollView>
+          <ProfileComponent user={this.props.selectedThread.user2} photos={this.props.photosUser} />
         }
       </Layout>
     );
@@ -64,6 +65,7 @@ class Messages extends Component<Props> {
 
 const mapStateToProps = (state) => ({
   messages: selectMessages(state),
+  photosUser: selectPhotosUser(state),
   selectedThread: selectThread(state),
   threads: selectThreads(state),
 });

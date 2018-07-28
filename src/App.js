@@ -30,9 +30,9 @@ const Application = () => (
             <Scene key="landing" component={Landing} />
             <Scene key="feed" component={Feed} />
             <Scene key="discover" component={Discover} />
-            <Scene key="messages" component={Messages} />
+            <Scene key="messages" component={Messages} initial />
             <Scene key="conversation" component={Conversation} />
-            <Scene key="profile" component={Profile} initial />
+            <Scene key="profile" component={Profile} />
           </Scene>
         </RouterWithRedux>
       </IntlProvider>

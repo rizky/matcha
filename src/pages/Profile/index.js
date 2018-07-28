@@ -1,48 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { ScrollView, StyleSheet, View, Image } from 'react-native';
 import Layout from 'app/components/Layout/Basic';
 import { selectCurrentUser } from 'app/pages/Auth/selector';
 import type { UserType } from 'app/types/User';
-import { COLORS, MARGINS } from 'app/constants/design';
-import { User } from 'app/components/Users';
-import type { PhotoType } from 'app/types/Photo';
 import { onLoadPhotosUser } from 'app/pages/Feed/actions';
+import ProfileComponent from 'app/components/Users/Profile';
 import { selectPhotosUser } from 'app/pages/Feed/selector';
-
-const styles = StyleSheet.create({
-  container: {
-    backgroundColor: COLORS.BACKGROUND,
-    flex: 0,
-    margin: MARGINS.TINY,
-  },
-  photoImageThumbnail: {
-    backgroundColor: COLORS.GREY_DARK,
-    height: 100,
-    margin: MARGINS.TINY,
-    width: 100,
-  },
-  photosContainer: {
-    borderColor: COLORS.GREY,
-    borderWidth: 1,
-    flex: 1,
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    justifyContent: 'space-around',
-    width: 347,
-  },
-});
-
-type PhotoThumbnailProps = {
-  photo: PhotoType,
-};
-
-const PhotoThumbnail = (props: PhotoThumbnailProps) => (
-  <Image style={styles.photoImageThumbnail} source={{ uri: props.photo.url }} />
-);
+import type { PhotoType } from 'app/types/Photo';
 
 type Props = {
   currentUser: UserType,
+  onLoadPhotosUser: Function,
   photos: Array<PhotoType>,
 };
 
@@ -54,14 +22,7 @@ class Profile extends Component<Props> {
   render() {
     return (
       <Layout style={{ flexDirection: 'row', justifyContent: 'center' }}>
-        <ScrollView style={styles.container} contentContainerStyle={{ alignItems: 'center' }}>
-          <User user={this.props.currentUser} />
-          <View style={styles.photosContainer}>
-            {
-              this.props.photos.map((photo) => (<PhotoThumbnail key={photo.id} photo={photo} />))
-            }
-          </View>
-        </ScrollView>
+        <ProfileComponent user={this.props.currentUser} photos={this.props.photos} />
       </Layout>
     );
   }
