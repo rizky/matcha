@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Profile render test should render 1`] = `
+<BasicLayout
+  hasBack={false}
+  headerActions={Array []}
+  noTabs={false}
+  style={
+    Object {
+      "flexDirection": "row",
+      "justifyContent": "center",
+    }
+  }
+>
+  <ScrollView
+    style={
+      Object {
+        "backgroundColor": "white",
+        "flex": 0,
+        "margin": 5,
+      }
+    }
+  >
+    <User />
+  </ScrollView>
+</BasicLayout>
+`;
