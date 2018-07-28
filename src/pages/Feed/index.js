@@ -9,6 +9,7 @@ import type { Photo } from 'app/types/Photo';
 
 type Props = {
   photos: Array<Photo>,
+  onLoadPhotos: Function,
 };
 
 class Feed extends Component<Props> {
