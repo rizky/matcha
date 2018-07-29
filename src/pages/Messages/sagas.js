@@ -11,6 +11,7 @@ import {
 } from 'app/pages/Messages/actions';
 import { onLoadPhotosUser } from 'app/pages/Feed/actions';
 import { selectThread as selectThreadSelector } from 'app/pages/Messages/selector';
+import { selectCurrentUser } from 'app/pages/Auth/selector';
 
 function* onLoadMessagesWorker(action) {
   const { thread } = action;
@@ -26,20 +27,20 @@ function* onLoadMessagesWorker(action) {
 
 function* onSelectThreadWorker(action) {
   const { thread } = action;
-  console.log(thread);
   try {
     yield put(onLoadMessages(thread));
     yield put(selectThread(thread));
-    const selectedThread = yield select(selectThreadSelector);
-    yield put(onLoadPhotosUser(selectedThread.user2.id));
+    const { user2: { id } } = yield select(selectThreadSelector);
+    yield put(onLoadPhotosUser(id));
   } catch (e) {
     console.log(e);
   }
 }
 
 function* onLoadThreadsWorker() {
+  const { id } = yield select(selectCurrentUser);
   try {
-    const response = yield call(fetch, 'http://localhost:81/threads/1');
+    const response = yield call(fetch, `http://localhost:81/threads/${id}`);
     const threads = yield call([response, response.json]);
     yield put(loadThreads(threads));
     yield put(onSelectThread(threads[0].id));
@@ -61,3 +62,4 @@ function* selectThreadSaga() {
 }
 
 export default [loadThreadsSaga, loadMessagesSaga, selectThreadSaga];
+export { onSelectThreadWorker, onLoadMessagesWorker, onLoadThreadsWorker };
