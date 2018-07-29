@@ -3,6 +3,7 @@ import { Text, View, StyleSheet, Image, ScrollView, TouchableOpacity } from 'rea
 import type { ThreadType } from 'app/types/Thread';
 import { MARGINS, COLORS } from 'app/constants/design';
 import moment from 'moment';
+import LoadingHOC from 'app/components/HOC/LoaderHOC';
 
 const styles = StyleSheet.create({
   threadContainer: {
@@ -102,5 +103,5 @@ const Threads = (props: ThreadsProps) => (
   </View>
 );
 
-export default Threads;
+export default LoadingHOC('threads')(Threads);
 export { Threads, Thread, ThreadMatch };

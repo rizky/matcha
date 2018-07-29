@@ -4,6 +4,7 @@ import type { MessageType } from 'app/types/Message';
 import { MARGINS, COLORS } from 'app/constants/design';
 import moment from 'moment';
 import { injectIntl } from 'react-intl';
+import LoadingHOC from 'app/components/HOC/LoaderHOC';
 
 const styles = StyleSheet.create({
   leftBubble: {
@@ -112,5 +113,5 @@ const Messages = (props: MessagesProps) => (
   </View>
 );
 
-export default injectIntl(Messages);
+export default injectIntl(LoadingHOC('messages')(Messages));
 export { Messages, Message };

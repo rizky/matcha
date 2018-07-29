@@ -15,6 +15,7 @@ import { selectThread as selectThreadSelector } from 'app/pages/Messages/selecto
 function* onLoadMessagesWorker(action) {
   const { thread } = action;
   try {
+    yield put(loadMessages([]));
     const response = yield call(fetch, `http://localhost:81/messages/thread/${thread}`);
     const threads = yield call([response, response.json]);
     yield put(loadMessages(threads));
