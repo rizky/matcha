@@ -1,5 +1,5 @@
 
-import React, { Component } from 'react';
+import React from 'react';
 import { View, Image, StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
@@ -29,27 +29,13 @@ const isEmpty = (prop) => (
   (prop.constructor === Object && Object.keys(prop).length === 0)
 );
 
-const LoadingHOC = (propName) => (WrappedComponent) => (
-  class ExtendedCompoment extends Component {
-    componentDidMount() {
-      this.startTimer = Date.now();
-    }
-
-    componentWillUpdate(nextProps) {
-      if (!isEmpty(nextProps[propName])) {
-        this.endTimer = Date.now();
-      }
-    }
-
-    render() {
-      const myProps = {
-        loadingTime: ((this.endTimer - this.startTimer) / 1000).toFixed(2), // eslint-disable-line
-      };
-      return isEmpty(this.props[propName])
-        ? <Loader />
-        : <WrappedComponent {...this.props} {...myProps} />;
-    }
-  }
-);
+const LoadingHOC = (propName) => (Component) => {
+  const ExtendedComponent = (props) => (isEmpty(props[propName])
+    ? <Loader />
+    : <Component {...props} />
+  );
+  ExtendedComponent.displayName = `LoadingHOC(${Component.displayName || Component.name})`;
+  return ExtendedComponent;
+};
 
 export default LoadingHOC;

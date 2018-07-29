@@ -15,7 +15,7 @@ exports[`Messages render test should render 1`] = `
       }
     }
   >
-    <Threads
+    <LoadingHOC(Threads)
       onSelectThread={[Function]}
     />
   </ScrollView>
