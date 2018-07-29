@@ -21,7 +21,7 @@ exports[`Messages render test should render 1`] = `
       }
     }
   >
-    <Threads />
+    <LoadingHOC(Threads) />
   </ScrollView>
   <ScrollView
     style={
@@ -33,7 +33,7 @@ exports[`Messages render test should render 1`] = `
       }
     }
   >
-    <InjectIntl(Messages) />
+    <InjectIntl(LoadingHOC(Messages)) />
   </ScrollView>
 </BasicLayout>
 `;

@@ -35,5 +35,8 @@ exports[`Profile render test should render 1`] = `
       }
     }
   />
+  <LoadingHOC(PhotoThumbnails)
+    photos={Array []}
+  />
 </ScrollView>
 `;

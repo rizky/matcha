@@ -4,6 +4,7 @@ import type { PhotoType } from 'app/types/Photo';
 import { MARGINS, COLORS } from 'app/constants/design';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import moment from 'moment';
+import LoadingHOC from 'app/components/HOC/LoaderHOC';
 
 const styles = StyleSheet.create({
   photoContainer: {
@@ -75,5 +76,5 @@ const Photos = (props: PhotosProps) => (
   </View>
 );
 
-export default Photos;
+export default LoadingHOC('photos')(Photos);
 export { Photos };

@@ -5,6 +5,7 @@ import { MARGINS, COLORS } from 'app/constants/design';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import moment from 'moment';
 import geolib from 'geolib';
+import LoadingHOC from 'app/components/HOC/LoaderHOC';
 
 const styles = StyleSheet.create({
   userContainer: {
@@ -109,5 +110,5 @@ User.defaultProps = {
   currentUser: undefined,
 };
 
-export default Users;
+export default LoadingHOC('users')(Users);
 export { Users, User };

@@ -18,6 +18,7 @@ function* loadPhotosSaga() {
 function* onLoadPhotosUser(action) {
   try {
     const { userId } = action;
+    yield put(loadPhotosUser([]));
     const response = yield call(fetch, `http://localhost:81/photos/${userId}`);
     const photos = yield call([response, response.json]);
     yield put(loadPhotosUser(photos));

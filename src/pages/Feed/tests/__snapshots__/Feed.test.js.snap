@@ -13,7 +13,7 @@ exports[`Feed render test should render 1`] = `
       }
     }
   >
-    <Photos />
+    <LoadingHOC(Photos) />
   </ScrollView>
 </BasicLayout>
 `;
