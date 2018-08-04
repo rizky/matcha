@@ -4,9 +4,9 @@ import { ScrollView, StyleSheet } from 'react-native';
 import Layout from 'app/components/Layout/Basic';
 import Messages from 'app/components/Messages';
 import { selectMessages, selectThread } from 'app/pages/Messages/selector';
-import type { Message } from 'app/types/Message';
+import type { MessageType } from 'app/types/Message';
 import { COLORS, MARGINS } from 'app/constants/design';
-import type { Thread } from 'app/types/Thread';
+import type { ThreadType } from 'app/types/Thread';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 const styles = StyleSheet.create({
@@ -18,8 +18,8 @@ const styles = StyleSheet.create({
 });
 
 type Props = {
-  messages: Array<Message>,
-  selectedThread: Thread,
+  messages: Array<MessageType>,
+  selectedThread: ThreadType,
 };
 
 const Conversation = (props: Props) => (

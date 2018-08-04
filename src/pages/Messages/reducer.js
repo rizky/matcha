@@ -3,13 +3,13 @@ import {
   LOAD_MESSAGES,
   SELECT_THREAD,
 } from 'app/pages/Messages/actions';
-import type { Thread } from 'app/types/Thread';
-import type { Message } from 'app/types/Message';
+import type { ThreadType } from 'app/types/Thread';
+import type { MessageType } from 'app/types/Message';
 
 type State = {
-  threads: Array<Thread>,
+  threads: Array<ThreadType>,
   selectedThread: string,
-  messages: Array<Message>,
+  messages: Array<MessageType>,
 };
 
 const initialState: State = {

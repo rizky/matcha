@@ -5,7 +5,7 @@ import Layout from 'app/components/Layout/Basic';
 import Threads from 'app/components/Threads';
 import { onLoadThreads, onSelectThread } from 'app/pages/Messages/actions';
 import { selectThreads } from 'app/pages/Messages/selector';
-import type { Thread } from 'app/types/Thread';
+import type { ThreadType } from 'app/types/Thread';
 import { COLORS, MARGINS } from 'app/constants/design';
 import { Actions } from 'react-native-router-flux';
 
@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
 });
 
 type Props = {
-  threads: Array<Thread>,
+  threads: Array<ThreadType>,
   onSelectThread: (string) => {},
 };
 
