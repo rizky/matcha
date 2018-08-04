@@ -86,3 +86,4 @@ class Signup extends Component<Props, State> {
 }
 
 export default injectIntl(Signup);
+export { Signup };

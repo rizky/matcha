@@ -9,4 +9,10 @@ export default {
   'Nav.home': 'Home',
   'Nav.messages': 'Messages',
   'Nav.profile': 'Profile',
+  'SignupPage.emailAddress': 'Email Address',
+  'SignupPage.firstName': 'First Name',
+  'SignupPage.lastName': 'Last Name',
+  'SignupPage.password': 'Password',
+  'SignupPage.signUp': 'Sign Up',
+  'SignupPage.title': 'Create new account',
 };
