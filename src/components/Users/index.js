@@ -89,8 +89,8 @@ const Users = (props: UsersProps) => (
     {
       props.users.map((user) =>
         (user.id !== props.currentUser.id ?
-          <View>
-            <User key={user.id} user={user} currentUser={props.currentUser} />
+          <View key={user.id}>
+            <User user={user} currentUser={props.currentUser} />
             <View style={styles.userControl}>
               <Icon style={{ marginRight: MARGINS.SMALL }} name="heart" size={40} color={COLORS.RED} />
               <Icon name="times-circle" size={40} color={COLORS.RED} />

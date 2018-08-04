@@ -1,5 +1,5 @@
-import type { Thread } from 'app/types/Thread';
-import type { Message } from 'app/types/Message';
+import type { ThreadType } from 'app/types/Thread';
+import type { MessageType } from 'app/types/Message';
 
 export const LOAD_THREADS = '@MESSAGES_REDUCER/LOAD_THREADS';
 export const ON_LOAD_THREADS = '@MESSAGES_SAGA/ON_LOAD_THREADS';
@@ -8,7 +8,7 @@ export const ON_SELECT_THREAD = '@MESSAGES_REDUCER/ON_SELECT_THREAD';
 export const LOAD_MESSAGES = '@MESSAGES_REDUCER/LOAD_MESSAGES';
 export const ON_LOAD_MESSAGES = '@MESSAGES_SAGA/ON_LOAD_MESSAGES';
 
-export const loadThreads = (threads: Array<Thread>) => ({
+export const loadThreads = (threads: Array<ThreadType>) => ({
   threads,
   type: LOAD_THREADS,
 });
@@ -27,7 +27,7 @@ export const onSelectThread = (thread: string) => ({
   type: ON_SELECT_THREAD,
 });
 
-export const loadMessages = (messages: Array<Message>) => ({
+export const loadMessages = (messages: Array<MessageType>) => ({
   messages,
   type: LOAD_MESSAGES,
 });

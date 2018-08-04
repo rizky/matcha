@@ -1,43 +1,57 @@
-import { put, select, call } from 'redux-saga/effects';
 import { onSelectThreadWorker, onLoadMessagesWorker, onLoadThreadsWorker } from 'app/pages/Messages/sagas';
-import {
-  onLoadMessages,
-  selectThread,
-  loadMessages,
-  loadThreads,
-  onSelectThread,
-} from 'app/pages/Messages/actions';
+import { expectSaga } from 'redux-saga-test-plan';
+import messagesStore from 'app/pages/Messages/reducer';
+import deepFreeze from 'deep-freeze';
+import { select, call } from 'redux-saga/effects';
 import { selectThread as selectThreadSelector } from 'app/pages/Messages/selector';
 import { onLoadPhotosUser } from 'app/pages/Feed/actions';
+import { loadMessages, loadThreads } from 'app/pages/Messages/actions';
 import { selectCurrentUser } from 'app/pages/Auth/selector';
+import * as messageServices from 'app/services/messages.js';
+import * as threadServices from 'app/services/threads.js';
 
 describe('messagesSaga', () => {
-  it('onSelectThreadWorker', () => {
-    const thread = '1';
-    const gen = onSelectThreadWorker({ thread });
-    expect(gen.next().value).toEqual(put(onLoadMessages(thread)));
-    expect(gen.next().value).toEqual(put(selectThread(thread)));
-    expect(gen.next().value).toEqual(select(selectThreadSelector));
-    expect(gen.next({ user2: { id: '1' } }).value).toEqual(put(onLoadPhotosUser('1')));
-  });
+  const initialState = {
+    messages: [],
+    selectedThread: '',
+    threads: [],
+  };
   it('onLoadMessagesWorker', () => {
-    const thread = '1';
-    const gen = onLoadMessagesWorker({ thread });
-    expect(gen.next().value).toEqual(put(loadMessages([])));
-    expect(gen.next().value).toEqual(call(fetch, `http://localhost:81/messages/thread/${thread}`));
-    const response = { json: jest.fn };
-    expect(gen.next(response).value).toEqual(call([response, response.json]));
-    expect(gen.next(['test']).value).toEqual(put(loadMessages(['test'])));
+    const threadId = '1';
+    const messages = [{ id: '1' }];
+    return expectSaga(onLoadMessagesWorker, { thread: threadId })
+      .withReducer(messagesStore, deepFreeze(initialState))
+      .provide([
+        [call(messageServices.get, threadId), messages],
+      ])
+      .put(loadMessages(messages))
+      .hasFinalState({ ...initialState, messages })
+      .run();
+  });
+  it('onSelectThreadWorker', () => {
+    const threadId = '1';
+    const userId = '1';
+    const threads = [{ id: '1', user2: { id: '1' } }];
+    return expectSaga(onSelectThreadWorker, { thread: threadId })
+      .withReducer(messagesStore, deepFreeze({ ...initialState, threads }))
+      .provide([
+        [select(selectThreadSelector), { user2: { id: userId } }],
+      ])
+      .put(onLoadPhotosUser(userId))
+      .hasFinalState({ ...initialState, selectedThread: threadId, threads })
+      .run();
   });
   it('onLoadThreadsWorker', () => {
-    const gen = onLoadThreadsWorker();
-    expect(gen.next().value).toEqual(select(selectCurrentUser));
-    const currentUser = { id: '1' };
-    expect(gen.next(currentUser).value).toEqual(call(fetch, `http://localhost:81/threads/${currentUser.id}`));
-    const response = { json: jest.fn };
-    expect(gen.next(response).value).toEqual(call([response, response.json]));
-    const threads = [{ id: '1' }];
-    expect(gen.next(threads).value).toEqual(put(loadThreads(threads)));
-    expect(gen.next().value).toEqual(put(onSelectThread('1')));
+    const userId = '1';
+    const threads = [{ id: '1', user2: { id: '1' } }];
+    return expectSaga(onLoadThreadsWorker)
+      .withReducer(messagesStore, deepFreeze(initialState))
+      .provide([
+        [select(selectCurrentUser), { id: userId }],
+        [call(threadServices.get, userId), threads],
+      ])
+      .put(loadThreads(threads))
+      .hasFinalState({ ...initialState, threads })
+      .run();
   });
 });
