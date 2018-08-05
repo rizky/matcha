@@ -50,4 +50,3 @@ const Footer = (props: Props) => (
   </View>
 );
 export default injectIntl(Footer);
-export { Footer };

@@ -77,4 +77,3 @@ const Photos = (props: PhotosProps) => (
 );
 
 export default LoadingHOC('photos')(Photos);
-export { Photos };

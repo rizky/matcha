@@ -10,5 +10,19 @@ exports[`Photos render test should render 1`] = `
       "justifyContent": "space-around",
     }
   }
-/>
+>
+  <Image
+    source={
+      Object {
+        "testUri": "../../../app/assets/images/loading.gif",
+      }
+    }
+    style={
+      Object {
+        "height": 50,
+        "width": 50,
+      }
+    }
+  />
+</Component>
 `;

@@ -43,4 +43,3 @@ const mapStateToProps = (state) => ({
 });
 
 export default connect(mapStateToProps)(Conversation);
-export { Conversation };

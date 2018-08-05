@@ -73,4 +73,3 @@ Header.defaultProps = {
 };
 
 export default injectIntl(Header);
-export { Header };

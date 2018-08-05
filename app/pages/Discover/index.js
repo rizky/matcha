@@ -39,4 +39,3 @@ const mapDispatchToProps = {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Discover);
-export { Discover };

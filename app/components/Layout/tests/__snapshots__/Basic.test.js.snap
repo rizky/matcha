@@ -12,7 +12,7 @@ exports[`Layout render test should render 1`] = `
     animated={false}
     showHideTransition="fade"
   />
-  <InjectIntl(Header)
+  <Header
     actions={Array []}
     hasBack={false}
   />
@@ -23,7 +23,7 @@ exports[`Layout render test should render 1`] = `
       }
     }
   />
-  <InjectIntl(Nav) />
+  <Nav />
 </Component>
 `;
 
@@ -39,7 +39,7 @@ exports[`Layout render test should render 2`] = `
     animated={false}
     showHideTransition="fade"
   />
-  <InjectIntl(Nav) />
+  <Nav />
   <Component
     style={
       Array [
@@ -50,6 +50,6 @@ exports[`Layout render test should render 2`] = `
       ]
     }
   />
-  <InjectIntl(Footer) />
+  <Footer />
 </Component>
 `;

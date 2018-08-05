@@ -44,5 +44,3 @@ const Nav = (props: Props) => (
   </View>
 );
 export default injectIntl(Nav);
-export { Nav };
-

@@ -26,4 +26,3 @@ const Landing = (props: Props) => (
 );
 
 export default injectIntl(Landing);
-export { Landing };

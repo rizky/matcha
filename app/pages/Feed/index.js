@@ -37,4 +37,3 @@ const mapDispatchToProps = {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Feed);
-export { Feed };

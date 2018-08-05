@@ -51,4 +51,3 @@ const mapDispatchToProps = {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Messages);
-export { Messages };
