@@ -3,7 +3,7 @@
 const path = require('path');
 const webpack = require('webpack');
 
-const appDirectory = path.resolve(__dirname, './');
+const appDirectory = path.resolve(__dirname, '../');
 
 // Many OSS React Native packages are not compiled to ES5 before being
 // published. If you depend on uncompiled packages they may cause webpack build
@@ -13,7 +13,7 @@ const babelLoaderConfiguration = {
   test: /\.js$/,
   // Add every directory that needs to be compiled by Babel during the build.
   include: [
-    path.resolve(appDirectory, 'app'),
+    path.resolve(appDirectory, '../app'),
     path.resolve(appDirectory, 'node_modules/react-navigation'),
     path.resolve(appDirectory, 'node_modules/react-native-tab-view'),
     path.resolve(appDirectory, 'node_modules/react-native-paper'),
@@ -70,7 +70,7 @@ const ttfLoaderConfiguration = {
     },
   ],
   include: [
-    path.resolve(appDirectory, './app/assets/fonts'),
+    path.resolve(appDirectory, '../app/assets/fonts'),
     path.resolve(appDirectory, 'node_modules/react-native-vector-icons'),
   ],
 };
@@ -81,7 +81,7 @@ module.exports = {
     // Need babel polyfills before we include the bundleType
     'babel-polyfill',
     // Bundle has to come second
-    path.resolve(appDirectory, './app/index.js'),
+    path.resolve(appDirectory, '../app/index.js'),
   ],
   devtool: 'eval',
 
@@ -89,7 +89,7 @@ module.exports = {
   output: {
     filename: 'bundle.js',
     publicPath: '/assets/',
-    path: path.resolve(appDirectory, './public/assets'),
+    path: path.resolve(appDirectory, '../public/assets'),
   },
 
   module: {
@@ -118,12 +118,12 @@ module.exports = {
     symlinks: false,
     extensions: ['.web.js', '.js'],
     alias: {
-      './assets/images/expo-icon.png': './assets/images/expo-icon@2x.png',
-      './assets/images/slack-icon.png': './assets/images/slack-icon@2x.png',
+      '../assets/images/expo-icon.png': '../assets/images/expo-icon@2x.png',
+      '../assets/images/slack-icon.png': '../assets/images/slack-icon@2x.png',
       '@expo/vector-icons': 'expo-web',
       expo: 'expo-web',
       'react-native': 'react-native-web',
-      app: path.resolve(__dirname, './app'),
+      app: path.resolve(__dirname, '../app'),
     },
   },
 };

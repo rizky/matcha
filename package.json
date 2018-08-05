@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
+    "@storybook/addon-storyshots": "^3.4.10",
+    "@storybook/react": "^3.4.10",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
     "babel-eslint": "^8.2.2",
@@ -30,6 +32,7 @@
     "jest-react-native": "^18.0.0",
     "react-test-renderer": "16.3.1",
     "redux-saga-tester": "^1.0.379",
+    "storybook-addon-intl": "^2.3.0",
     "style-loader": "^0.19.0"
   },
   "scripts": {
@@ -40,15 +43,16 @@
     "test:ci": "jest --ci --maxWorkers 1 --no-watchman",
     "web": "webpack-dev-server -d --config ./webpack.config.js  --inline --hot --colors --content-base public/ --history-api-fallback",
     "build": "NODE_ENV=production webpack -p --config ./webpack.config.js",
-    "lint": "eslint src/",
-    "api": "cd api && docker-compose up"
+    "lint": "eslint app/",
+    "api": "cd api && docker-compose up",
+    "storybook": "start-storybook -p 9001 -c .storybook -s ./node_modules/react-native-vector-icons"
   },
   "jest": {
     "preset": "react-native",
     "transformIgnorePatterns": [
       "node_modules/(?!react-native|expo|react-navigation|native-base-shoutem-theme|@shoutem/theme|@shoutem/animation|@shoutem/ui|tcomb-form-native|native-base|@expo/vector-icons)"
     ],
-    "setupTestFrameworkScriptFile": "<rootDir>/src/setupTests.js"
+    "setupTestFrameworkScriptFile": "<rootDir>/app/setupTests.js"
   },
   "dependencies": {
     "axios": "^0.18.0",
