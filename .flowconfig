@@ -53,7 +53,7 @@
 <PROJECT_ROOT>/node_modules/react-native-router-flux/.*
 
 [include]
-./src/
+./app/
 
 [libs]
 node_modules/react-native/Libraries/react-native/react-native-interface.js

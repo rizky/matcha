@@ -13,7 +13,7 @@ const babelLoaderConfiguration = {
   test: /\.js$/,
   // Add every directory that needs to be compiled by Babel during the build.
   include: [
-    path.resolve(appDirectory, 'src'),
+    path.resolve(appDirectory, 'app'),
     path.resolve(appDirectory, 'node_modules/react-navigation'),
     path.resolve(appDirectory, 'node_modules/react-native-tab-view'),
     path.resolve(appDirectory, 'node_modules/react-native-paper'),
@@ -70,7 +70,7 @@ const ttfLoaderConfiguration = {
     },
   ],
   include: [
-    path.resolve(appDirectory, './src/assets/fonts'),
+    path.resolve(appDirectory, './app/assets/fonts'),
     path.resolve(appDirectory, 'node_modules/react-native-vector-icons'),
   ],
 };
@@ -81,7 +81,7 @@ module.exports = {
     // Need babel polyfills before we include the bundleType
     'babel-polyfill',
     // Bundle has to come second
-    path.resolve(appDirectory, 'src/index.js'),
+    path.resolve(appDirectory, './app/index.js'),
   ],
   devtool: 'eval',
 
@@ -123,7 +123,7 @@ module.exports = {
       '@expo/vector-icons': 'expo-web',
       expo: 'expo-web',
       'react-native': 'react-native-web',
-      app: path.resolve(__dirname, './src'),
+      app: path.resolve(__dirname, './app'),
     },
   },
 };
