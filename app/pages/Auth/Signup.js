@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { StyleSheet, Text, View, Button, TextInput } from 'react-native';
 import { injectIntl } from 'react-intl';
-import { Actions } from 'react-native-router-flux';
 import { COLORS, MARGINS, FONT_SIZES } from 'app/constants/design';
+import { signUp } from 'app/pages/Auth/actions';
 
 const styles = StyleSheet.create({
   container: {
@@ -20,17 +21,17 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: FONT_SIZES.BIG,
-    position: 'absolute',
-    top: MARGINS.EXTREME,
+    marginBottom: MARGINS.BIG,
   },
 });
 
 type Props = {
   intl: any,
+  signUp: Function,
 };
 
 type State = {
-  emailAddress: string,
+  email: string,
   firstName: string,
   lastName: string,
   password: string,
@@ -38,7 +39,7 @@ type State = {
 
 class Signup extends Component<Props, State> {
   state = {
-    emailAddress: '',
+    email: '',
     firstName: '',
     lastName: '',
     password: '',
@@ -62,10 +63,10 @@ class Signup extends Component<Props, State> {
         />
         <TextInput
           style={styles.testInput}
-          placeholder={this.props.intl.formatMessage({ id: 'SignupPage.emailAddress' })}
-          value={this.state.emailAddress}
+          placeholder={this.props.intl.formatMessage({ id: 'SignupPage.email' })}
+          value={this.state.email}
           autoCapitalize="none"
-          onChangeText={(text) => this.setState({ emailAddress: text })}
+          onChangeText={(text) => this.setState({ email: text })}
           keyboardType="email-address"
         />
         <TextInput
@@ -78,11 +79,27 @@ class Signup extends Component<Props, State> {
         />
         <Button
           title={this.props.intl.formatMessage({ id: 'SignupPage.signUp' })}
-          onPress={() => Actions.push('feed')}
+          onPress={() => this.props.signUp({
+            activeAt: null,
+            createdAt: null,
+            dob: null,
+            email: this.state.email,
+            lat: 0,
+            long: 0,
+            name: this.state.firstName,
+            password: this.state.password,
+            picture: '',
+            subscribed: false,
+            username: this.state.lastName,
+          })}
         />
       </View>
     );
   }
 }
 
-export default injectIntl(Signup);
+const mapDispatchToProps = {
+  signUp,
+};
+
+export default connect(null, mapDispatchToProps)(injectIntl(Signup));
