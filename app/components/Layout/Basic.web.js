@@ -5,13 +5,14 @@ import Footer from 'app/components/Footer';
 
 type Props = {|
   children: Node,
+  noTabs?: boolean,
   style?: Object,
 |};
 
 const BasicLayout = (props: Props) => (
   <View style={{ flex: 1 }}>
     <StatusBar />
-    <Nav />
+    {!props.noTabs && <Nav />}
     <View style={[{ flex: 1 }, props.style]}>
       {props.children}
     </View>
@@ -20,6 +21,7 @@ const BasicLayout = (props: Props) => (
 );
 
 BasicLayout.defaultProps = {
+  noTabs: false,
   style: {},
 };
 

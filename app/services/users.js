@@ -7,8 +7,11 @@ import type { UserType } from 'app/types/user';
 export async function post(user: UserType) {
   try {
     const response = await axios.post(api.concat('users/'), user);
-    console.log(response);
+    if (response.data.insertId === undefined) {
+      throw new Error(response.data.code);
+    }
+    return response;
   } catch (err) {
-    console.log(err);
+    throw new Error(err);
   }
 }

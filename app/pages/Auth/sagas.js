@@ -32,7 +32,12 @@ function* logOutSaga() {
 // worker Saga: will be fired on SIGNUP action
 function* signUpWorker(action) {
   const { user } = action;
-  yield call(userServices.post, user);
+  try {
+    yield call(userServices.post, user);
+    yield Actions.reset('feed');
+  } catch (err) {
+    console.log(err);
+  }
 }
 
 function* signUpSaga() {
