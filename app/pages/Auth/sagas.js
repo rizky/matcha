@@ -8,7 +8,7 @@ import {
   unsetUser,
 } from 'app/pages/Auth/actions';
 import * as userServices from 'app/services/users';
-import { toast } from 'app/components/Layout/actions';
+import { toast, showLoader, hideLoader } from 'app/components/Layout/actions';
 
 // worker Saga: will be fired on LOGIN action
 function* logInWorker(action) {
@@ -34,9 +34,12 @@ function* logOutSaga() {
 function* signUpWorker(action) {
   const { user } = action;
   try {
+    yield put(showLoader());
     yield call(userServices.post, user);
+    yield put(hideLoader());
     yield Actions.reset('feed');
   } catch (err) {
+    yield put(hideLoader());
     yield put(toast(err.message));
   }
 }

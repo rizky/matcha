@@ -4,14 +4,16 @@ import { StatusBar, View } from 'react-native';
 import Header from 'app/components/Header';
 import Nav from 'app/components/Nav';
 import Toast from 'app/components/Layout/Toast';
-import { selectToastIsShow, selectToastMessage } from 'app/components/Layout/selector';
+import Loader from 'app/components/Layout/Loader';
+import { selectToastIsShow, selectToastMessage, selectIsLoading } from 'app/components/Layout/selector';
 
 type Props = {|
   children: Node,
-  noTabs?: boolean,
   hasBack?: boolean,
-  title?: string,
   headerActions?: Array<Node>,
+  isLoading: boolean,
+  noTabs?: boolean,
+  title?: string,
 |};
 
 const Layout = (props: Props) => (
@@ -26,6 +28,7 @@ const Layout = (props: Props) => (
       message={props.toastMessage}
       isShow={props.toastIsShow}
     />
+    <Loader isLoading={props.isLoading} />
   </View>
 );
 
@@ -37,6 +40,7 @@ Layout.defaultProps = {
 };
 
 const mapStateToProps = (state) => ({
+  isLoading: selectIsLoading(state),
   toastIsShow: selectToastIsShow(state),
   toastMessage: selectToastMessage(state),
 });

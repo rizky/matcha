@@ -4,10 +4,12 @@ import { StatusBar, View } from 'react-native';
 import Nav from 'app/components/Nav';
 import Footer from 'app/components/Footer';
 import Toast from 'app/components/Layout/Toast';
-import { selectToastIsShow, selectToastMessage } from 'app/components/Layout/selector';
+import Loader from 'app/components/Layout/Loader';
+import { selectToastIsShow, selectToastMessage, selectIsLoading } from 'app/components/Layout/selector';
 
 type Props = {|
   children: Node,
+  isLoading: boolean,
   noTabs?: boolean,
   style?: Object,
   toastIsShow: boolean,
@@ -21,11 +23,12 @@ const Layout = (props: Props) => (
     <View style={[{ flex: 1 }, props.style]}>
       {props.children}
     </View>
+    <Footer />
     <Toast
       message={props.toastMessage}
       isShow={props.toastIsShow}
     />
-    <Footer />
+    <Loader isLoading={props.isLoading} />
   </View>
 );
 
@@ -35,6 +38,7 @@ Layout.defaultProps = {
 };
 
 const mapStateToProps = (state) => ({
+  isLoading: selectIsLoading(state),
   toastIsShow: selectToastIsShow(state),
   toastMessage: selectToastMessage(state),
 });

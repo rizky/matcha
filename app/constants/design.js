@@ -1,7 +1,7 @@
 export const COLORS = {
   BACKGROUND: 'white',
   BLACK: 'black',
-  BLACK_TRANSPARENT: 'rgba(0,0,0,0.5)',
+  BLACK_TRANSPARENT: 'rgba(0,0,0,0.1)',
   BLUE_DARK: '#1272ff',
   BLUE_DARKER: '#005be1',
   BLUE_LIGHT: '#298cfa',
