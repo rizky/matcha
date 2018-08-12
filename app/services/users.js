@@ -2,7 +2,7 @@
 /* eslint-disable no-magic-numbers */
 import { api } from 'app/services/config';
 import axios from 'axios';
-import type { UserType } from 'app/types/user';
+import type { UserType } from 'app/types/User';
 import { size } from 'lodash';
 
 const isEmailValid = (email: string) => {

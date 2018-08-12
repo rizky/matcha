@@ -49,3 +49,4 @@ function* signUpSaga() {
 }
 
 export default [logInSaga, logOutSaga, signUpSaga];
+export { signUpWorker };
