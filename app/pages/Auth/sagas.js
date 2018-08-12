@@ -7,7 +7,8 @@ import {
   SIGNUP,
   unsetUser,
 } from 'app/pages/Auth/actions';
-import * as userServices from 'app/services/users.js';
+import * as userServices from 'app/services/users';
+import { toast } from 'app/components/Layout/actions';
 
 // worker Saga: will be fired on LOGIN action
 function* logInWorker(action) {
@@ -36,7 +37,7 @@ function* signUpWorker(action) {
     yield call(userServices.post, user);
     yield Actions.reset('feed');
   } catch (err) {
-    console.log(err);
+    yield put(toast(err.message));
   }
 }
 
