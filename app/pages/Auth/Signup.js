@@ -33,17 +33,17 @@ type Props = {
 
 type State = {
   email: string,
-  firstName: string,
-  lastName: string,
+  name: string,
   password: string,
+  username: string,
 }
 
 class Signup extends Component<Props, State> {
   state = {
     email: '',
-    firstName: '',
-    lastName: '',
+    name: '',
     password: '',
+    username: '',
   }
 
   render() {
@@ -53,15 +53,15 @@ class Signup extends Component<Props, State> {
           <Text style={styles.title}>{this.props.intl.formatMessage({ id: 'SignupPage.title' })}</Text>
           <TextInput
             style={styles.testInput}
-            placeholder={this.props.intl.formatMessage({ id: 'SignupPage.firstName' })}
-            value={this.state.firstName}
-            onChangeText={(text) => this.setState({ firstName: text })}
+            placeholder={this.props.intl.formatMessage({ id: 'SignupPage.username' })}
+            value={this.state.username}
+            onChangeText={(text) => this.setState({ username: text })}
           />
           <TextInput
             style={styles.testInput}
-            placeholder={this.props.intl.formatMessage({ id: 'SignupPage.lastName' })}
-            value={this.state.lastName}
-            onChangeText={(text) => this.setState({ lastName: text })}
+            placeholder={this.props.intl.formatMessage({ id: 'SignupPage.name' })}
+            value={this.state.name}
+            onChangeText={(text) => this.setState({ name: text })}
           />
           <TextInput
             style={styles.testInput}
@@ -88,11 +88,11 @@ class Signup extends Component<Props, State> {
               email: this.state.email,
               lat: 0,
               long: 0,
-              name: this.state.firstName,
+              name: this.state.name,
               password: this.state.password,
               picture: '',
               subscribed: false,
-              username: this.state.lastName,
+              username: this.state.username,
             })}
           />
         </View>

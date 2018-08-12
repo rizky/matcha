@@ -10,9 +10,9 @@ export default {
   'Nav.messages': 'Messages',
   'Nav.profile': 'Profile',
   'SignupPage.email': 'Email Address',
-  'SignupPage.firstName': 'First Name',
-  'SignupPage.lastName': 'Last Name',
+  'SignupPage.name': 'Name',
   'SignupPage.password': 'Password',
   'SignupPage.signUp': 'Sign Up',
   'SignupPage.title': 'Create new account',
+  'SignupPage.username': 'Username',
 };
