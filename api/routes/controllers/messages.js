@@ -1,66 +1,38 @@
-import express from 'express'
-import Message from '../models/Message'
+/*  eslint-disable no-restricted-imports */
 
-var router = express.Router()
+import express from 'express';
+import Message from '../models/Message';
 
-router.get('/:id?', (req, res, next) =>
-{
-	if (req.params.id)
-		Message.find({id: req.params.id}, null, (err, rows) =>
-		{
-			(err)
-			? res.json(err)
-			: res.json(rows)
-		})
-	else
-		Message.findAll(null, null, (err, rows) => {
-			(err)
-			? res.json(err)
-			: res.json(rows)
-		})
-})
+const router = express.Router();
 
-router.get('/thread/:thread', (req, res, next) =>
-{
-	Message.find({thread: req.params.thread}, null, (err, rows) =>
-	{
-		(err)
-		? res.json(err)
-		: res.json(rows)
-	})
-})
-
-router.get('/to/:to', (req, res, next) =>
-{
-	Message.find({to: req.params.to}, ['createdAt', 'DESC'], (err, rows) =>
-	{
-		(err)
-		? res.json(err)
-		: res.json(rows)
-	})
-})
-
-router.post('/', function(req, res) {
-	if (req.body.id === undefined)
-	{
-		Message.insert(req.body, function(err, count)
-		{
-			if(err)
-				res.json(err);
-			else
-				res.json(count);
-		});
-	}
-	else
-	{
-		Message.update(req.body, function(err, count)
-		{
-			if(err)
-				res.json(err);
-			else
-				res.json(count);
-		});
-	}
+router.get('/:id?', (req, res) => {
+  if (req.params.id) {
+    Message.find({ id: req.params.id }, null, (err, rows) =>
+      (err) ? res.json(err) : res.json(rows));
+  } else {
+    Message.findAll(null, null, (err, rows) =>
+      (err) ? res.json(err) : res.json(rows));
+  }
 });
 
-export default router
+router.get('/thread/:thread', (req, res) => {
+  Message.find({ thread: req.params.thread }, null, (err, rows) =>
+    (err) ? res.json(err) : res.json(rows));
+});
+
+router.get('/to/:to', (req, res) => {
+  Message.find({ to: req.params.to }, ['createdAt', 'DESC'], (err, rows) =>
+    (err) ? res.json(err) : res.json(rows));
+});
+
+router.post('/', (req, res) => {
+  if (req.body.id === undefined) {
+    Message.insert(req.body, (err, count) =>
+      (err) ? res.json(err) : res.json(count));
+  } else {
+    Message.update(req.body, (err, count) =>
+      (err) ? res.json(err) : res.json(count));
+  }
+});
+
+export default router;

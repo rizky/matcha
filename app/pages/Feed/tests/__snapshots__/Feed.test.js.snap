@@ -1,11 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Feed render test should render 1`] = `
-<BasicLayout
-  hasBack={false}
-  headerActions={Array []}
-  noTabs={false}
->
+<Layout>
   <ScrollView
     style={
       Object {
@@ -15,5 +11,5 @@ exports[`Feed render test should render 1`] = `
   >
     <LoadingHOC(Photos) />
   </ScrollView>
-</BasicLayout>
+</Layout>
 `;

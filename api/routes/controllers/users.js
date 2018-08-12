@@ -1,64 +1,28 @@
-import express from 'express'
-import User from '../models/User'
+/*  eslint-disable no-restricted-imports */
 
-var router = express.Router()
+import express from 'express';
+import User from '../models/User';
 
-router.get('/:id?', (req, res, next) =>
-{
-	if (req.params.id)
-		User.findOne(req.params.id, (err, rows) =>
-		{
-			(err)
-			? res.json(err)
-			: res.json(rows)
-		})
-	else
-		User.findAll(null, null, (err, rows) =>
-		{
-			(err)
-			? res.json(err)
-			: res.json(rows)
-		})
-})
+const router = express.Router();
 
-router.post('/', (req, res, next) =>
-{
-	User.addUser(req.body, (err, count) =>
-	{
-		(err)
-		? res.json(err)
-		: res.json(count)
-	})
-})
+router.get('/:id?', (req, res) => {
+  if (req.params.id) {
+    User.findOne(req.params.id, (err, rows) =>
+      (err) ? res.json(err) : res.json(rows));
+  } else {
+    User.findAll(null, null, (err, rows) =>
+      (err) ? res.json(err) : res.json(rows));
+  }
+});
 
-router.post('/:id', (req, res, next) =>
-{
-	User.deleteAll(req.body, (err, count) =>
-	{
-		(err)
-		? res.json(err)
-		: res.json(count)
-	})
-})
+router.post('/', (req, res) => {
+  if (req.body.id === undefined) {
+    User.insert(req.body, (err, count) =>
+      (err) ? res.json(err) : res.json(count));
+  } else {
+    User.update(req.body, (err, count) =>
+      (err) ? res.json(err) : res.json(count));
+  }
+});
 
-router.delete('/:id', (req, res, next) =>
-{
-	User.deleteUser(req.params.id, (err, count) =>
-	{
-		(err)
-		? res.json(err)
-		: res.json(count)
-	})
-})
-
-router.put('/:id', (req, res, next) =>
-{
-	User.updateUser(req.params.id, req.body, (err, rows) =>
-	{
-		(err)
-		? res.json(err)
-		: res.json(rows)
-	})
-})
-
-export default router
+export default router;

@@ -15,8 +15,10 @@ import Discover from 'app/pages/Discover';
 import Messages from 'app/pages/Messages';
 import Conversation from 'app/pages/Messages/Conversation';
 import Profile from 'app/pages/Profile';
+import Signup from 'app/pages/Auth/Signup';
 
 import { store, persistor } from '../configureStore'; //eslint-disable-line
+
 
 addLocaleData(en);
 const RouterWithRedux = connect()(Router);
@@ -28,7 +30,8 @@ const Application = () => (
         <RouterWithRedux>
           <Scene key="root" hideNavBar>
             <Scene key="landing" component={Landing} />
-            <Scene key="feed" component={Feed} initial />
+            <Scene key="singup" component={Signup} initial />
+            <Scene key="feed" component={Feed} />
             <Scene key="discover" component={Discover} />
             <Scene key="messages" component={Messages} />
             <Scene key="conversation" component={Conversation} />

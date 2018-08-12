@@ -1,30 +1,52 @@
-import { put, takeLatest } from 'redux-saga/effects';
+import { put, takeLatest, call } from 'redux-saga/effects';
 import { Actions } from 'react-native-router-flux';
 import {
   LOGIN,
   LOGOUT,
   setUser,
+  SIGNUP,
   unsetUser,
 } from 'app/pages/Auth/actions';
+import * as userServices from 'app/services/users';
+import { toast, showLoader, hideLoader } from 'app/components/Layout/actions';
 
 // worker Saga: will be fired on LOGIN action
-function* onLogin(action) {
+function* logInWorker(action) {
   yield put(setUser(action.user));
   yield Actions.home();
 }
 
-function* loginSaga() {
-  yield takeLatest(LOGIN, onLogin);
+function* logInSaga() {
+  yield takeLatest(LOGIN, logInWorker);
 }
 
 // worker Saga: will be fired on LOGOUT action
-function* onLogout() {
+function* logOutWorker() {
   yield put(unsetUser());
   yield Actions.reset('login');
 }
 
-function* logoutSaga() {
-  yield takeLatest(LOGOUT, onLogout);
+function* logOutSaga() {
+  yield takeLatest(LOGOUT, logOutWorker);
 }
 
-export default [loginSaga, logoutSaga];
+// worker Saga: will be fired on SIGNUP action
+function* signUpWorker(action) {
+  const { user } = action;
+  try {
+    yield put(showLoader());
+    yield call(userServices.post, user);
+    yield put(hideLoader());
+    yield Actions.reset('feed');
+  } catch (err) {
+    yield put(hideLoader());
+    yield put(toast(err.message));
+  }
+}
+
+function* signUpSaga() {
+  yield takeLatest(SIGNUP, signUpWorker);
+}
+
+export default [logInSaga, logOutSaga, signUpSaga];
+export { signUpWorker };
