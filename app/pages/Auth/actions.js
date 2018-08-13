@@ -16,10 +16,10 @@ export const unsetUser = () => ({
   type: UNSET_USER,
 });
 
-export const login = (email: string, password: string) => ({
-  email,
+export const login = (username: string, password: string) => ({
   password,
   type: LOGIN,
+  username,
 });
 
 export const logout = () => ({

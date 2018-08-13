@@ -31,7 +31,7 @@ const Application = () => (
         <RouterWithRedux>
           <Scene key="root" hideNavBar>
             <Scene key="landing" component={Landing} />
-            <Scene key="singup" component={Signup} />
+            <Scene key="signup" component={Signup} />
             <Scene key="login" component={Login} initial />
             <Scene key="feed" component={Feed} />
             <Scene key="discover" component={Discover} />

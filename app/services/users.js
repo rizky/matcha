@@ -37,3 +37,19 @@ export async function post(user: UserType) {
     throw new Error(err);
   }
 }
+
+// get login/
+export async function login(username: String, password: String) {
+  try {
+    if (size(username) < 3) { throw new Error('USERNAME_TOO_SHORT'); }
+    if (size(password) < 6) { throw new Error('WEAK_PASSWORD'); }
+    const passwordEncrypted = Base64.stringify(hmacSHA512(password, privateKey));
+    const response = await axios.post(api.concat('users/login/'), { password: passwordEncrypted, username });
+    if (response.data.user === undefined) {
+      throw new Error(response.data.code);
+    }
+    return response.data.user;
+  } catch (err) {
+    throw new Error(err);
+  }
+}
