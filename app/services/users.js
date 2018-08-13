@@ -1,9 +1,11 @@
 // @flow
 /* eslint-disable no-magic-numbers */
-import { api } from 'app/services/config';
+import { api, privateKey } from 'app/services/config';
 import axios from 'axios';
 import type { UserType } from 'app/types/User';
 import { size } from 'lodash';
+import hmacSHA512 from 'crypto-js/hmac-sha512';
+import Base64 from 'crypto-js/enc-base64';
 
 const isEmailValid = (email: string) => {
   const re = /\S+@\S+\.\S+/;
@@ -25,7 +27,8 @@ const userVerification = (user: UserType) => {
 export async function post(user: UserType) {
   try {
     userVerification(user);
-    const response = await axios.post(api.concat('users/'), user);
+    const password = Base64.stringify(hmacSHA512(user.password, privateKey));
+    const response = await axios.post(api.concat('users/'), { ...user, password });
     if (response.data.insertId === undefined) {
       throw new Error(response.data.code);
     }
