@@ -18,7 +18,7 @@ const persistConfig = {
   blacklist: [], // useless now
   key: 'root',
   storage,
-  whitelist: ['user'], // only navigation will be persisted
+  whitelist: ['auth'], // only navigation will be persisted
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
@@ -36,5 +36,7 @@ function configureStore(initialState) {
 
 export const store = configureStore();
 export const persistor = persistStore(store);
+
+// persistor.purge(); // uncomment to purge saved store
 
 sagaMiddleware.run(rootSaga);

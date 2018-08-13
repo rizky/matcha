@@ -30,9 +30,9 @@ const Application = () => (
       <IntlProvider locale="en" messages={messages.en} textComponent={Text}>
         <RouterWithRedux>
           <Scene key="root" hideNavBar>
-            <Scene key="landing" component={Landing} />
+            <Scene key="landing" component={Landing} initial />
             <Scene key="signup" component={Signup} />
-            <Scene key="login" component={Login} initial />
+            <Scene key="login" component={Login} />
             <Scene key="feed" component={Feed} />
             <Scene key="discover" component={Discover} />
             <Scene key="messages" component={Messages} />
