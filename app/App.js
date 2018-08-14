@@ -16,6 +16,7 @@ import Messages from 'app/pages/Messages';
 import Conversation from 'app/pages/Messages/Conversation';
 import Profile from 'app/pages/Profile';
 import Signup from 'app/pages/Auth/Signup';
+import Login from 'app/pages/Auth/Login';
 
 import { store, persistor } from '../configureStore'; //eslint-disable-line
 
@@ -29,8 +30,9 @@ const Application = () => (
       <IntlProvider locale="en" messages={messages.en} textComponent={Text}>
         <RouterWithRedux>
           <Scene key="root" hideNavBar>
-            <Scene key="landing" component={Landing} />
-            <Scene key="singup" component={Signup} initial />
+            <Scene key="landing" component={Landing} initial />
+            <Scene key="signup" component={Signup} />
+            <Scene key="login" component={Login} />
             <Scene key="feed" component={Feed} />
             <Scene key="discover" component={Discover} />
             <Scene key="messages" component={Messages} />

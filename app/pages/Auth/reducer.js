@@ -3,14 +3,13 @@ import {
   SET_USER,
   UNSET_USER,
 } from 'app/pages/Auth/actions';
-import { currentUser } from 'app/pages/Auth/constants';
 
 type State = {
-  user: UserType,
+  user?: UserType,
 };
 
 const initialState: State = {
-  user: currentUser,
+  user: undefined,
 };
 
 export default (state: State = initialState, action: any): State => {

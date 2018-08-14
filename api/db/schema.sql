@@ -100,7 +100,7 @@ CREATE TABLE `user` (
   `id` int(30) NOT NULL AUTO_INCREMENT,
   `username` varchar(45) NOT NULL,
   `name` varchar(45) NOT NULL,
-  `password` varchar(45) NOT NULL,
+  `password` varchar(88) NOT NULL,
   `email` varchar(255) NOT NULL,
   `picture` varchar(255) NOT NULL,
   `dob` timestamp NULL DEFAULT NULL,

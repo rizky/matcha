@@ -25,4 +25,21 @@ router.post('/', (req, res) => {
   }
 });
 
+router.post('/login/', (req, res) => {
+  if (req.body.username && req.body.password) {
+    User.findAll({ password: req.body.password, username: req.body.username }, null, (err, rows) => {
+      if (err) {
+        res.json(err);
+      } else if (rows.length === 0) {
+        res.json({ code: 'USER_NOT_FOUND' });
+      } else {
+        const { password, ...user } = rows[0];
+        res.json({ user });
+      }
+    });
+  } else {
+    res.json({ code: 'INVALID_REQUEST' });
+  }
+});
+
 export default router;

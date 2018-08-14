@@ -16,3 +16,20 @@ export const currentUser: UserType = {
   updatedAt: '2018-07-15T14:25:50.000Z',
   username: 'admin',
 };
+
+export const emptyUser: UserType = {
+  activeAt: '',
+  createdAt: '',
+  dob: '',
+  email: '',
+  id: 0,
+  lat: 0,
+  long: 0,
+  name: '',
+  password: '',
+  picture: '',
+  tokenLost: null,
+  tokenValidated: null,
+  updatedAt: '',
+  username: '',
+};

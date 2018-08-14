@@ -12,8 +12,17 @@ import { toast, showLoader, hideLoader } from 'app/components/Layout/actions';
 
 // worker Saga: will be fired on LOGIN action
 function* logInWorker(action) {
-  yield put(setUser(action.user));
-  yield Actions.home();
+  const { username, password } = action;
+  try {
+    yield put(showLoader());
+    const user = yield call(userServices.login, username, password);
+    yield put(setUser(user));
+    yield put(hideLoader());
+    yield Actions.reset('feed');
+  } catch (err) {
+    yield put(hideLoader());
+    yield put(toast(err.message));
+  }
 }
 
 function* logInSaga() {
@@ -49,4 +58,4 @@ function* signUpSaga() {
 }
 
 export default [logInSaga, logOutSaga, signUpSaga];
-export { signUpWorker };
+export { signUpWorker, logInWorker };

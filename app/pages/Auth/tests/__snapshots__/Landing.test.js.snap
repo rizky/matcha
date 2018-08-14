@@ -2,10 +2,6 @@
 
 exports[`Landing render test should render 1`] = `
 <Landing
-  intl={
-    Object {
-      "formatMessage": [Function],
-    }
-  }
+  store={Object {}}
 />
 `;
