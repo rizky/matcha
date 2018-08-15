@@ -1,7 +1,13 @@
 /*  eslint-disable no-magic-numbers */
 
 import { Actions } from 'react-native-router-flux';
-import { signUpWorker, logInWorker, confirmationWorker } from 'app/pages/Auth/sagas';
+import {
+  signUpWorker,
+  logInWorker,
+  confirmationWorker,
+  resetPasswordWorker,
+  changePasswordWorker,
+} from 'app/pages/Auth/sagas';
 import { toast } from 'app/components/Layout/actions';
 import authStore from 'app/pages/Auth/reducer';
 import * as userServices from 'app/services/users';
@@ -67,7 +73,7 @@ describe('authSage', () => {
     });
     Actions.reset = jest.fn();
     userServices.confirmation = jest.fn(() => ({ data: { user: { id: 1 } } }));
-    sagaTester.start(confirmationWorker, 'fakeUser', 'fakePassword');
+    sagaTester.start(confirmationWorker, 'fakeEmail', 'fakeToken');
     expect(sagaTester.numCalled(toast().type)).toEqual(0);
     expect(Actions.reset).toHaveBeenCalledTimes(1);
   });
@@ -77,7 +83,47 @@ describe('authSage', () => {
     });
     Actions.reset = jest.fn();
     userServices.confirmation = jest.fn().mockImplementation(() => { throw new Error('USER_NOT_FOUND'); });
-    sagaTester.start(confirmationWorker, 'fakeUser', 'fakePassword');
+    sagaTester.start(confirmationWorker, 'fakeEmail', 'fakeToken');
+    expect(sagaTester.numCalled(toast().type)).toEqual(1);
+    expect(Actions.reset).toHaveBeenCalledTimes(0);
+  });
+  it('resetPasswordWorker Success', () => {
+    const sagaTester = new SagaTester({
+      reducers: { auth: authStore },
+    });
+    Actions.reset = jest.fn();
+    userServices.resetPassword = jest.fn(() => {});
+    sagaTester.start(resetPasswordWorker, 'fakeEmail');
+    expect(sagaTester.numCalled(toast().type)).toEqual(0);
+    expect(Actions.reset).toHaveBeenCalledTimes(1);
+  });
+  it('resetPasswordWorker Failed', () => {
+    const sagaTester = new SagaTester({
+      reducers: { auth: authStore },
+    });
+    Actions.reset = jest.fn();
+    userServices.resetPassword = jest.fn().mockImplementation(() => { throw new Error('USER_NOT_FOUND'); });
+    sagaTester.start(resetPasswordWorker, 'fakeEmail');
+    expect(sagaTester.numCalled(toast().type)).toEqual(1);
+    expect(Actions.reset).toHaveBeenCalledTimes(0);
+  });
+  it('changePasswordWorker Success', () => {
+    const sagaTester = new SagaTester({
+      reducers: { auth: authStore },
+    });
+    Actions.reset = jest.fn();
+    userServices.changePassword = jest.fn(() => {});
+    sagaTester.start(changePasswordWorker, 'fakeToken', 'fakePassword', 'fakePassword2');
+    expect(sagaTester.numCalled(toast().type)).toEqual(0);
+    expect(Actions.reset).toHaveBeenCalledTimes(1);
+  });
+  it('changePasswordWorker Failed', () => {
+    const sagaTester = new SagaTester({
+      reducers: { auth: authStore },
+    });
+    Actions.reset = jest.fn();
+    userServices.changePassword = jest.fn().mockImplementation(() => { throw new Error('USER_NOT_FOUND'); });
+    sagaTester.start(changePasswordWorker, 'fakeToken', 'fakePassword', 'fakePassword2');
     expect(sagaTester.numCalled(toast().type)).toEqual(1);
     expect(Actions.reset).toHaveBeenCalledTimes(0);
   });
