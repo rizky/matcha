@@ -17,6 +17,7 @@ import Conversation from 'app/pages/Messages/Conversation';
 import Profile from 'app/pages/Profile';
 import Signup from 'app/pages/Auth/Signup';
 import Login from 'app/pages/Auth/Login';
+import Confirmation from 'app/pages/Auth/Confirmation';
 
 import { store, persistor } from '../configureStore'; //eslint-disable-line
 
@@ -32,6 +33,7 @@ const Application = () => (
           <Scene key="root" hideNavBar>
             <Scene key="landing" component={Landing} initial />
             <Scene key="signup" component={Signup} />
+            <Scene key="confirmation" component={Confirmation} />
             <Scene key="login" component={Login} />
             <Scene key="feed" component={Feed} />
             <Scene key="discover" component={Discover} />

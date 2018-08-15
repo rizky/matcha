@@ -38,13 +38,28 @@ export async function post(user: UserType) {
   }
 }
 
-// get login/
-export async function login(username: String, password: String) {
+// post login/
+export async function login(username: string, password: string) {
   try {
     if (size(username) < 3) { throw new Error('USERNAME_TOO_SHORT'); }
     if (size(password) < 6) { throw new Error('WEAK_PASSWORD'); }
     const passwordEncrypted = Base64.stringify(hmacSHA512(password, privateKey));
     const response = await axios.post(api.concat('users/login/'), { password: passwordEncrypted, username });
+    if (response.data.user === undefined) {
+      throw new Error(response.data.code);
+    }
+    return response.data.user;
+  } catch (err) {
+    throw new Error(err);
+  }
+}
+
+// post confirmation/
+export async function confirmation(email: string, toke: string) {
+  try {
+    if (!isEmailValid(email)) { throw new Error('EMAIL_INVALID'); }
+    if (size(toke) < 88) { throw new Error('INVALID_CODE'); }
+    const response = await axios.post(api.concat('users/confirmation/'), { email, toke });
     if (response.data.user === undefined) {
       throw new Error(response.data.code);
     }
