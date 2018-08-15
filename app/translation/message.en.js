@@ -1,5 +1,12 @@
 export default {
   'App.title': 'Matcha',
+  'ChangePasswordPage.button': 'Change Password',
+  'ChangePasswordPage.login': 'I have an account',
+  'ChangePasswordPage.password': 'Password',
+  'ChangePasswordPage.password2': 'Password Again',
+  'ChangePasswordPage.signup': 'Create an account',
+  'ChangePasswordPage.title': 'Change Password',
+  'ChangePasswordPage.token': 'Code',
   'ConfirmationPage.button': 'Confirm Email',
   'ConfirmationPage.email': 'Email',
   'ConfirmationPage.resend': 'Resend Email Confirmation',

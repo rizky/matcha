@@ -5,7 +5,7 @@ import nodemailer from 'nodemailer';
 import hmacSHA512 from 'crypto-js/hmac-sha512';
 import Base64 from 'crypto-js/enc-base64';
 import User from '../models/User';
-
+import moment from 'moment';
 
 const router = express.Router();
 const transporter = nodemailer.createTransport({
@@ -32,7 +32,7 @@ router.get('/:id?', (req, res) => {
 
 router.post('/', (req, res) => {
   if (req.body.id === undefined) {
-    const tokenValidated = Base64.stringify(hmacSHA512(req.body.email, req.body.username));
+    const tokenValidated = Base64.stringify(hmacSHA512(req.body.email, moment().unix().toString()));
     User.insert({ ...req.body, tokenValidated }, (err, count) => {
       if (err) {
         res.json(err);
@@ -42,11 +42,10 @@ router.post('/', (req, res) => {
           subject: 'Matcha Account Verification',
           text: `Here is you code verification ${tokenValidated}`,
           to: req.body.email,
-        }, (error, info) => {
+        }, (error) => {
           if (error) {
             res.json(error);
           } else {
-            console.log(info.response);
             res.json(count);
           }
         });
@@ -101,19 +100,39 @@ router.post('/reset/', (req, res) => {
       } else if (rows.length === 0) {
         res.json({ code: 'USER_NOT_FOUND' });
       } else {
+        const { id } = rows[0];
+        const tokenLost = Base64.stringify(hmacSHA512(req.body.email, moment().unix().toString()));
         transporter.sendMail({
           ...mailOptions,
           subject: 'Matcha Reset Password',
-          text: `Reset your password with this link ${req.body.email}`,
+          text: `Reset your password with this link ${tokenLost}`,
           to: req.body.email,
-        }, (error, info) => {
+        }, (error) => {
           if (error) {
             res.json(error);
           } else {
-            console.log(info.response);
+            User.update({ id, tokenLost });
             res.json({ code: 'EMAIL_SENT' });
           }
         });
+      }
+    });
+  } else {
+    res.json({ code: 'INVALID_REQUEST' });
+  }
+});
+
+router.post('/changePassword/', (req, res) => {
+  if (req.body.token && req.body.password) {
+    User.findAll({ tokenLost: req.body.token }, null, (err, rows) => {
+      if (err) {
+        res.json(err);
+      } else if (rows.length === 0) {
+        res.json({ code: 'USER_NOT_FOUND' });
+      } else {
+        const { password, ...user } = rows[0];
+        User.update({ id: user.id, password: req.body.password, tokenLost: '' });
+        res.json({ code: 'PASSWORD_CHANGED' });
       }
     });
   } else {

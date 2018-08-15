@@ -19,9 +19,9 @@ import Signup from 'app/pages/Auth/Signup';
 import Login from 'app/pages/Auth/Login';
 import Confirmation from 'app/pages/Auth/Confirmation';
 import ForgotPassword from 'app/pages/Auth/ForgotPassword';
+import ChangePassword from 'app/pages/Auth/ChangePassword';
 
 import { store, persistor } from '../configureStore'; //eslint-disable-line
-
 
 addLocaleData(en);
 const RouterWithRedux = connect()(Router);
@@ -37,6 +37,7 @@ const Application = () => (
             <Scene key="confirmation" component={Confirmation} />
             <Scene key="login" component={Login} />
             <Scene key="forgotPassword" component={ForgotPassword} />
+            <Scene key="changePassword" component={ChangePassword} />
             <Scene key="feed" component={Feed} />
             <Scene key="discover" component={Discover} />
             <Scene key="messages" component={Messages} />
