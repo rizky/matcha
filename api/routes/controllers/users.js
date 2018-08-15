@@ -1,9 +1,24 @@
 /*  eslint-disable no-restricted-imports */
 
 import express from 'express';
+import nodemailer from 'nodemailer';
 import User from '../models/User';
 
+
 const router = express.Router();
+const transporter = nodemailer.createTransport({
+  auth: {
+    pass: 'Paris2018',
+    user: 'camagru.rizky@gmail.com',
+  },
+  service: 'gmail',
+});
+
+const mailOptions = {
+  from: 'matcha.rizky@gmail.com',
+  subject: 'Account Verification',
+  text: 'That was easy!',
+};
 
 router.get('/:id?', (req, res) => {
   if (req.params.id) {
@@ -17,8 +32,20 @@ router.get('/:id?', (req, res) => {
 
 router.post('/', (req, res) => {
   if (req.body.id === undefined) {
-    User.insert(req.body, (err, count) =>
-      (err) ? res.json(err) : res.json(count));
+    User.insert(req.body, (err, count) => {
+      if (err) {
+        res.json(err);
+      } else {
+        transporter.sendMail({ ...mailOptions, to: req.body.email }, (error, info) => {
+          if (error) {
+            res.json(error);
+          } else {
+            console.log(`Email sent: ${info.response}`);
+            res.json(count);
+          }
+        });
+      }
+    });
   } else {
     User.update(req.body, (err, count) =>
       (err) ? res.json(err) : res.json(count));
