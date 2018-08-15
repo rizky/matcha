@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { StyleSheet, Text, View, Button, TextInput, TouchableOpacity } from 'react-native';
 import { injectIntl } from 'react-intl';
 import { COLORS, MARGINS, FONT_SIZES } from 'app/constants/design';
-import { login } from 'app/pages/Auth/actions';
+import { confirmation } from 'app/pages/Auth/actions';
 import Layout from 'app/components/Layout/Basic';
 import { Actions } from 'react-native-router-flux';
 
@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
 
 type Props = {
   intl: any,
-  login: Function,
+  confirmation: Function,
 };
 
 type State = {
@@ -37,7 +37,7 @@ type State = {
   username: string,
 }
 
-class Login extends Component<Props, State> {
+class Confirmation extends Component<Props, State> {
   state = {
     email: '',
     token: '',
@@ -64,7 +64,7 @@ class Login extends Component<Props, State> {
           />
           <Button
             title={this.props.intl.formatMessage({ id: 'ConfirmationPage.button' })}
-            onPress={() => this.props.login(this.state.username, this.state.password)}
+            onPress={() => this.props.confirmation(this.state.email, this.state.token)}
           />
           <View style={{ marginTop: MARGINS.SMALL }}>
             <TouchableOpacity onPress={() => {}}>
@@ -87,7 +87,7 @@ class Login extends Component<Props, State> {
 }
 
 const mapDispatchToProps = {
-  login,
+  confirmation,
 };
 
-export default connect(null, mapDispatchToProps)(injectIntl(Login));
+export default connect(null, mapDispatchToProps)(injectIntl(Confirmation));

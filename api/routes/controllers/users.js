@@ -76,8 +76,8 @@ router.post('/login/', (req, res) => {
 });
 
 router.post('/confirmation/', (req, res) => {
-  if (req.body.email && req.body.tokenValidated) {
-    User.findAll({ email: req.body.email, tokenValidated: req.body.tokenValidated }, null, (err, rows) => {
+  if (req.body.email && req.body.token) {
+    User.findAll({ email: req.body.email, tokenValidated: req.body.token }, null, (err, rows) => {
       if (err) {
         res.json(err);
       } else if (rows.length === 0) {
