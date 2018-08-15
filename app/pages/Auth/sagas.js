@@ -1,12 +1,14 @@
 import { put, takeLatest, call } from 'redux-saga/effects';
 import { Actions } from 'react-native-router-flux';
 import {
+  CHANGE_PASSWORD,
+  CONFIRMATION,
   LOGIN,
   LOGOUT,
+  RESET_PASSWORD,
   setUser,
   SIGNUP,
   unsetUser,
-  CONFIRMATION,
 } from 'app/pages/Auth/actions';
 import * as userServices from 'app/services/users';
 import { toast, showLoader, hideLoader } from 'app/components/Layout/actions';
@@ -73,5 +75,39 @@ function* confirmationSaga() {
   yield takeLatest(CONFIRMATION, confirmationWorker);
 }
 
-export default [logInSaga, logOutSaga, signUpSaga, confirmationSaga];
-export { signUpWorker, logInWorker, confirmationWorker };
+function* resetPasswordWorker(action) {
+  const { email } = action;
+  try {
+    yield put(showLoader());
+    yield call(userServices.resetPassword, email);
+    yield put(hideLoader());
+    yield Actions.reset('changePassword');
+  } catch (err) {
+    yield put(hideLoader());
+    yield put(toast(err.message));
+  }
+}
+
+function* resetPasswordSaga() {
+  yield takeLatest(RESET_PASSWORD, resetPasswordWorker);
+}
+
+function* changePasswordWorker(action) {
+  const { token, password, password2 } = action;
+  try {
+    yield put(showLoader());
+    yield call(userServices.changePassword, token, password, password2);
+    yield put(hideLoader());
+    yield Actions.reset('login');
+  } catch (err) {
+    yield put(hideLoader());
+    yield put(toast(err.message));
+  }
+}
+
+function* changePasswordSaga() {
+  yield takeLatest(CHANGE_PASSWORD, changePasswordWorker);
+}
+
+export default [logInSaga, logOutSaga, signUpSaga, confirmationSaga, resetPasswordSaga, changePasswordSaga];
+export { signUpWorker, logInWorker, confirmationWorker, resetPasswordWorker, changePasswordWorker };

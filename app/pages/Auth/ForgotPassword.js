@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { StyleSheet, Text, View, Button, TextInput, TouchableOpacity } from 'react-native';
 import { injectIntl } from 'react-intl';
 import { COLORS, MARGINS, FONT_SIZES } from 'app/constants/design';
-import { confirmation } from 'app/pages/Auth/actions';
+import { resetPassword } from 'app/pages/Auth/actions';
 import Layout from 'app/components/Layout/Basic';
 import { Actions } from 'react-native-router-flux';
 
@@ -29,54 +29,45 @@ const styles = StyleSheet.create({
 
 type Props = {
   intl: any,
-  confirmation: Function,
+  resetPassword: Function,
 };
 
 type State = {
   email: string,
-  token: string,
 }
 
-class Confirmation extends Component<Props, State> {
+class ForgotPassword extends Component<Props, State> {
   state = {
     email: '',
-    token: '',
   }
 
   render() {
     return (
       <Layout noTabs>
         <View style={styles.container}>
-          <Text style={styles.title}>{this.props.intl.formatMessage({ id: 'ConfirmationPage.title' })}</Text>
+          <Text style={styles.title}>{this.props.intl.formatMessage({ id: 'ForgotPasswordPage.title' })}</Text>
           <TextInput
             style={styles.textInput}
-            placeholder={this.props.intl.formatMessage({ id: 'ConfirmationPage.email' })}
+            placeholder={this.props.intl.formatMessage({ id: 'ForgotPasswordPage.email' })}
             value={this.state.email}
             autoCapitalize="none"
             onChangeText={(email) => this.setState({ email })}
           />
-          <TextInput
-            style={styles.textInput}
-            placeholder={this.props.intl.formatMessage({ id: 'ConfirmationPage.token' })}
-            value={this.state.token}
-            autoCapitalize="none"
-            onChangeText={(token) => this.setState({ token })}
-          />
           <Button
-            title={this.props.intl.formatMessage({ id: 'ConfirmationPage.button' })}
-            onPress={() => this.props.confirmation(this.state.email, this.state.token)}
+            title={this.props.intl.formatMessage({ id: 'ForgotPasswordPage.button' })}
+            onPress={() => this.props.resetPassword(this.state.email)}
           />
           <View style={{ marginTop: MARGINS.SMALL }}>
-            <TouchableOpacity onPress={() => {}}>
+            <TouchableOpacity onPress={() => Actions.login()}>
               <Text style={{ textAlign: 'center', textDecorationLine: 'underline' }}>
-                {this.props.intl.formatMessage({ id: 'ConfirmationPage.resend' })}
+                {this.props.intl.formatMessage({ id: 'ForgotPasswordPage.login' })}
               </Text>
             </TouchableOpacity>
           </View>
           <View style={{ marginTop: MARGINS.SMALL }}>
             <TouchableOpacity onPress={() => Actions.signup()}>
               <Text style={{ textAlign: 'center', textDecorationLine: 'underline' }}>
-                {this.props.intl.formatMessage({ id: 'ConfirmationPage.signup' })}
+                {this.props.intl.formatMessage({ id: 'ForgotPasswordPage.signup' })}
               </Text>
             </TouchableOpacity>
           </View>
@@ -87,7 +78,7 @@ class Confirmation extends Component<Props, State> {
 }
 
 const mapDispatchToProps = {
-  confirmation,
+  resetPassword,
 };
 
-export default connect(null, mapDispatchToProps)(injectIntl(Confirmation));
+export default connect(null, mapDispatchToProps)(injectIntl(ForgotPassword));
