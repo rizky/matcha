@@ -1,7 +1,7 @@
 /*  eslint-disable no-magic-numbers */
 
 import { Actions } from 'react-native-router-flux';
-import { signUpWorker, logInWorker } from 'app/pages/Auth/sagas';
+import { signUpWorker, logInWorker, confirmationWorker } from 'app/pages/Auth/sagas';
 import { toast } from 'app/components/Layout/actions';
 import authStore from 'app/pages/Auth/reducer';
 import * as userServices from 'app/services/users';
@@ -58,6 +58,26 @@ describe('authSage', () => {
     Actions.reset = jest.fn();
     userServices.login = jest.fn().mockImplementation(() => { throw new Error('USER_NOT_FOUND'); });
     sagaTester.start(logInWorker, 'fakeUser', 'fakePassword');
+    expect(sagaTester.numCalled(toast().type)).toEqual(1);
+    expect(Actions.reset).toHaveBeenCalledTimes(0);
+  });
+  it('confirmationWorker Success', () => {
+    const sagaTester = new SagaTester({
+      reducers: { auth: authStore },
+    });
+    Actions.reset = jest.fn();
+    userServices.confirmation = jest.fn(() => ({ data: { user: { id: 1 } } }));
+    sagaTester.start(confirmationWorker, 'fakeUser', 'fakePassword');
+    expect(sagaTester.numCalled(toast().type)).toEqual(0);
+    expect(Actions.reset).toHaveBeenCalledTimes(1);
+  });
+  it('confirmationWorker Failed', () => {
+    const sagaTester = new SagaTester({
+      reducers: { auth: authStore },
+    });
+    Actions.reset = jest.fn();
+    userServices.confirmation = jest.fn().mockImplementation(() => { throw new Error('USER_NOT_FOUND'); });
+    sagaTester.start(confirmationWorker, 'fakeUser', 'fakePassword');
     expect(sagaTester.numCalled(toast().type)).toEqual(1);
     expect(Actions.reset).toHaveBeenCalledTimes(0);
   });

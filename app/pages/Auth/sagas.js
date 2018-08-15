@@ -74,4 +74,4 @@ function* confirmationSaga() {
 }
 
 export default [logInSaga, logOutSaga, signUpSaga, confirmationSaga];
-export { signUpWorker, logInWorker };
+export { signUpWorker, logInWorker, confirmationWorker };
