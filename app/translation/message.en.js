@@ -1,5 +1,9 @@
 export default {
   'App.title': 'Matcha',
+  'ConfirmationPage.button': 'Confirm Email',
+  'ConfirmationPage.email': 'Email',
+  'ConfirmationPage.resend': 'Resend Email Confirmation',
+  'ConfirmationPage.title': 'Confirmation Page',
   'Footer.title': 'Matcha © 2018',
   'LandingPage.login': 'Login',
   'LandingPage.signUp': 'Sign Up',
@@ -15,6 +19,7 @@ export default {
   'Nav.home': 'Home',
   'Nav.messages': 'Messages',
   'Nav.profile': 'Profile',
+  'SignupPage.confirmation': 'Confirm Email',
   'SignupPage.email': 'Email Address',
   'SignupPage.haveAccount': 'I have an account',
   'SignupPage.name': 'Name',

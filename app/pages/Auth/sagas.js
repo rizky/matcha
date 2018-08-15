@@ -46,7 +46,7 @@ function* signUpWorker(action) {
     yield put(showLoader());
     yield call(userServices.post, user);
     yield put(hideLoader());
-    yield Actions.reset('feed');
+    yield Actions.reset('confirmation');
   } catch (err) {
     yield put(hideLoader());
     yield put(toast(err.message));

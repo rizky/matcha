@@ -103,6 +103,13 @@ class Signup extends Component<Props, State> {
               </Text>
             </TouchableOpacity>
           </View>
+          <View style={{ marginTop: MARGINS.SMALL }}>
+            <TouchableOpacity onPress={() => Actions.login()}>
+              <Text style={{ textAlign: 'center', textDecorationLine: 'underline' }}>
+                {this.props.intl.formatMessage({ id: 'SignupPage.confirmation' })}
+              </Text>
+            </TouchableOpacity>
+          </View>
         </View>
       </Layout>
     );
