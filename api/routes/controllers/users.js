@@ -18,7 +18,6 @@ const transporter = nodemailer.createTransport({
 
 const mailOptions = {
   from: 'matcha.rizky@gmail.com',
-  subject: 'Matcha Account Verification',
 };
 
 router.get('/:id?', (req, res) => {
@@ -40,6 +39,7 @@ router.post('/', (req, res) => {
       } else {
         transporter.sendMail({
           ...mailOptions,
+          subject: 'Matcha Account Verification',
           text: `Here is you code verification ${tokenValidated}`,
           to: req.body.email,
         }, (error, info) => {
@@ -86,6 +86,34 @@ router.post('/confirmation/', (req, res) => {
         const { password, tokenValidated, ...user } = rows[0];
         User.update({ id: user.id, tokenValidated: '' });
         res.json({ user });
+      }
+    });
+  } else {
+    res.json({ code: 'INVALID_REQUEST' });
+  }
+});
+
+router.post('/reset/', (req, res) => {
+  if (req.body.email) {
+    User.findAll({ email: req.body.email }, null, (err, rows) => {
+      if (err) {
+        res.json(err);
+      } else if (rows.length === 0) {
+        res.json({ code: 'USER_NOT_FOUND' });
+      } else {
+        transporter.sendMail({
+          ...mailOptions,
+          subject: 'Matcha Reset Password',
+          text: `Reset your password with this link ${req.body.email}`,
+          to: req.body.email,
+        }, (error, info) => {
+          if (error) {
+            res.json(error);
+          } else {
+            console.log(info.response);
+            res.json({ code: 'EMAIL_SENT' });
+          }
+        });
       }
     });
   } else {

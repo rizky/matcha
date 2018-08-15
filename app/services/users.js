@@ -68,3 +68,17 @@ export async function confirmation(email: string, toke: string) {
     throw new Error(err);
   }
 }
+
+// post reset/
+export async function resetPassword(email: string) {
+  try {
+    if (!isEmailValid(email)) { throw new Error('EMAIL_INVALID'); }
+    const response = await axios.post(api.concat('users/reset/'), { email });
+    if (response.data.code !== 'EMAIL_SENT') {
+      throw new Error(response.data.code);
+    }
+    return response.data.user;
+  } catch (err) {
+    throw new Error(err);
+  }
+}

@@ -7,6 +7,7 @@ import {
   SIGNUP,
   unsetUser,
   CONFIRMATION,
+  RESET_PASSWORD,
 } from 'app/pages/Auth/actions';
 import * as userServices from 'app/services/users';
 import { toast, showLoader, hideLoader } from 'app/components/Layout/actions';
@@ -73,5 +74,23 @@ function* confirmationSaga() {
   yield takeLatest(CONFIRMATION, confirmationWorker);
 }
 
-export default [logInSaga, logOutSaga, signUpSaga, confirmationSaga];
-export { signUpWorker, logInWorker, confirmationWorker };
+function* resetPasswordWorker(action) {
+  const { email } = action;
+  try {
+    yield put(showLoader());
+    const user = yield call(userServices.resetPassword, email);
+    yield put(setUser(user));
+    yield put(hideLoader());
+    yield Actions.reset('feed');
+  } catch (err) {
+    yield put(hideLoader());
+    yield put(toast(err.message));
+  }
+}
+
+function* resetPasswordSaga() {
+  yield takeLatest(RESET_PASSWORD, resetPasswordWorker);
+}
+
+export default [logInSaga, logOutSaga, signUpSaga, confirmationSaga, resetPasswordSaga];
+export { signUpWorker, logInWorker, confirmationWorker, resetPasswordWorker };
