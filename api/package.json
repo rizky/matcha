@@ -13,6 +13,7 @@
     "connect-pause": "^0.1.0",
     "cookie-parser": "~1.4.3",
     "cors": "^2.8.1",
+    "crypto-js": "^3.1.9-1",
     "debug": "~2.2.0",
     "express": "~4.13.4",
     "file-system": "^2.2.2",

@@ -56,6 +56,7 @@ class Signup extends Component<Props, State> {
             style={styles.testInput}
             placeholder={this.props.intl.formatMessage({ id: 'SignupPage.username' })}
             value={this.state.username}
+            autoCapitalize="none"
             onChangeText={(text) => this.setState({ username: text })}
           />
           <TextInput
@@ -104,7 +105,7 @@ class Signup extends Component<Props, State> {
             </TouchableOpacity>
           </View>
           <View style={{ marginTop: MARGINS.SMALL }}>
-            <TouchableOpacity onPress={() => Actions.login()}>
+            <TouchableOpacity onPress={() => Actions.confirmation()}>
               <Text style={{ textAlign: 'center', textDecorationLine: 'underline' }}>
                 {this.props.intl.formatMessage({ id: 'SignupPage.confirmation' })}
               </Text>

@@ -39,8 +39,8 @@ type State = {
 
 class Login extends Component<Props, State> {
   state = {
-    password: '',
-    username: '',
+    email: '',
+    token: '',
   }
 
   render() {
@@ -51,18 +51,32 @@ class Login extends Component<Props, State> {
           <TextInput
             style={styles.textInput}
             placeholder={this.props.intl.formatMessage({ id: 'ConfirmationPage.email' })}
-            value={this.state.username}
+            value={this.state.email}
             autoCapitalize="none"
-            onChangeText={(text) => this.setState({ username: text })}
+            onChangeText={(email) => this.setState({ email })}
+          />
+          <TextInput
+            style={styles.textInput}
+            placeholder={this.props.intl.formatMessage({ id: 'ConfirmationPage.token' })}
+            value={this.state.token}
+            autoCapitalize="none"
+            onChangeText={(token) => this.setState({ token })}
           />
           <Button
             title={this.props.intl.formatMessage({ id: 'ConfirmationPage.button' })}
             onPress={() => this.props.login(this.state.username, this.state.password)}
           />
-          <View style={{ marginTop: MARGINS.MEDIUM2 }}>
-            <TouchableOpacity onPress={() => Actions.forgotPassword()}>
+          <View style={{ marginTop: MARGINS.SMALL }}>
+            <TouchableOpacity onPress={() => {}}>
               <Text style={{ textAlign: 'center', textDecorationLine: 'underline' }}>
                 {this.props.intl.formatMessage({ id: 'ConfirmationPage.resend' })}
+              </Text>
+            </TouchableOpacity>
+          </View>
+          <View style={{ marginTop: MARGINS.SMALL }}>
+            <TouchableOpacity onPress={() => Actions.signup()}>
+              <Text style={{ textAlign: 'center', textDecorationLine: 'underline' }}>
+                {this.props.intl.formatMessage({ id: 'ConfirmationPage.signup' })}
               </Text>
             </TouchableOpacity>
           </View>
