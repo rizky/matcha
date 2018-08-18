@@ -15,6 +15,9 @@ const styles = {
     flexDirection: 'row',
     height: HEADER_HEIGHT,
     justifyContent: 'center',
+    position: 'absolute',
+    width: '100%',
+    zIndex: 1,
   },
   left: {
     alignItems: 'flex-start',

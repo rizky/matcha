@@ -1,25 +1,19 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { StyleSheet, Text, View, Button, TextInput, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, Button, TouchableOpacity } from 'react-native';
 import { injectIntl } from 'react-intl';
 import { COLORS, MARGINS, FONT_SIZES } from 'app/constants/design';
 import { login } from 'app/pages/Auth/actions';
 import Layout from 'app/components/Layout/Basic';
 import { Actions } from 'react-native-router-flux';
+import TextField from 'app/primitives/TextField';
 
 const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
-    backgroundColor: COLORS.BACKGROUND,
     flex: 1,
     justifyContent: 'center',
-  },
-  textInput: {
-    backgroundColor: COLORS.WHITE,
-    borderBottomWidth: 1,
-    borderColor: COLORS.GREY,
-    margin: MARGINS.SMALL2,
-    width: 300,
+    width: '80%',
   },
   title: {
     fontSize: FONT_SIZES.BIG,
@@ -48,15 +42,13 @@ class Login extends Component<Props, State> {
       <Layout noTabs>
         <View style={styles.container}>
           <Text style={styles.title}>{this.props.intl.formatMessage({ id: 'LoginPage.title' })}</Text>
-          <TextInput
-            style={styles.textInput}
+          <TextField
             placeholder={this.props.intl.formatMessage({ id: 'LoginPage.username' })}
             value={this.state.username}
             autoCapitalize="none"
             onChangeText={(text) => this.setState({ username: text })}
           />
-          <TextInput
-            style={styles.textInput}
+          <TextField
             placeholder={this.props.intl.formatMessage({ id: 'LoginPage.password' })}
             value={this.state.password}
             autoCapitalize="none"

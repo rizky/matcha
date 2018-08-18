@@ -6,7 +6,7 @@ import { addLocaleData } from 'react-intl';
 import enLocaleData from '../app/translation/message.en';
 
 // now you can write stories inside components directory then follow the <file_name>.story.js
-const req = require.context('../app/components', true, /\.story\.js$/)
+const req = require.context('../app', true, /\.story\.js$/)
 
 addLocaleData(enLocaleData);
 

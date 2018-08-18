@@ -85,6 +85,9 @@ exports[`Storyshots Header component Header 1`] = `
       "flexDirection": "row",
       "height": 60,
       "justifyContent": "center",
+      "position": "absolute",
+      "width": "100%",
+      "zIndex": 1,
     }
   }
 >
@@ -140,6 +143,9 @@ exports[`Storyshots Header component Header hasBack 1`] = `
       "flexDirection": "row",
       "height": 60,
       "justifyContent": "center",
+      "position": "absolute",
+      "width": "100%",
+      "zIndex": 1,
     }
   }
 >
@@ -233,6 +239,9 @@ exports[`Storyshots Header component Header with action 1`] = `
       "flexDirection": "row",
       "height": 60,
       "justifyContent": "center",
+      "position": "absolute",
+      "width": "100%",
+      "zIndex": 1,
     }
   }
 >
@@ -277,5 +286,71 @@ exports[`Storyshots Header component Header with action 1`] = `
       }
     }
   />
+</View>
+`;
+
+exports[`Storyshots TextField primitive TextField 1`] = `
+<View
+  style={
+    Object {
+      "padding": 50,
+      "width": 400,
+    }
+  }
+>
+  <View
+    style={
+      Array [
+        Object {
+          "borderBottomWidth": 1,
+          "borderColor": "black",
+          "width": "100%",
+        },
+        Object {},
+      ]
+    }
+  >
+    <Text
+      accessible={true}
+      allowFontScaling={true}
+      ellipsizeMode="tail"
+      style={
+        Array [
+          Object {
+            "color": "transparent",
+            "fontFamily": "Avenir-Book",
+            "fontSize": 12,
+          },
+          Object {},
+        ]
+      }
+    >
+      Email
+    </Text>
+    <TextInput
+      allowFontScaling={true}
+      onBlur={[Function]}
+      onChangeText={[Function]}
+      onFocus={[Function]}
+      placeholder="Email"
+      placeholderTextColor="grey"
+      style={
+        Array [
+          Object {
+            "color": "black",
+            "fontFamily": "Avenir-Book",
+            "fontSize": 14,
+            "marginBottom": 5,
+            "marginTop": 5,
+            "paddingLeft": 0,
+            "width": "100%",
+          },
+          undefined,
+        ]
+      }
+      title=""
+      underlineColorAndroid="transparent"
+    />
+  </View>
 </View>
 `;

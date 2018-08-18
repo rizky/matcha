@@ -20,7 +20,7 @@ const Layout = (props: Props) => (
   <View style={{ flex: 1 }}>
     <StatusBar />
     {!props.noTabs && <Nav />}
-    <View style={[{ flex: 1 }, props.style]}>
+    <View style={[{ alignItems: 'center', flex: 1, justifyContent: 'center' }, props.style]}>
       {props.children}
     </View>
     <Footer />
