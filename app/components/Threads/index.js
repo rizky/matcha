@@ -10,7 +10,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: COLORS.BACKGROUND,
     borderBottomWidth: 1,
-    borderColor: COLORS.GREY,
+    borderColor: COLORS.GREY_LIGHTEST,
     flexDirection: 'row',
     padding: MARGINS.SMALL,
   },
@@ -38,7 +38,7 @@ const styles = StyleSheet.create({
   },
   threadsMatchContainer: {
     borderBottomWidth: 1,
-    borderColor: COLORS.GREY,
+    borderColor: COLORS.GREY_LIGHTEST,
     flexDirection: 'row',
   },
 });

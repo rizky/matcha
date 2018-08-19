@@ -82,6 +82,8 @@ exports[`Storyshots Header component Header 1`] = `
   style={
     Object {
       "backgroundColor": "white",
+      "borderBottomWidth": 1,
+      "borderColor": "#d8d8d8",
       "flexDirection": "row",
       "height": 60,
       "justifyContent": "center",
@@ -140,6 +142,8 @@ exports[`Storyshots Header component Header hasBack 1`] = `
   style={
     Object {
       "backgroundColor": "white",
+      "borderBottomWidth": 1,
+      "borderColor": "#d8d8d8",
       "flexDirection": "row",
       "height": 60,
       "justifyContent": "center",
@@ -236,6 +240,8 @@ exports[`Storyshots Header component Header with action 1`] = `
   style={
     Object {
       "backgroundColor": "white",
+      "borderBottomWidth": 1,
+      "borderColor": "#d8d8d8",
       "flexDirection": "row",
       "height": 60,
       "justifyContent": "center",

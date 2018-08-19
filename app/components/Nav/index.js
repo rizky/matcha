@@ -11,6 +11,8 @@ const styles = {
   },
   nav: {
     backgroundColor: COLORS.BACKGROUND,
+    borderColor: COLORS.GREY_LIGHTEST,
+    borderTopWidth: 1,
     flexDirection: 'row',
     height: HEADER_HEIGHT,
     justifyContent: 'center',

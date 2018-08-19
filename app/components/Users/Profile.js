@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
     width: 100,
   },
   photosContainer: {
-    borderColor: COLORS.GREY,
+    borderColor: COLORS.GREY_LIGHTEST,
     borderWidth: 1,
     flex: 1,
     flexDirection: 'row',

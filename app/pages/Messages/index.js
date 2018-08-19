@@ -14,6 +14,7 @@ const styles = StyleSheet.create({
     backgroundColor: COLORS.BACKGROUND,
     flex: 1,
     margin: MARGINS.TINY,
+    width: '97%',
   },
 });
 

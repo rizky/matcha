@@ -37,6 +37,6 @@ function configureStore(initialState) {
 export const store = configureStore();
 export const persistor = persistStore(store);
 
-persistor.purge(); // uncomment to purge saved store
+// persistor.purge(); // uncomment to purge saved store
 
 sagaMiddleware.run(rootSaga);

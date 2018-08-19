@@ -12,6 +12,8 @@ const styles = {
   },
   header: {
     backgroundColor: COLORS.BACKGROUND,
+    borderBottomWidth: 1,
+    borderColor: COLORS.GREY_LIGHTEST,
     flexDirection: 'row',
     height: HEADER_HEIGHT,
     justifyContent: 'center',

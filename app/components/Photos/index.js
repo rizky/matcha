@@ -9,7 +9,7 @@ import LoadingHOC from 'app/components/HOC/LoaderHOC';
 const styles = StyleSheet.create({
   photoContainer: {
     backgroundColor: COLORS.BACKGROUND,
-    borderColor: COLORS.GREY,
+    borderColor: COLORS.GREY_LIGHTEST,
     borderWidth: 1,
     margin: MARGINS.SMALL,
     padding: MARGINS.SMALL,
