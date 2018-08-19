@@ -3,10 +3,10 @@ import { setIntlConfig, withIntl } from 'storybook-addon-intl';
 
 // Load the locale data for all your defined locales
 import { addLocaleData } from 'react-intl';
-import enLocaleData from '../app/translation/message.en';
+import enLocaleData from '../src/translation/message.en';
 
 // now you can write stories inside components directory then follow the <file_name>.story.js
-const req = require.context('../app', true, /\.story\.js$/)
+const req = require.context('../src', true, /\.story\.js$/)
 
 addLocaleData(enLocaleData);
 

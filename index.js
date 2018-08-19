@@ -1,5 +1,5 @@
 import { AppRegistry, YellowBox } from 'react-native';
-import App from './app/App'; //eslint-disable-line
+import App from './src/App'; //eslint-disable-line
 
 YellowBox.ignoreWarnings([
   'Warning: Failed prop type: Invalid prop `source` supplied to `Image`',

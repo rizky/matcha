@@ -5,6 +5,7 @@
   "devDependencies": {
     "@storybook/addon-storyshots": "^3.4.10",
     "@storybook/react": "^3.4.10",
+    "@storybook/storybook-deployer": "^2.3.0",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
     "babel-eslint": "^8.2.2",
@@ -43,16 +44,17 @@
     "test:ci": "jest --ci --maxWorkers 1 --no-watchman",
     "web": "webpack-dev-server -d --config ./webpack.config.js  --inline --hot --colors --content-base public/ --history-api-fallback",
     "build": "NODE_ENV=production webpack -p --config ./webpack.config.js",
-    "lint": "eslint app/",
+    "lint": "eslint src/",
     "api": "cd api && docker-compose up",
-    "storybook": "start-storybook -p 9001 -c .storybook -s ./node_modules/react-native-vector-icons"
+    "storybook": "start-storybook -p 9001 -c .storybook -s ./node_modules/react-native-vector-icons",
+    "deploy-storybook": "storybook-to-ghpages"
   },
   "jest": {
     "preset": "react-native",
     "transformIgnorePatterns": [
       "node_modules/(?!react-native|expo|react-navigation|native-base-shoutem-theme|@shoutem/theme|@shoutem/animation|@shoutem/ui|tcomb-form-native|native-base|@expo/vector-icons)"
     ],
-    "setupTestFrameworkScriptFile": "<rootDir>/app/setupTests.js"
+    "setupTestFrameworkScriptFile": "<rootDir>/src/test/setupTests.js"
   },
   "dependencies": {
     "axios": "^0.18.0",
