@@ -17,18 +17,21 @@ const styles = StyleSheet.create({
   leftPanel: {
     backgroundColor: COLORS.BACKGROUND,
     flex: 0,
+    height: '100%',
     margin: MARGINS.TINY,
     width: 325,
   },
   mainPanel: {
     backgroundColor: COLORS.BACKGROUND,
     flex: 1,
+    height: '100%',
     marginVertical: MARGINS.TINY,
     minWidth: 325,
   },
   rightPanel: {
     backgroundColor: COLORS.BACKGROUND,
     flex: 0,
+    height: '100%',
     margin: MARGINS.TINY,
   },
 });
@@ -48,16 +51,18 @@ class Messages extends Component<Props> {
 
   render() {
     return (
-      <Layout style={{ flexDirection: 'row' }}>
+      <Layout style={{ flexDirection: 'row', marginVertical: MARGINS.TINY }}>
         <ScrollView style={styles.leftPanel}>
           <Threads threads={this.props.threads} onSelectThread={this.props.onSelectThread} />
         </ScrollView>
         <ScrollView style={styles.mainPanel}>
           <MessagesComponent messages={this.props.messages} />
         </ScrollView>
-        { this.props.selectedThread &&
-          <ProfileComponent user={this.props.selectedThread.user2} photos={this.props.photosUser} />
-        }
+        <ScrollView style={styles.rightPanel}>
+          { this.props.selectedThread &&
+            <ProfileComponent user={this.props.selectedThread.user2} photos={this.props.photosUser} />
+          }
+        </ScrollView>
       </Layout>
     );
   }

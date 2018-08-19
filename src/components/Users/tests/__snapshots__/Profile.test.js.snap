@@ -9,8 +9,8 @@ exports[`Profile render test should render 1`] = `
   }
   style={
     Object {
-      "backgroundColor": "white",
       "flex": 0,
+      "height": "100%",
       "margin": 5,
     }
   }

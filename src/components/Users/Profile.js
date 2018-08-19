@@ -8,8 +8,8 @@ import LoadingHOC from 'src/components/HOC/LoaderHOC';
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: COLORS.BACKGROUND,
     flex: 0,
+    height: '100%',
     margin: MARGINS.TINY,
   },
   photoImageThumbnail: {
@@ -19,6 +19,7 @@ const styles = StyleSheet.create({
     width: 100,
   },
   photosContainer: {
+    backgroundColor: COLORS.BACKGROUND,
     borderColor: COLORS.GREY_LIGHTEST,
     borderWidth: 1,
     flex: 1,

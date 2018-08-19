@@ -341,18 +341,15 @@ exports[`Storyshots TextField primitive TextField 1`] = `
       placeholder="Email"
       placeholderTextColor="grey"
       style={
-        Array [
-          Object {
-            "color": "black",
-            "fontFamily": "Avenir-Book",
-            "fontSize": 14,
-            "marginBottom": 5,
-            "marginTop": 5,
-            "paddingLeft": 0,
-            "width": "100%",
-          },
-          undefined,
-        ]
+        Object {
+          "color": "black",
+          "fontFamily": "Avenir-Book",
+          "fontSize": 14,
+          "marginBottom": 5,
+          "marginTop": 5,
+          "paddingLeft": 0,
+          "width": "100%",
+        }
       }
       title=""
       underlineColorAndroid="transparent"

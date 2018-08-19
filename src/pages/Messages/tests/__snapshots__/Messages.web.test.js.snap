@@ -5,6 +5,7 @@ exports[`Messages render test should render 1`] = `
   style={
     Object {
       "flexDirection": "row",
+      "marginVertical": 5,
     }
   }
 >
@@ -13,6 +14,7 @@ exports[`Messages render test should render 1`] = `
       Object {
         "backgroundColor": "white",
         "flex": 0,
+        "height": "100%",
         "margin": 5,
         "width": 325,
       }
@@ -25,6 +27,7 @@ exports[`Messages render test should render 1`] = `
       Object {
         "backgroundColor": "white",
         "flex": 1,
+        "height": "100%",
         "marginVertical": 5,
         "minWidth": 325,
       }
@@ -32,5 +35,15 @@ exports[`Messages render test should render 1`] = `
   >
     <LoadingHOC(Messages) />
   </ScrollView>
+  <ScrollView
+    style={
+      Object {
+        "backgroundColor": "white",
+        "flex": 0,
+        "height": "100%",
+        "margin": 5,
+      }
+    }
+  />
 </Layout>
 `;

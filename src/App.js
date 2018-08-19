@@ -20,8 +20,7 @@ import Login from 'src/pages/Auth/Login';
 import Confirmation from 'src/pages/Auth/Confirmation';
 import ForgotPassword from 'src/pages/Auth/ForgotPassword';
 import ChangePassword from 'src/pages/Auth/ChangePassword';
-
-import { store, persistor } from '../configureStore'; //eslint-disable-line
+import { store, persistor } from 'src/configureStore';
 
 addLocaleData(en);
 const RouterWithRedux = connect()(Router);
