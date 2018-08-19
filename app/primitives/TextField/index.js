@@ -76,7 +76,6 @@ class TextField extends React.Component<Props, State> {
     this.setState({ ...this.state, value: text }, () => {
       this.onFocusStyle();
     });
-    console.log(size(this.state.value));
     this.props.onChangeText(text);
   }
 

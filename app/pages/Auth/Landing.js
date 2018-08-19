@@ -3,16 +3,16 @@ import { connect } from 'react-redux';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import { injectIntl } from 'react-intl';
 import { Actions } from 'react-native-router-flux';
-import { COLORS, MARGINS } from 'app/constants/design';
 import { selectCurrentUser } from 'app/pages/Auth/selector';
 import type { UserType } from 'app/types/User';
+import { FIELD_HEIGHT } from 'app/constants/design';
+import Layout from 'app/components/Layout/Basic';
 
 const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
-    backgroundColor: COLORS.BACKGROUND,
-    flex: 1,
-    justifyContent: 'center',
+    justifyContent: 'space-around',
+    height: 2 * FIELD_HEIGHT, // eslint-disable-line
   },
 });
 
@@ -30,23 +30,25 @@ class Landing extends Component<Props> {
 
   render() {
     return (
-      <View style={styles.container}>
-        <Text>{this.props.intl.formatMessage({ id: 'LandingPage.welcome' })}</Text>
-        <View style={{ marginTop: MARGINS.MEDIUM2 }}>
-          <TouchableOpacity onPress={() => Actions.login()}>
-            <Text style={{ textAlign: 'center', textDecorationLine: 'underline' }}>
-              {this.props.intl.formatMessage({ id: 'LoginPage.login' })}
-            </Text>
-          </TouchableOpacity>
+      <Layout noTabs>
+        <View style={styles.container}>
+          <Text>{this.props.intl.formatMessage({ id: 'LandingPage.welcome' })}</Text>
+          <View>
+            <TouchableOpacity onPress={() => Actions.login()}>
+              <Text style={{ textAlign: 'center', textDecorationLine: 'underline' }}>
+                {this.props.intl.formatMessage({ id: 'LoginPage.login' })}
+              </Text>
+            </TouchableOpacity>
+          </View>
+          <View>
+            <TouchableOpacity onPress={() => Actions.signup()}>
+              <Text style={{ textAlign: 'center', textDecorationLine: 'underline' }}>
+                {this.props.intl.formatMessage({ id: 'SignupPage.signUp' })}
+              </Text>
+            </TouchableOpacity>
+          </View>
         </View>
-        <View style={{ marginTop: MARGINS.SMALL }}>
-          <TouchableOpacity onPress={() => Actions.signup()}>
-            <Text style={{ textAlign: 'center', textDecorationLine: 'underline' }}>
-              {this.props.intl.formatMessage({ id: 'SignupPage.signUp' })}
-            </Text>
-          </TouchableOpacity>
-        </View>
-      </View>
+      </Layout>
     );
   }
 }

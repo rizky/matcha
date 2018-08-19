@@ -68,3 +68,4 @@ export const PROPORTIONS = {
 };
 
 export const HEADER_HEIGHT = 60;
+export const FIELD_HEIGHT = 50;

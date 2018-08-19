@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { StyleSheet, Text, View, Button, TouchableOpacity } from 'react-native';
 import { injectIntl } from 'react-intl';
-import { MARGINS, FONT_SIZES } from 'app/constants/design';
+import { MARGINS, FONT_SIZES, FIELD_HEIGHT } from 'app/constants/design';
 import { signUp } from 'app/pages/Auth/actions';
 import Layout from 'app/components/Layout/Basic';
 import TextField from 'app/primitives/TextField';
@@ -11,7 +11,7 @@ import { Actions } from 'react-native-router-flux';
 const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
-    height: 400,
+    height: 7 * FIELD_HEIGHT, // eslint-disable-line
     justifyContent: 'space-around',
     width: '80%',
   },

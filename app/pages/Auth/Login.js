@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { StyleSheet, Text, View, Button, TouchableOpacity } from 'react-native';
 import { injectIntl } from 'react-intl';
-import { COLORS, MARGINS, FONT_SIZES } from 'app/constants/design';
+import { MARGINS, FONT_SIZES, FIELD_HEIGHT } from 'app/constants/design';
 import { login } from 'app/pages/Auth/actions';
 import Layout from 'app/components/Layout/Basic';
 import { Actions } from 'react-native-router-flux';
@@ -11,8 +11,8 @@ import TextField from 'app/primitives/TextField';
 const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
-    flex: 1,
-    justifyContent: 'center',
+    height: 5 * FIELD_HEIGHT, // eslint-disable-line
+    justifyContent: 'space-around',
     width: '80%',
   },
   title: {
@@ -59,14 +59,14 @@ class Login extends Component<Props, State> {
             title={this.props.intl.formatMessage({ id: 'LoginPage.login' })}
             onPress={() => this.props.login(this.state.username, this.state.password)}
           />
-          <View style={{ marginTop: MARGINS.MEDIUM2 }}>
+          <View>
             <TouchableOpacity onPress={() => Actions.forgotPassword()}>
               <Text style={{ textAlign: 'center', textDecorationLine: 'underline' }}>
                 {this.props.intl.formatMessage({ id: 'LoginPage.forgotPassword' })}
               </Text>
             </TouchableOpacity>
           </View>
-          <View style={{ marginTop: MARGINS.SMALL }}>
+          <View>
             <TouchableOpacity onPress={() => Actions.signup()}>
               <Text style={{ textAlign: 'center', textDecorationLine: 'underline' }}>
                 {this.props.intl.formatMessage({ id: 'LoginPage.noAccount' })}

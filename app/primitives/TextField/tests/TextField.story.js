@@ -8,7 +8,7 @@ const stories = storiesOf('TextField primitive', module);
 
 stories
   .add('TextField', () => (
-    <View style={{ width: 400, padding: 50 }}>
+    <View style={{ padding: 50, width: 400 }}>
       <TextField placeholder="Email" />
     </View>
   ));
