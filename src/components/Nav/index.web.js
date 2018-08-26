@@ -24,11 +24,11 @@ const styles = {
   },
   hover: {
     backgroundColor: COLORS.BACKGROUND,
-    height: 150,
-    justifyContent: 'center',
+    height: 200,
+    justifyContent: 'flex-end',
     position: 'absolute',
     right: 0,
-    width: 100,
+    width: 200,
   },
   left: {
     alignItems: 'center',
@@ -38,7 +38,7 @@ const styles = {
     paddingHorizontal: MARGINS.SMALL,
   },
   nav: {
-    marginHorizontal: MARGINS.SMALL,
+    margin: MARGINS.SMALL,
   },
   right: {
     alignItems: 'center',
@@ -97,7 +97,16 @@ class Nav extends Component <Props, State> {
                 onMouseLeave={() => this.setState({ hover: false })}
               >
                 <TouchableOpacity
-                  style={[styles.nav, { marginTop: 90 }]}
+                  style={[styles.nav, { marginTop: 120 }]}
+                  onPress={() => {
+                    this.setState({ hover: false });
+                    Actions.replace('settings');
+                  }}
+                >
+                  <Text style={styles.title}>{this.props.intl.formatMessage({ id: 'Nav.settings' })}</Text>
+                </TouchableOpacity>
+                <TouchableOpacity
+                  style={styles.nav}
                   onPress={() => {
                     this.setState({ hover: false });
                     this.props.logout();

@@ -15,6 +15,7 @@ import Discover from 'src/pages/Discover';
 import Messages from 'src/pages/Messages';
 import Conversation from 'src/pages/Messages/Conversation';
 import Profile from 'src/pages/Profile';
+import Settings from 'src/pages/Profile/Settings';
 import Signup from 'src/pages/Auth/Signup';
 import Login from 'src/pages/Auth/Login';
 import Confirmation from 'src/pages/Auth/Confirmation';
@@ -31,7 +32,7 @@ const Application = () => (
       <IntlProvider locale="en" messages={messages.en} textComponent={Text}>
         <RouterWithRedux>
           <Scene key="root" hideNavBar>
-            <Scene key="landing" component={Landing} initial />
+            <Scene key="landing" component={Landing} />
             <Scene key="signup" component={Signup} />
             <Scene key="confirmation" component={Confirmation} />
             <Scene key="login" component={Login} />
@@ -42,6 +43,7 @@ const Application = () => (
             <Scene key="messages" component={Messages} />
             <Scene key="conversation" component={Conversation} />
             <Scene key="profile" component={Profile} />
+            <Scene key="settings" component={Settings} initial />
           </Scene>
         </RouterWithRedux>
       </IntlProvider>
