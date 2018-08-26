@@ -6,6 +6,7 @@ import Footer from 'src/components/Footer';
 import Toast from 'src/components/Layout/Toast';
 import Loader from 'src/components/Layout/Loader';
 import { selectToastIsShow, selectToastMessage, selectIsLoading } from 'src/components/Layout/selector';
+import { HEADER_HEIGHT } from 'src/constants/design';
 
 type Props = {|
   children: Node,
@@ -19,11 +20,23 @@ type Props = {|
 const Layout = (props: Props) => (
   <View style={{ flex: 1 }}>
     <StatusBar />
-    {!props.noTabs && <Nav />}
-    <View style={[{ alignItems: 'center', flex: 1, justifyContent: 'center' }, props.style]}>
+    <View
+      style={
+        [
+          {
+            alignItems: 'center',
+            flex: 1,
+            justifyContent: 'center',
+            marginTop: HEADER_HEIGHT,
+          },
+          props.style,
+        ]
+      }
+    >
       {props.children}
     </View>
     <Footer />
+    {!props.noTabs && <Nav />}
     <Toast
       message={props.toastMessage}
       isShow={props.toastIsShow}

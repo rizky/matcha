@@ -31,6 +31,7 @@ export default {
   'Messages.match': 'You are a match',
   'Nav.discover': 'Discover',
   'Nav.home': 'Home',
+  'Nav.logout': 'Logout',
   'Nav.messages': 'Messages',
   'Nav.profile': 'Profile',
   'SignupPage.confirmation': 'Confirm Email',
