@@ -327,7 +327,9 @@ exports[`Storyshots TextField primitive TextField 1`] = `
             "fontFamily": "Avenir-Book",
             "fontSize": 12,
           },
-          Object {},
+          Object {
+            "color": "transparent",
+          },
         ]
       }
     >

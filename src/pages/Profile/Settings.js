@@ -1,67 +1,122 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { StyleSheet, Text, View, Button } from 'react-native';
+import { StyleSheet, Text, ScrollView, Button } from 'react-native';
 import { injectIntl } from 'react-intl';
-import { MARGINS, FONT_SIZES, FIELD_HEIGHT } from 'src/constants/design';
+import { MARGINS, FONT_SIZES } from 'src/constants/design';
 import { signUp } from 'src/pages/Auth/actions';
 import Layout from 'src/components/Layout/Basic';
 import TextField from 'src/primitives/TextField';
+import { selectCurrentUser } from 'src/pages/Auth/selector';
+import type { UserType } from 'src/types/User';
 
 const styles = StyleSheet.create({
   container: {
-    alignItems: 'center',
-    height: 7 * FIELD_HEIGHT, // eslint-disable-line
-    justifyContent: 'space-around',
     width: '80%',
   },
   title: {
     fontSize: FONT_SIZES.BIG,
-    marginBottom: MARGINS.BIG,
+    marginVertical: MARGINS.BIG,
   },
 });
 
 type Props = {
+  currentUser: UserType,
   intl: any,
   signUp: Function,
 };
 
 type State = {
+  bio: string,
+  dob: string,
   email: string,
+  gender: string,
+  interests: string,
+  location: string,
   name: string,
   password: string,
+  photos: string,
+  sexPreferences: string,
   username: string,
 }
 
 class Settings extends Component<Props, State> {
   state = {
-    email: '',
-    name: '',
+    bio: '',
+    dob: '',
+    email: this.props.currentUser.email,
+    gender: '',
+    interests: '',
+    location: '',
+    name: this.props.currentUser.name,
     password: '',
-    username: '',
+    photos: '',
+    sexPreferences: '',
+    username: this.props.currentUser.username,
   }
 
   render() {
     return (
       <Layout>
-        <View style={styles.container}>
-          <Text style={styles.title}>{this.props.intl.formatMessage({ id: 'SettingsPage.title' })}</Text>
+        <ScrollView style={styles.container} contentContainerStyle={{ alignItems: 'center' }}>
+          <Text style={styles.title}>{this.props.intl.formatMessage({ id: 'SettingsPage.profileTitle' })}</Text>
+          <TextField
+            placeholder={this.props.intl.formatMessage({ id: 'SettingsPage.bio' })}
+            value={this.state.bio}
+            autoCapitalize="none"
+            onChangeText={(bio) => this.setState({ bio })}
+            keyboardType="email-address"
+          />
+          <TextField
+            placeholder={this.props.intl.formatMessage({ id: 'SettingsPage.interests' })}
+            value={this.state.interests}
+            onChangeText={(interests) => this.setState({ interests })}
+          />
+          <TextField
+            placeholder={this.props.intl.formatMessage({ id: 'SettingsPage.location' })}
+            value={this.state.location}
+            autoCapitalize="none"
+            onChangeText={(location) => this.setState({ location })}
+          />
+          <TextField
+            placeholder={this.props.intl.formatMessage({ id: 'SettingsPage.dob' })}
+            value={this.state.dob}
+            autoCapitalize="none"
+            onChangeText={(dob) => this.setState({ dob })}
+          />
+          <TextField
+            placeholder={this.props.intl.formatMessage({ id: 'SettingsPage.gender' })}
+            value={this.state.gender}
+            autoCapitalize="none"
+            onChangeText={(gender) => this.setState({ gender })}
+          />
+          <TextField
+            placeholder={this.props.intl.formatMessage({ id: 'SettingsPage.sexPreferences' })}
+            value={this.state.sexPreferences}
+            onChangeText={(sexPreferences) => this.setState({ sexPreferences })}
+          />
+          <TextField
+            placeholder={this.props.intl.formatMessage({ id: 'SettingsPage.photos' })}
+            value={this.state.photos}
+            autoCapitalize="none"
+            onChangeText={(photos) => this.setState({ photos })}
+          />
+          <Text style={styles.title}>{this.props.intl.formatMessage({ id: 'SettingsPage.accountTitle' })}</Text>
           <TextField
             placeholder={this.props.intl.formatMessage({ id: 'SettingsPage.username' })}
-            title={this.props.intl.formatMessage({ id: 'SettingsPage.username' })}
             value={this.state.username}
             autoCapitalize="none"
-            onChangeText={(text) => this.setState({ username: text })}
+            onChangeText={(username) => this.setState({ username })}
           />
           <TextField
             placeholder={this.props.intl.formatMessage({ id: 'SettingsPage.name' })}
             value={this.state.name}
-            onChangeText={(text) => this.setState({ name: text })}
+            onChangeText={(name) => this.setState({ name })}
           />
           <TextField
             placeholder={this.props.intl.formatMessage({ id: 'SettingsPage.email' })}
             value={this.state.email}
             autoCapitalize="none"
-            onChangeText={(text) => this.setState({ email: text })}
+            onChangeText={(email) => this.setState({ email })}
             keyboardType="email-address"
           />
           <TextField
@@ -69,7 +124,7 @@ class Settings extends Component<Props, State> {
             value={this.state.password}
             autoCapitalize="none"
             secureTextEntry
-            onChangeText={(text) => this.setState({ password: text })}
+            onChangeText={(password) => this.setState({ password })}
           />
           <Button
             title={this.props.intl.formatMessage({ id: 'SettingsPage.signUp' })}
@@ -87,14 +142,18 @@ class Settings extends Component<Props, State> {
               username: this.state.username,
             })}
           />
-        </View>
+        </ScrollView>
       </Layout>
     );
   }
 }
 
+const mapStateToProps = (state) => ({
+  currentUser: selectCurrentUser(state),
+});
+
 const mapDispatchToProps = {
   signUp,
 };
 
-export default connect(null, mapDispatchToProps)(injectIntl(Settings));
+export default connect(mapStateToProps, mapDispatchToProps)(injectIntl(Settings));

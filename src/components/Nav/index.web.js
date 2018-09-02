@@ -5,6 +5,8 @@ import { MARGINS, COLORS, FONT_SIZES, HEADER_HEIGHT } from 'src/constants/design
 import { injectIntl } from 'react-intl';
 import { Actions } from 'react-native-router-flux';
 import { logout } from 'src/pages/Auth/actions';
+import { selectCurrentUser } from 'src/pages/Auth/selector';
+import type { UserType } from 'src/types/User';
 
 const styles = {
   body: {
@@ -24,8 +26,8 @@ const styles = {
   },
   hover: {
     backgroundColor: COLORS.BACKGROUND,
-    height: 200,
     justifyContent: 'flex-end',
+    paddingTop: 160,
     position: 'absolute',
     right: 0,
     width: 200,
@@ -55,6 +57,7 @@ const styles = {
 };
 
 type Props = {
+  currentUser: UserType,
   intl: any,
   logout: Function,
 };
@@ -97,20 +100,20 @@ class Nav extends Component <Props, State> {
                 onMouseLeave={() => this.setState({ hover: false })}
               >
                 <TouchableOpacity
-                  style={[styles.nav, { marginTop: 120 }]}
-                  onPress={() => {
-                    this.setState({ hover: false });
-                    Actions.replace('settings');
-                  }}
+                  style={styles.nav}
+                  onPress={() => { this.setState({ hover: false }); Actions.replace('profile'); }}
+                >
+                  <Text style={styles.title}>{this.props.currentUser.username}</Text>
+                </TouchableOpacity>
+                <TouchableOpacity
+                  style={styles.nav}
+                  onPress={() => { this.setState({ hover: false }); Actions.replace('settings'); }}
                 >
                   <Text style={styles.title}>{this.props.intl.formatMessage({ id: 'Nav.settings' })}</Text>
                 </TouchableOpacity>
                 <TouchableOpacity
                   style={styles.nav}
-                  onPress={() => {
-                    this.setState({ hover: false });
-                    this.props.logout();
-                  }}
+                  onPress={() => { this.setState({ hover: false }); this.props.logout(); }}
                 >
                   <Text style={styles.title}>{this.props.intl.formatMessage({ id: 'Nav.logout' })}</Text>
                 </TouchableOpacity>
@@ -129,8 +132,12 @@ class Nav extends Component <Props, State> {
   }
 }
 
+const mapStateToProps = (state) => ({
+  currentUser: selectCurrentUser(state),
+});
+
 const mapDispatchToProps = {
   logout,
 };
 
-export default connect(null, mapDispatchToProps)(injectIntl(Nav));
+export default connect(mapStateToProps, mapDispatchToProps)(injectIntl(Nav));

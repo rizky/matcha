@@ -45,7 +45,9 @@ class TextField extends React.Component<Props, State> {
 
   state = {
     containerStyle: {},
-    titleStyle: {},
+    titleStyle: {
+      color: size(this.props.value) !== 0 ? COLORS.GREY : 'transparent',
+    },
     value: this.props.value,
   }
 
