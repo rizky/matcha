@@ -32,7 +32,7 @@ const Application = () => (
       <IntlProvider locale="en" messages={messages.en} textComponent={Text}>
         <RouterWithRedux>
           <Scene key="root" hideNavBar>
-            <Scene key="landing" component={Landing} />
+            <Scene key="landing" component={Landing} initial />
             <Scene key="signup" component={Signup} />
             <Scene key="confirmation" component={Confirmation} />
             <Scene key="login" component={Login} />
@@ -43,7 +43,7 @@ const Application = () => (
             <Scene key="messages" component={Messages} />
             <Scene key="conversation" component={Conversation} />
             <Scene key="profile" component={Profile} />
-            <Scene key="settings" component={Settings} initial />
+            <Scene key="settings" component={Settings} />
           </Scene>
         </RouterWithRedux>
       </IntlProvider>

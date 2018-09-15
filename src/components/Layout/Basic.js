@@ -6,7 +6,8 @@ import Nav from 'src/components/Nav';
 import Toast from 'src/components/Layout/Toast';
 import Loader from 'src/components/Layout/Loader';
 import { selectToastIsShow, selectToastMessage, selectIsLoading } from 'src/components/Layout/selector';
-import { HEADER_HEIGHT } from 'src/constants/design';
+import { HEADER_HEIGHT, COLORS } from 'src/constants/design';
+import { SafeAreaView } from 'react-navigation';
 
 type Props = {|
   children: Node,
@@ -18,31 +19,33 @@ type Props = {|
 |};
 
 const Layout = (props: Props) => (
-  <View style={{ flex: 1 }}>
-    <StatusBar />
-    <Header
-      hasBack={props.hasBack}
-      title={props.title}
-      actions={props.headerActions}
-    />
-    <KeyboardAvoidingView
-      style={{
-        alignItems: 'center',
-        flex: 1,
-        justifyContent: 'center',
-        marginTop: HEADER_HEIGHT,
-      }}
-      behavior="padding"
-    >
-      {props.children}
-    </KeyboardAvoidingView>
-    { !props.noTabs && <Nav />}
-    <Toast
-      message={props.toastMessage}
-      isShow={props.toastIsShow}
-    />
-    <Loader isLoading={props.isLoading} />
-  </View>
+  <SafeAreaView style={{ backgroundColor: COLORS.BACKGROUND, flex: 1 }}>
+    <View style={{ flex: 1 }}>
+      <StatusBar />
+      <Header
+        hasBack={props.hasBack}
+        title={props.title}
+        actions={props.headerActions}
+      />
+      <KeyboardAvoidingView
+        style={{
+          alignItems: 'center',
+          flex: 1,
+          justifyContent: 'center',
+          marginTop: HEADER_HEIGHT,
+        }}
+        behavior="padding"
+      >
+        {props.children}
+      </KeyboardAvoidingView>
+      { !props.noTabs && <Nav />}
+      <Toast
+        message={props.toastMessage}
+        isShow={props.toastIsShow}
+      />
+      <Loader isLoading={props.isLoading} />
+    </View>
+  </SafeAreaView>
 );
 
 Layout.defaultProps = {
