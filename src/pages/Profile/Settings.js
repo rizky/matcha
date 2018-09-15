@@ -6,6 +6,8 @@ import { MARGINS, FONT_SIZES } from 'src/constants/design';
 import { signUp } from 'src/pages/Auth/actions';
 import Layout from 'src/components/Layout/Basic';
 import TextField from 'src/primitives/TextField';
+import Checkbox from 'src/primitives/Checkbox';
+import RadioButton from 'src/primitives/RadioButton';
 import { selectCurrentUser } from 'src/pages/Auth/selector';
 import type { UserType } from 'src/types/User';
 
@@ -89,10 +91,20 @@ class Settings extends Component<Props, State> {
             autoCapitalize="none"
             onChangeText={(gender) => this.setState({ gender })}
           />
+          <RadioButton
+            choices={[{ id: '0', value: 'Male' }, { id: '1', value: 'Female' }]}
+            onChange={(gender) => this.setState({ gender })}
+            value={null}
+          />
           <TextField
             placeholder={this.props.intl.formatMessage({ id: 'SettingsPage.sexPreferences' })}
             value={this.state.sexPreferences}
             onChangeText={(sexPreferences) => this.setState({ sexPreferences })}
+          />
+          <Checkbox
+            choices={[{ id: '0', value: 'Male' }, { id: '1', value: 'Female' }]}
+            onChange={(sexPreferences) => this.setState({ sexPreferences })}
+            value={null}
           />
           <TextField
             placeholder={this.props.intl.formatMessage({ id: 'SettingsPage.photos' })}
