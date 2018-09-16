@@ -1,4 +1,4 @@
-
+// @flow
 import React from 'react';
 import { View, Image, StyleSheet } from 'react-native';
 
@@ -29,8 +29,8 @@ const isEmpty = (prop) => (
   (prop.constructor === Object && Object.keys(prop).length === 0)
 );
 
-const LoadingHOC = (propName) => (Component) => {
-  const ExtendedComponent = (props) => (isEmpty(props[propName])
+const LoadingHOC = (propName: string) => (Component: any) => {
+  const ExtendedComponent = (props: any) => (isEmpty(props[propName])
     ? <Loader />
     : <Component {...props} />
   );

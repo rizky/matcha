@@ -1,3 +1,4 @@
+// @flow
 import React from 'react';
 import { View, Image } from 'react-native';
 import { COLORS } from 'src/constants/design';

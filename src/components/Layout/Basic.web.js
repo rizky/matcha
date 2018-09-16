@@ -1,3 +1,4 @@
+// @flow
 import React, { type Node } from 'react';
 import { connect } from 'react-redux';
 import { StatusBar, View } from 'react-native';

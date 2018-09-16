@@ -1,3 +1,4 @@
+// @flow
 import React from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
 import { MARGINS, COLORS, FONT_SIZES, HEADER_HEIGHT } from 'src/constants/design';
@@ -44,7 +45,7 @@ type Props = {
   intl: any,
   hasBack?: boolean,
   title?: string,
-  actions?: Array<Node>,
+  actions: Array<Node>,
 };
 
 const Header = (props: Props) => (
@@ -72,7 +73,6 @@ const Header = (props: Props) => (
 );
 
 Header.defaultProps = {
-  actions: [],
   hasBack: false,
   title: undefined,
 };

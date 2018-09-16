@@ -1,9 +1,10 @@
+// @flow
 import React from 'react';
 import { Text, View, StyleSheet, Image } from 'react-native';
 import type { MessageType } from 'src/types/Message';
 import { MARGINS, COLORS } from 'src/constants/design';
 import moment from 'moment';
-import { injectIntl } from 'react-intl';
+import { injectIntl, type IntlShape } from 'react-intl';
 import LoadingHOC from 'src/components/HOC/LoaderHOC';
 
 const styles = StyleSheet.create({
@@ -89,6 +90,7 @@ const Message = (props: MessageProps) => (
 );
 
 type MessagesProps = {
+  intl: IntlShape,
   messages: Array<MessageType>,
 };
 

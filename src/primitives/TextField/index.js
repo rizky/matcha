@@ -1,3 +1,4 @@
+// @flow
 import React from 'react';
 import { StyleSheet, View, Text, TextInput, Platform } from 'react-native';
 import { COLORS, FONT_SIZES, FONT_FAMILIES, MARGINS } from 'src/constants/design';

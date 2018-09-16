@@ -1,3 +1,4 @@
+// @flow
 import React from 'react';
 import { Text, View, StyleSheet, Image } from 'react-native';
 import type { UserType } from 'src/types/User';
@@ -81,7 +82,7 @@ const User = (props: UserProps) => (
 
 type UsersProps = {
   users: Array<UserType>,
-  currentUser?: UserType,
+  currentUser: UserType,
 };
 
 const Users = (props: UsersProps) => (
@@ -101,10 +102,6 @@ const Users = (props: UsersProps) => (
     }
   </View>
 );
-
-Users.defaultProps = {
-  currentUser: undefined,
-};
 
 User.defaultProps = {
   currentUser: undefined,

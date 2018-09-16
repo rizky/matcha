@@ -1,3 +1,4 @@
+// @flow
 import React from 'react';
 import { Text, View, StyleSheet, Image, ScrollView, TouchableOpacity } from 'react-native';
 import type { ThreadType } from 'src/types/Thread';

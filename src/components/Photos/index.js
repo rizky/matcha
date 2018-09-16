@@ -1,3 +1,4 @@
+// @flow
 import React from 'react';
 import { Text, View, StyleSheet, Image } from 'react-native';
 import type { PhotoType } from 'src/types/Photo';

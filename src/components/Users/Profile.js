@@ -1,3 +1,4 @@
+// @flow
 import React from 'react';
 import { ScrollView, StyleSheet, View, Image } from 'react-native';
 import type { UserType } from 'src/types/User';
@@ -40,6 +41,7 @@ const PhotoThumbnail = (props: PhotoThumbnailProps) => (
 
 type PhotoThumbnailsProps = {
   photo: PhotoType,
+  photos: Array<PhotoType>,
 };
 
 const PhotoThumbnails = (props: PhotoThumbnailsProps) => (
