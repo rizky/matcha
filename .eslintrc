@@ -20,7 +20,10 @@
     }
   },
   "globals": {
-    "Generator": true
+    "MessageType": true,
+    "PhotoType": true,
+    "ThreadType": true,
+    "UserType": true
   },
   "rules": {
     "arrow-parens": [

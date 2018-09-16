@@ -1,9 +1,9 @@
-import { LOAD_PHOTOS, LOAD_PHOTOS_USER } from 'src/pages/Feed/actions';
-import type { Photo } from 'src/types/Photo';
+// @flow
+import { LOAD_PHOTOS, LOAD_PHOTOS_USER, type Action } from 'src/pages/Feed/actions';
 
 type State = {
-  photos: Array<Photo>,
-  photosUser: Array<Photo>,
+  photos: Array<PhotoType>,
+  photosUser: Array<PhotoType>,
 };
 
 const initialState: State = {
@@ -11,7 +11,7 @@ const initialState: State = {
   photosUser: [],
 };
 
-export default (state: State = initialState, action: any): State => {
+export default (state: State = initialState, action: Action): State => {
   if (action.type === LOAD_PHOTOS) {
     return { ...state, photos: action.photos };
   }

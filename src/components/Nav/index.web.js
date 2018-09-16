@@ -1,3 +1,4 @@
+// @flow
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { View, Text, TouchableOpacity } from 'react-native';
@@ -6,7 +7,6 @@ import { injectIntl } from 'react-intl';
 import { Actions } from 'react-native-router-flux';
 import { logout } from 'src/pages/Auth/actions';
 import { selectCurrentUser } from 'src/pages/Auth/selector';
-import type { UserType } from 'src/types/User';
 
 const styles = {
   body: {

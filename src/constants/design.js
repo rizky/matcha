@@ -1,3 +1,4 @@
+// @flow
 export const COLORS = {
   BACKGROUND: 'white',
   BLACK: 'black',

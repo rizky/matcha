@@ -1,4 +1,4 @@
-export type Message = {
+export type MessageType = {
   createdAt: string,
   from: any,
   id: string,

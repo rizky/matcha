@@ -1,3 +1,4 @@
+// @flow
 import { createSelector } from 'reselect';
 
 export const selectToastIsShow = createSelector((state) => state.layout, (layout) => layout.toastIsShow);

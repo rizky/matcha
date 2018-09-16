@@ -1,7 +1,9 @@
+// @flow
+import type { Saga } from 'redux-saga';
 import { takeEvery, put, call } from 'redux-saga/effects';
 import { loadPhotos, ON_LOAD_PHOTOS, loadPhotosUser, ON_LOAD_PHOTOS_USER } from 'src/pages/Feed/actions';
 
-function* onLoadPhotos() {
+function* onLoadPhotos(): Saga<void> {
   try {
     const response = yield call(fetch, 'http://localhost:81/photos');
     const photos = yield call([response, response.json]);
@@ -11,11 +13,11 @@ function* onLoadPhotos() {
   }
 }
 
-function* loadPhotosSaga() {
+function* loadPhotosSaga(): Saga<void> {
   yield takeEvery(ON_LOAD_PHOTOS, onLoadPhotos);
 }
 
-function* onLoadPhotosUser(action) {
+function* onLoadPhotosUser(action): Saga<void> {
   try {
     const { userId } = action;
     yield put(loadPhotosUser([]));
@@ -27,7 +29,7 @@ function* onLoadPhotosUser(action) {
   }
 }
 
-function* loadPhotosUserSaga() {
+function* loadPhotosUserSaga(): Saga<void> {
   yield takeEvery(ON_LOAD_PHOTOS_USER, onLoadPhotosUser);
 }
 

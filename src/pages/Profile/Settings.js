@@ -9,7 +9,6 @@ import TextField from 'src/primitives/TextField';
 import Checkbox from 'src/primitives/Checkbox';
 import RadioButton from 'src/primitives/RadioButton';
 import { selectCurrentUser } from 'src/pages/Auth/selector';
-import type { UserType } from 'src/types/User';
 
 const styles = StyleSheet.create({
   container: {

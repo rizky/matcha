@@ -1,3 +1,4 @@
+// @flow
 import React from 'react';
 import { Text, TouchableOpacity, View } from 'react-native';
 import { COLORS, FONT_SIZES, MARGINS } from 'src/constants/design';
@@ -11,7 +12,7 @@ type Choice = {
 
 type Props = {
   choices: Array<Choice>,
-  onChange: (string) => void,
+  onChange: (?{ labels: Array<string> }) => void,
   value: ?{ labels: Array<string> },
 };
 
@@ -57,7 +58,7 @@ class RadioButton extends React.Component<Props, State> {
     }
     return {
       colorSmallSquare: COLORS.BLUE_DARK,
-      container: [styles.container, { backgroundColor: COLORS.BLUE_LIGHTEST }],
+      container: [styles.container, { backgroundColor: COLORS.BLUE_LIGHT }],
     };
   }
 

@@ -1,15 +1,15 @@
-import { LOAD_USERS } from 'src/pages/Discover/actions';
-import type { User } from 'src/types/User';
+// @flow
+import { LOAD_USERS, type Action } from 'src/pages/Discover/actions';
 
 type State = {
-  users: Array<User>,
+  users: Array<UserType>,
 };
 
 const initialState: State = {
   users: [],
 };
 
-export default (state: State = initialState, action: any): State => {
+export default (state: State = initialState, action: Action): State => {
   if (action.type === LOAD_USERS) {
     return { ...state, users: action.users };
   }

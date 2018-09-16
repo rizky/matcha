@@ -1,16 +1,17 @@
+// @flow
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { ScrollView } from 'react-native';
 import Layout from 'src/components/Layout/Basic';
 import Users from 'src/components/Users';
-import { onLoadUsers } from 'src/pages/Discover/actions';
+import { onLoadUsers, type Action } from 'src/pages/Discover/actions';
 import { selectUsers } from 'src/pages/Discover/selector';
-import type { UserType } from 'src/types/User';
 import { selectCurrentUser } from 'src/pages/Auth/selector';
 
 type Props = {
   users: Array<UserType>,
   currentUser: UserType,
+  onLoadUsers: () => Action,
 };
 
 class Discover extends Component<Props> {

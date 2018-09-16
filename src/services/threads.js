@@ -1,5 +1,4 @@
 // @flow
-import type { ThreadType } from 'src/types/Thread';
 import { api } from 'src/services/config';
 import axios from 'axios';
 

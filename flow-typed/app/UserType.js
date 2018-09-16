@@ -1,4 +1,4 @@
-export type User = {
+export type UserType = {
   activeAt: string,
   createdAt: string,
   dob: any,
@@ -6,6 +6,8 @@ export type User = {
   id: string,
   lat: number,
   long: number,
+  name: string,
+  password: string,
   picture: string,
   subscribed: boolean,
   updatedAt: ?string,

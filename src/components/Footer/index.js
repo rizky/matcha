@@ -1,3 +1,4 @@
+// @flow
 import React from 'react';
 import { View, Text } from 'react-native';
 import { MARGINS, COLORS, FONT_SIZES, HEADER_HEIGHT } from 'src/constants/design';

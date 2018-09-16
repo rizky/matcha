@@ -1,3 +1,4 @@
+// @flow
 import React, { type Node } from 'react';
 import { connect } from 'react-redux';
 import { StatusBar, View, KeyboardAvoidingView } from 'react-native';
@@ -16,6 +17,8 @@ type Props = {|
   isLoading: boolean,
   noTabs?: boolean,
   title?: string,
+  toastIsShow: boolean,
+  toastMessage: string,
 |};
 
 const Layout = (props: Props) => (

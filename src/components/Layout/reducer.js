@@ -1,14 +1,16 @@
+// @flow
 import {
   HIDE_LOADER,
   HIDE_TOAST,
   SHOW_LOADER,
   SHOW_TOAST,
+  type Action,
 } from 'src/components/Layout/actions';
 
 type State = {
   isLoading: boolean,
-  message: string,
   toastIsShow: boolean,
+  toastMessage: string,
 };
 
 const initialState: State = {
@@ -17,7 +19,7 @@ const initialState: State = {
   toastMessage: '',
 };
 
-export default (state: State = initialState, action: any): State => {
+export default (state: State = initialState, action: Action): State => {
   if (action.type === SHOW_TOAST) {
     return { ...state, toastIsShow: true, toastMessage: action.message };
   }

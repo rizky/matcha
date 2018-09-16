@@ -1,3 +1,4 @@
+// @flow
 import { createSelector } from 'reselect';
 
 export const selectThreads = createSelector((state) =>

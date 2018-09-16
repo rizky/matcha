@@ -1,4 +1,6 @@
+// @flow
 import { takeEvery, put, call, select } from 'redux-saga/effects';
+import type { Saga } from 'redux-saga';
 import {
   loadThreads,
   ON_LOAD_THREADS,
@@ -7,6 +9,8 @@ import {
   loadMessages,
   onLoadMessages,
   ON_LOAD_MESSAGES,
+  type SelectThreadAction,
+  type OnLoadMessagesAction,
 } from 'src/pages/Messages/actions';
 import { onLoadPhotosUser, loadPhotosUser } from 'src/pages/Feed/actions';
 import { selectThread as selectThreadSelector } from 'src/pages/Messages/selector';
@@ -14,7 +18,7 @@ import { selectCurrentUser } from 'src/pages/Auth/selector';
 import * as messageServices from 'src/services/messages.js';
 import * as threadServices from 'src/services/threads.js';
 
-function* onLoadMessagesWorker(action) {
+function* onLoadMessagesWorker(action: OnLoadMessagesAction): Saga<void> {
   const { thread } = action;
   try {
     yield put(loadMessages([]));
@@ -25,7 +29,7 @@ function* onLoadMessagesWorker(action) {
   }
 }
 
-function* onSelectThreadWorker(action) {
+function* onSelectThreadWorker(action: SelectThreadAction): Saga<void> {
   const { thread } = action;
   try {
     yield put(selectThread(thread));
@@ -37,7 +41,7 @@ function* onSelectThreadWorker(action) {
   }
 }
 
-function* onLoadThreadsWorker() {
+function* onLoadThreadsWorker(): Saga<void> {
   const { id } = yield select(selectCurrentUser);
   try {
     yield put(loadMessages([]));
@@ -50,15 +54,15 @@ function* onLoadThreadsWorker() {
   }
 }
 
-function* loadThreadsSaga() {
+function* loadThreadsSaga(): Saga<void> {
   yield takeEvery(ON_LOAD_THREADS, onLoadThreadsWorker);
 }
 
-function* loadMessagesSaga() {
+function* loadMessagesSaga(): Saga<void> {
   yield takeEvery(ON_LOAD_MESSAGES, onLoadMessagesWorker);
 }
 
-function* selectThreadSaga() {
+function* selectThreadSaga(): Saga<void> {
   yield takeEvery(ON_SELECT_THREAD, onSelectThreadWorker);
 }
 

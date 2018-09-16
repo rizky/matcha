@@ -2,11 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Layout from 'src/components/Layout/Basic';
 import { selectCurrentUser } from 'src/pages/Auth/selector';
-import type { UserType } from 'src/types/User';
 import { onLoadPhotosUser } from 'src/pages/Feed/actions';
 import ProfileComponent from 'src/components/Users/Profile';
 import { selectPhotosUser } from 'src/pages/Feed/selector';
-import type { PhotoType } from 'src/types/Photo';
 
 type Props = {
   currentUser: UserType,

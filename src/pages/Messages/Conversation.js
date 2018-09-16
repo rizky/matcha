@@ -1,12 +1,11 @@
+// @flow
 import React from 'react';
 import { connect } from 'react-redux';
 import { ScrollView, StyleSheet } from 'react-native';
 import Layout from 'src/components/Layout/Basic';
 import Messages from 'src/components/Messages';
 import { selectMessages, selectThread } from 'src/pages/Messages/selector';
-import type { MessageType } from 'src/types/Message';
 import { COLORS, MARGINS } from 'src/constants/design';
-import type { ThreadType } from 'src/types/Thread';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 const styles = StyleSheet.create({
