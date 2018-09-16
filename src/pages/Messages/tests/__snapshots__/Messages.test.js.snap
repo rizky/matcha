@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Messages render test should render 1`] = `
+<Layout>
+  <ScrollView
+    style={
+      Object {
+        "backgroundColor": "white",
+        "flex": 1,
+        "margin": 5,
+        "width": "97%",
+      }
+    }
+  >
+    <LoadingHOC(Threads)
+      onSelectThread={[Function]}
+    />
+  </ScrollView>
+</Layout>
+`;
