@@ -1,10 +1,11 @@
+// @flow
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { ScrollView, StyleSheet } from 'react-native';
 import Layout from 'src/components/Layout/Basic';
 import Threads from 'src/components/Threads';
 import MessagesComponent from 'src/components/Messages';
-import { onLoadThreads, onSelectThread } from 'src/pages/Messages/actions';
+import { onLoadThreads, onSelectThread, type Action } from 'src/pages/Messages/actions';
 import { selectThreads, selectMessages, selectThread } from 'src/pages/Messages/selector';
 import type { ThreadType } from 'src/types/Thread';
 import type { MessageType } from 'src/types/Message';
@@ -39,7 +40,8 @@ const styles = StyleSheet.create({
 type Props = {
   threads: Array<ThreadType>,
   messages: Array<MessageType>,
-  onSelectThread: (string) => {},
+  onSelectThread: (string) => Action,
+  onLoadThreads: () => Action,
   selectedThread: ThreadType,
   photosUser: Array<PhotoType>,
 };

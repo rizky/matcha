@@ -1,15 +1,16 @@
+// @flow
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { ScrollView } from 'react-native';
 import Layout from 'src/components/Layout/Basic';
 import Photos from 'src/components/Photos';
-import { onLoadPhotos } from 'src/pages/Feed/actions';
+import { onLoadPhotos, type Action } from 'src/pages/Feed/actions';
 import { selectPhotos } from 'src/pages/Feed/selector';
 import type { Photo } from 'src/types/Photo';
 
 type Props = {
   photos: Array<Photo>,
-  onLoadPhotos: Function,
+  onLoadPhotos: () => Action,
 };
 
 class Feed extends Component<Props> {

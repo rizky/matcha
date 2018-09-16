@@ -1,9 +1,10 @@
+// @flow
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { ScrollView, StyleSheet } from 'react-native';
 import Layout from 'src/components/Layout/Basic';
 import Threads from 'src/components/Threads';
-import { onLoadThreads, onSelectThread } from 'src/pages/Messages/actions';
+import { onLoadThreads, onSelectThread, type Action } from 'src/pages/Messages/actions';
 import { selectThreads } from 'src/pages/Messages/selector';
 import type { ThreadType } from 'src/types/Thread';
 import { COLORS, MARGINS } from 'src/constants/design';
@@ -20,7 +21,8 @@ const styles = StyleSheet.create({
 
 type Props = {
   threads: Array<ThreadType>,
-  onSelectThread: (string) => {},
+  onSelectThread: (string) => Action,
+  onLoadThreads: () => Action,
 };
 
 class Messages extends Component<Props> {

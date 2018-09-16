@@ -19,9 +19,7 @@
       "jsx": true
     }
   },
-  "globals": {
-    "Generator": true
-  },
+  "globals": {},
   "rules": {
     "arrow-parens": [
       "error",

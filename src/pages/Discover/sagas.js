@@ -1,3 +1,5 @@
+// @flow
+import type { Saga } from 'redux-saga';
 import { takeEvery, put, call } from 'redux-saga/effects';
 import { loadUsers, ON_LOAD_USERS } from 'src/pages/Discover/actions';
 
@@ -11,7 +13,7 @@ function* onLoadUsers() {
   }
 }
 
-function* loadUsersSaga() {
+function* loadUsersSaga(): Saga<void> {
   yield takeEvery(ON_LOAD_USERS, onLoadUsers);
 }
 
