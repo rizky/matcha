@@ -2,7 +2,6 @@
 /* eslint-disable no-magic-numbers */
 import { api, privateKey } from 'src/services/config';
 import axios from 'axios';
-import type { UserType } from 'src/types/User';
 import { size } from 'lodash';
 import hmacSHA512 from 'crypto-js/hmac-sha512';
 import Base64 from 'crypto-js/enc-base64';

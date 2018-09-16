@@ -1,6 +1,4 @@
 // @flow
-import type { UserType } from 'src/types/User';
-
 export const SET_USER: '@AUTH_REDUCER/SET_USER' = '@AUTH_REDUCER/SET_USER';
 export const setUser = (user: UserType) => ({
   type: SET_USER,

@@ -1,5 +1,4 @@
 // @flow
-import type { MessageType } from 'src/types/Message';
 import { api } from 'src/services/config';
 import axios from 'axios';
 

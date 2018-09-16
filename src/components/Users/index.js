@@ -1,7 +1,6 @@
 // @flow
 import React from 'react';
 import { Text, View, StyleSheet, Image } from 'react-native';
-import type { UserType } from 'src/types/User';
 import { MARGINS, COLORS } from 'src/constants/design';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import moment from 'moment';

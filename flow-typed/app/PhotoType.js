@@ -1,4 +1,4 @@
-export type Image = {
+export type PhotoType = {
   createdAt: string,
   updatedAt: ?string,
   messages: any,

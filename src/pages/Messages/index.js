@@ -6,7 +6,6 @@ import Layout from 'src/components/Layout/Basic';
 import Threads from 'src/components/Threads';
 import { onLoadThreads, onSelectThread, type Action } from 'src/pages/Messages/actions';
 import { selectThreads } from 'src/pages/Messages/selector';
-import type { ThreadType } from 'src/types/Thread';
 import { COLORS, MARGINS } from 'src/constants/design';
 import { Actions } from 'react-native-router-flux';
 

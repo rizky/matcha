@@ -1,10 +1,9 @@
 // @flow
 import { LOAD_PHOTOS, LOAD_PHOTOS_USER, type Action } from 'src/pages/Feed/actions';
-import type { Photo } from 'src/types/Photo';
 
 type State = {
-  photos: Array<Photo>,
-  photosUser: Array<Photo>,
+  photos: Array<PhotoType>,
+  photosUser: Array<PhotoType>,
 };
 
 const initialState: State = {

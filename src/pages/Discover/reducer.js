@@ -1,9 +1,8 @@
 // @flow
 import { LOAD_USERS, type Action } from 'src/pages/Discover/actions';
-import type { User } from 'src/types/User';
 
 type State = {
-  users: Array<User>,
+  users: Array<UserType>,
 };
 
 const initialState: State = {

@@ -5,8 +5,6 @@ import {
   SELECT_THREAD,
   type Action,
 } from 'src/pages/Messages/actions';
-import type { ThreadType } from 'src/types/Thread';
-import type { MessageType } from 'src/types/Message';
 
 type State = {
   threads: Array<ThreadType>,

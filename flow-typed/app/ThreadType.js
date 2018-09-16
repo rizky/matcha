@@ -1,4 +1,4 @@
-export type Thread = {
+export type ThreadType = {
   createdAt: string,
   id: string,
   lastMessage: any,

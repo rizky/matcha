@@ -1,7 +1,6 @@
 // @flow
 import React from 'react';
 import { Text, View, StyleSheet, Image, ScrollView, TouchableOpacity } from 'react-native';
-import type { ThreadType } from 'src/types/Thread';
 import { MARGINS, COLORS } from 'src/constants/design';
 import moment from 'moment';
 import LoadingHOC from 'src/components/HOC/LoaderHOC';

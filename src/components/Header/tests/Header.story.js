@@ -8,9 +8,9 @@ import { COLORS } from 'src/constants/design';
 const stories = storiesOf('Header component', module);
 
 stories
-  .add('Header', () => (<Header />))
-  .add('Header hasBack', () => (<Header hasBack />))
+  .add('Header', () => (<Header actions={[]} />))
+  .add('Header hasBack', () => (<Header hasBack actions={[]} />))
   .add('Header with action', () => (<Header
-    headerActions={[<Icon name="ellipsis-h" key="ellipsis-h" size={20} color={COLORS.BLUE_DARKER} />,
+    actions={[<Icon name="ellipsis-h" key="ellipsis-h" size={20} color={COLORS.BLUE_DARKER} />,
     ]}
   />));

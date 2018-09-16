@@ -7,11 +7,8 @@ import Threads from 'src/components/Threads';
 import MessagesComponent from 'src/components/Messages';
 import { onLoadThreads, onSelectThread, type Action } from 'src/pages/Messages/actions';
 import { selectThreads, selectMessages, selectThread } from 'src/pages/Messages/selector';
-import type { ThreadType } from 'src/types/Thread';
-import type { MessageType } from 'src/types/Message';
 import { COLORS, MARGINS } from 'src/constants/design';
 import ProfileComponent from 'src/components/Users/Profile';
-import type { PhotoType } from 'src/types/Photo';
 import { selectPhotosUser } from 'src/pages/Feed/selector';
 
 const styles = StyleSheet.create({

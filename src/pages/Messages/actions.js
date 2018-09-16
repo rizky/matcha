@@ -1,7 +1,4 @@
 // @flow
-import type { ThreadType } from 'src/types/Thread';
-import type { MessageType } from 'src/types/Message';
-
 export const LOAD_THREADS: '@MESSAGES_REDUCER/LOAD_THREADS' = '@MESSAGES_REDUCER/LOAD_THREADS';
 export const loadThreads = (threads: Array<ThreadType>) => ({
   threads,

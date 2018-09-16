@@ -19,7 +19,12 @@
       "jsx": true
     }
   },
-  "globals": {},
+  "globals": {
+    "MessageType": true,
+    "PhotoType": true,
+    "ThreadType": true,
+    "UserType": true
+  },
   "rules": {
     "arrow-parens": [
       "error",

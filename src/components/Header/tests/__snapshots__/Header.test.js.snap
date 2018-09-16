@@ -291,7 +291,29 @@ exports[`Storyshots Header component Header with action 1`] = `
         "paddingHorizontal": 10,
       }
     }
-  />
+  >
+    <Text
+      accessible={true}
+      allowFontScaling={false}
+      ellipsizeMode="tail"
+      style={
+        Array [
+          Object {
+            "color": "#005be1",
+            "fontSize": 20,
+          },
+          undefined,
+          Object {
+            "fontFamily": "FontAwesome",
+            "fontStyle": "normal",
+            "fontWeight": "normal",
+          },
+        ]
+      }
+    >
+      
+    </Text>
+  </View>
 </View>
 `;
 

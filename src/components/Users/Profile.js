@@ -1,10 +1,8 @@
 // @flow
 import React from 'react';
 import { ScrollView, StyleSheet, View, Image } from 'react-native';
-import type { UserType } from 'src/types/User';
 import { COLORS, MARGINS } from 'src/constants/design';
 import { User } from 'src/components/Users';
-import type { PhotoType } from 'src/types/Photo';
 import LoadingHOC from 'src/components/HOC/LoaderHOC';
 
 const styles = StyleSheet.create({

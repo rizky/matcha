@@ -6,10 +6,9 @@ import Layout from 'src/components/Layout/Basic';
 import Photos from 'src/components/Photos';
 import { onLoadPhotos, type Action } from 'src/pages/Feed/actions';
 import { selectPhotos } from 'src/pages/Feed/selector';
-import type { Photo } from 'src/types/Photo';
 
 type Props = {
-  photos: Array<Photo>,
+  photos: Array<PhotoType>,
   onLoadPhotos: () => Action,
 };
 

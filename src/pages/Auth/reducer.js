@@ -1,5 +1,4 @@
 // @flow
-import type { UserType } from 'src/types/User';
 import {
   SET_USER,
   UNSET_USER,

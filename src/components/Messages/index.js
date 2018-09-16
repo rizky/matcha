@@ -1,7 +1,6 @@
 // @flow
 import React from 'react';
 import { Text, View, StyleSheet, Image } from 'react-native';
-import type { MessageType } from 'src/types/Message';
 import { MARGINS, COLORS } from 'src/constants/design';
 import moment from 'moment';
 import { injectIntl, type IntlShape } from 'react-intl';

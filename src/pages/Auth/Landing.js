@@ -5,7 +5,6 @@ import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import { injectIntl } from 'react-intl';
 import { Actions } from 'react-native-router-flux';
 import { selectCurrentUser } from 'src/pages/Auth/selector';
-import type { UserType } from 'src/types/User';
 import { FIELD_HEIGHT } from 'src/constants/design';
 import Layout from 'src/components/Layout/Basic';
 

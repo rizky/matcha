@@ -6,7 +6,6 @@ import Layout from 'src/components/Layout/Basic';
 import Users from 'src/components/Users';
 import { onLoadUsers, type Action } from 'src/pages/Discover/actions';
 import { selectUsers } from 'src/pages/Discover/selector';
-import type { UserType } from 'src/types/User';
 import { selectCurrentUser } from 'src/pages/Auth/selector';
 
 type Props = {
