@@ -1,3 +1,4 @@
+// @flow
 import { put, takeLatest, call } from 'redux-saga/effects';
 import { Actions } from 'react-native-router-flux';
 import {
@@ -9,11 +10,16 @@ import {
   setUser,
   SIGNUP,
   unsetUser,
+  type LoginAction,
+  type ResetPasswordAction,
+  type ChangePasswordAction,
+  type SignUpAction,
+  type ConfirmationAction,
 } from 'src/pages/Auth/actions';
 import * as userServices from 'src/services/users';
 import { toast, showLoader, hideLoader } from 'src/components/Layout/actions';
 
-function* logInWorker(action) {
+function* logInWorker(action: LoginAction): Generator<any, void, any> {
   const { username, password } = action;
   try {
     yield put(showLoader());
@@ -27,7 +33,7 @@ function* logInWorker(action) {
   }
 }
 
-function* logInSaga() {
+function* logInSaga(): Generator<any, void, any> {
   yield takeLatest(LOGIN, logInWorker);
 }
 
@@ -36,11 +42,11 @@ function* logOutWorker() {
   yield Actions.reset('login');
 }
 
-function* logOutSaga() {
+function* logOutSaga(): Generator<any, void, any> {
   yield takeLatest(LOGOUT, logOutWorker);
 }
 
-function* signUpWorker(action) {
+function* signUpWorker(action: SignUpAction): Generator<any, void, any> {
   const { user } = action;
   try {
     yield put(showLoader());
@@ -53,11 +59,11 @@ function* signUpWorker(action) {
   }
 }
 
-function* signUpSaga() {
+function* signUpSaga(): Generator<any, void, any> {
   yield takeLatest(SIGNUP, signUpWorker);
 }
 
-function* confirmationWorker(action) {
+function* confirmationWorker(action: ConfirmationAction): Generator<any, void, any> {
   const { email, token } = action;
   try {
     yield put(showLoader());
@@ -71,11 +77,11 @@ function* confirmationWorker(action) {
   }
 }
 
-function* confirmationSaga() {
+function* confirmationSaga(): Generator<any, void, any> {
   yield takeLatest(CONFIRMATION, confirmationWorker);
 }
 
-function* resetPasswordWorker(action) {
+function* resetPasswordWorker(action: ResetPasswordAction): Generator<any, void, any> {
   const { email } = action;
   try {
     yield put(showLoader());
@@ -88,11 +94,11 @@ function* resetPasswordWorker(action) {
   }
 }
 
-function* resetPasswordSaga() {
+function* resetPasswordSaga(): Generator<any, void, any> {
   yield takeLatest(RESET_PASSWORD, resetPasswordWorker);
 }
 
-function* changePasswordWorker(action) {
+function* changePasswordWorker(action: ChangePasswordAction): Generator<any, void, any> {
   const { token, password, password2 } = action;
   try {
     yield put(showLoader());
@@ -105,7 +111,7 @@ function* changePasswordWorker(action) {
   }
 }
 
-function* changePasswordSaga() {
+function* changePasswordSaga(): Generator<any, void, any> {
   yield takeLatest(CHANGE_PASSWORD, changePasswordWorker);
 }
 

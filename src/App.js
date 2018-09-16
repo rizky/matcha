@@ -1,7 +1,7 @@
+// @flow
 import React from 'react';
 import 'intl';
 import { Text } from 'react-native';
-// $FlowFixMe
 import { Router, Scene } from 'react-native-router-flux';
 import { Provider, connect } from 'react-redux';
 // $FlowFixMe
