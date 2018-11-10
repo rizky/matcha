@@ -2,7 +2,7 @@
 import React from 'react';
 import 'intl';
 import { Text } from 'react-native';
-import { Router, Scene } from 'react-native-router-flux';
+import { Router, Scene, Modal, Stack } from 'react-native-router-flux';
 import { Provider, connect } from 'react-redux';
 // $FlowFixMe
 import { PersistGate } from 'redux-persist/integration/react';
@@ -10,6 +10,7 @@ import { addLocaleData, IntlProvider } from 'react-intl';
 import en from 'react-intl/locale-data/fr';
 import messages from 'src/translation/message';
 import Landing from 'src/pages/Auth/Landing';
+import OAuth from 'src/pages/Auth/OAuth';
 import Feed from 'src/pages/Feed';
 import Discover from 'src/pages/Discover';
 import Messages from 'src/pages/Messages';
@@ -31,20 +32,25 @@ const Application = () => (
     <PersistGate loading={null} persistor={persistor}>
       <IntlProvider locale="en" messages={messages.en} textComponent={Text}>
         <RouterWithRedux>
-          <Scene key="root" hideNavBar>
-            <Scene key="landing" component={Landing} />
-            <Scene key="signup" component={Signup} />
-            <Scene key="confirmation" component={Confirmation} />
-            <Scene key="login" component={Login} />
-            <Scene key="forgotPassword" component={ForgotPassword} />
-            <Scene key="changePassword" component={ChangePassword} />
-            <Scene key="feed" component={Feed} />
-            <Scene key="discover" component={Discover} />
-            <Scene key="messages" component={Messages} />
-            <Scene key="conversation" component={Conversation} />
-            <Scene key="profile" component={Profile} />
-            <Scene key="settings" component={Settings} initial />
-          </Scene>
+          <Modal key="modal" hideNavBar>
+            <Stack key="root" hideNavBar>
+              <Scene key="landing" component={Landing} initial />
+              <Scene key="signup" component={Signup} />
+              <Scene key="confirmation" component={Confirmation} />
+              <Scene key="login" component={Login} />
+              <Scene key="forgotPassword" component={ForgotPassword} />
+              <Scene key="changePassword" component={ChangePassword} />
+              <Scene key="feed" component={Feed} />
+              <Scene key="discover" component={Discover} />
+              <Scene key="messages" component={Messages} />
+              <Scene key="conversation" component={Conversation} />
+              <Scene key="profile" component={Profile} />
+              <Scene key="settings" component={Settings} />
+            </Stack>
+            <Stack key="login" hideNavBar>
+              <Scene key="oauth" component={OAuth} />
+            </Stack>
+          </Modal>
         </RouterWithRedux>
       </IntlProvider>
     </PersistGate>

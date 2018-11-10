@@ -34,7 +34,7 @@ class Landing extends Component<Props> {
         <View style={styles.container}>
           <Text>{this.props.intl.formatMessage({ id: 'LandingPage.welcome' })}</Text>
           <View>
-            <TouchableOpacity onPress={() => Actions.login()}>
+            <TouchableOpacity onPress={() => Actions.push('oauth')}>
               <Text style={{ textAlign: 'center', textDecorationLine: 'underline' }}>
                 {this.props.intl.formatMessage({ id: 'LoginPage.login' })}
               </Text>

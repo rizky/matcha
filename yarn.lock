@@ -4574,7 +4574,7 @@ fbjs-scripts@^0.8.1:
     semver "^5.1.0"
     through2 "^2.0.0"
 
-fbjs@^0.8.12, fbjs@^0.8.14, fbjs@^0.8.16, fbjs@^0.8.9:
+fbjs@^0.8.12, fbjs@^0.8.14, fbjs@^0.8.16, fbjs@^0.8.17, fbjs@^0.8.9:
   version "0.8.17"
   resolved "https://registry.yarnpkg.com/fbjs/-/fbjs-0.8.17.tgz#c4d598ead6949112653d6588b01a5cdcd9f90fdd"
   dependencies:
@@ -8884,6 +8884,13 @@ react-native-web@^0.4.0:
     react-art "^16.2.0"
     react-timer-mixin "^0.13.3"
 
+"react-native-webview@https://github.com/react-native-community/react-native-webview":
+  version "2.5.0"
+  resolved "https://github.com/react-native-community/react-native-webview#b284bf959b976bcc65ad3f576d35182acf0d1add"
+  dependencies:
+    escape-string-regexp "^1.0.5"
+    fbjs "^0.8.17"
+
 react-native@~0.55.2:
   version "0.55.4"
   resolved "https://registry.yarnpkg.com/react-native/-/react-native-0.55.4.tgz#eecffada3750a928e2ddd07cf11d857ae9751c30"
@@ -10555,6 +10562,10 @@ url-parse@^1.1.8, url-parse@~1.4.0:
   dependencies:
     querystringify "^2.0.0"
     requires-port "^1.0.0"
+
+url-search-params@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/url-search-params/-/url-search-params-1.1.0.tgz#865669a6e4e9e5543f86fc972b27c91485375326"
 
 url-template@^2.0.8:
   version "2.0.8"
