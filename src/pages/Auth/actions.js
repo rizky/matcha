@@ -13,10 +13,9 @@ export const unsetUser = () => ({
 export type UnsetUserAction = { type: typeof UNSET_USER };
 
 export const LOGIN: '@AUTH_SAGA/LOGIN' = '@AUTH_SAGA/LOGIN';
-export const login = (username: string, password: string) => ({
-  password,
+export const login = (code: string) => ({
+  code,
   type: LOGIN,
-  username,
 });
 export type LoginAction = { type: typeof LOGIN, username: string, password: string };
 

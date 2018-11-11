@@ -17,17 +17,19 @@ import {
   type SignUpAction,
   type ConfirmationAction,
 } from 'src/pages/Auth/actions';
-import * as userServices from 'src/services/users';
+import * as oAuthServices from 'src/services/oAuth42';
 import { toast, showLoader, hideLoader } from 'src/components/Layout/actions';
 
-function* logInWorker(action: LoginAction): Saga<void> {
-  const { username, password } = action;
+function* logInWorker({ code }: LoginAction): Saga<void> {
   try {
     yield put(showLoader());
-    const user = yield call(userServices.login, username, password);
+    yield Actions.reset('root');
+    const accessToken = yield call(oAuthServices.getToken, code);
+    const userId = yield call(oAuthServices.getTokenInfo, accessToken);
+    const user = yield call(oAuthServices.getUser, accessToken, userId);
     yield put(setUser(user));
     yield put(hideLoader());
-    yield Actions.reset('feed');
+    yield Actions.replace('feed');
   } catch (err) {
     yield put(hideLoader());
     yield put(toast(err.message));

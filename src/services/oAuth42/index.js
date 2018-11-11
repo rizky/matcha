@@ -12,26 +12,41 @@ import {
   authHeaders,
 } from 'src/services/oAuth42/config';
 
-export const getUser = async (token: string, id: string) => {
+export const getUser = async (token: string, id: string): UserType => {
   try {
     const response = await axios.get(userUrl(id), authHeaders(token));
-    console.log(response);
+    const { data } = response;
+    const user: UserType = {
+      dob: 0,
+      email: data.email,
+      id: data.id,
+      lat: 0,
+      long: 0,
+      name: data.displayname,
+      picture: data.image_url,
+      subscribed: false,
+      token,
+      username: data.login,
+    };
+    return (user);
   } catch (err) {
     console.error(err);
+    return (null);
   }
 };
 
-export const getTokenInfo = async (token: string) => {
+export const getTokenInfo = async (token: string): string => {
   try {
     const response = await axios.get(tokenInfoUrl, authHeaders(token));
     const { data: { resource_owner_id: userId } } = response;
-    await getUser(token, userId);
+    return userId;
   } catch (err) {
     console.error(err);
+    return (null);
   }
 };
 
-export const getToken = async (code: string) => {
+export const getToken = async (code: string): string => {
   try {
     const response = await axios.post(tokenUrl, {
       client_id,
@@ -41,8 +56,9 @@ export const getToken = async (code: string) => {
       redirect_uri,
     });
     const { data: { access_token: accessToken } } = response;
-    await getTokenInfo(accessToken);
+    return accessToken;
   } catch (err) {
     console.error(err);
+    return (null);
   }
 };

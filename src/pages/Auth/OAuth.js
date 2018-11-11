@@ -4,12 +4,11 @@ import { connect } from 'react-redux';
 import { Dimensions } from 'react-native';
 import { injectIntl } from 'react-intl';
 import { Actions } from 'react-native-router-flux';
-import { selectCurrentUser } from 'src/pages/Auth/selector';
 import Layout from 'src/components/Layout/Basic';
 import { WebView } from 'react-native-webview';
 import url from 'url';
 import URLSearchParams from 'url-search-params';
-import { getToken } from 'src/services/oAuth42';
+import { login } from 'src/pages/Auth/actions';
 import { authorizeUrl } from 'src/services/oAuth42/config';
 
 type Props = {
@@ -29,7 +28,7 @@ class Landing extends Component<Props> {
     const { hostname, query } = url.parse(webViewState.url);
     if (hostname === 'us-central1-intra42-f046e.cloudfunctions.net') {
       const code = new URLSearchParams(query).get('code');
-      await getToken(code);
+      this.props.login(code);
       Actions.reset('root');
     }
   }
@@ -48,8 +47,8 @@ class Landing extends Component<Props> {
   }
 }
 
-const mapStateToProps = (state) => ({
-  currentUser: selectCurrentUser(state),
-});
+const mapDispatchToProps = {
+  login,
+};
 
-export default connect(mapStateToProps)(injectIntl(Landing));
+export default connect(null, mapDispatchToProps)(injectIntl(Landing));

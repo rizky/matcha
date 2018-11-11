@@ -10,6 +10,7 @@ export type UserType = {
   password: string,
   picture: string,
   subscribed: boolean,
+  token: string,
   updatedAt: ?string,
   username: any,
 };
