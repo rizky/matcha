@@ -31,6 +31,8 @@
     "file-loader": "^1.1.7",
     "jest": "^23.4.1",
     "jest-react-native": "^18.0.0",
+    "patch-package": "^5.1.1",
+    "postinstall-prepare": "^1.0.1",
     "react-test-renderer": "16.3.1",
     "redux-saga-tester": "^1.0.379",
     "storybook-addon-intl": "^2.3.0",
@@ -47,7 +49,8 @@
     "lint": "eslint src/",
     "api": "cd api && docker-compose up",
     "storybook": "start-storybook -p 9001 -c .storybook -s ./node_modules/react-native-vector-icons",
-    "deploy-storybook": "storybook-to-ghpages"
+    "deploy-storybook": "storybook-to-ghpages",
+    "prepare": "patch-package"
   },
   "jest": {
     "preset": "react-native",
