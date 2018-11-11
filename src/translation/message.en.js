@@ -24,6 +24,7 @@ export default {
   'LandingPage.welcome': 'Welcome to Matcha',
   'LoginPage.forgotPassword': 'Forgot password',
   'LoginPage.login': 'Login',
+  'LoginPage.login42': 'Login with 42 Account',
   'LoginPage.noAccount': 'Create an account',
   'LoginPage.password': 'Password',
   'LoginPage.title': 'Log In',

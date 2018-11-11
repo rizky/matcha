@@ -33,20 +33,21 @@ class Landing extends Component<Props> {
       <Layout noTabs>
         <View style={styles.container}>
           <Text>{this.props.intl.formatMessage({ id: 'LandingPage.welcome' })}</Text>
-          <View>
-            <TouchableOpacity onPress={() => Actions.push('oauth')}>
-              <Text style={{ textAlign: 'center', textDecorationLine: 'underline' }}>
-                {this.props.intl.formatMessage({ id: 'LoginPage.login' })}
-              </Text>
-            </TouchableOpacity>
-          </View>
-          <View>
-            <TouchableOpacity onPress={() => Actions.signup()}>
-              <Text style={{ textAlign: 'center', textDecorationLine: 'underline' }}>
-                {this.props.intl.formatMessage({ id: 'SignupPage.signUp' })}
-              </Text>
-            </TouchableOpacity>
-          </View>
+          <TouchableOpacity onPress={() => Actions.push('login')}>
+            <Text style={{ textAlign: 'center', textDecorationLine: 'underline' }}>
+              {this.props.intl.formatMessage({ id: 'LoginPage.login' })}
+            </Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => Actions.push('oauth')}>
+            <Text style={{ textAlign: 'center', textDecorationLine: 'underline' }}>
+              {this.props.intl.formatMessage({ id: 'LoginPage.login42' })}
+            </Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => Actions.signup()}>
+            <Text style={{ textAlign: 'center', textDecorationLine: 'underline' }}>
+              {this.props.intl.formatMessage({ id: 'SignupPage.signUp' })}
+            </Text>
+          </TouchableOpacity>
         </View>
       </Layout>
     );
