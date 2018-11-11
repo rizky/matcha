@@ -3,12 +3,11 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import createSagaMiddleware from 'redux-saga';
 import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
-import logger from 'redux-logger';
 import rootReducer from 'src/rootReducers';
 import rootSaga from 'src/sagas';
 
 const sagaMiddleware = createSagaMiddleware();
-const middlewares = [sagaMiddleware, logger];
+const middlewares = [sagaMiddleware];
 const enhancer = composeWithDevTools({
   // Options: https://github.com/jhen0409/react-native-debugger#options
 })(applyMiddleware(...middlewares));

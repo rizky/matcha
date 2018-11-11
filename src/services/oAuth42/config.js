@@ -4,6 +4,8 @@ import querystring from 'querystring';
 const oAuthUrl = 'https://api.intra.42.fr/oauth';
 
 export const tokenUrl = `${oAuthUrl}/token`;
+export const tokenInfoUrl = `${tokenUrl}/info`;
+
 export const authorizationUrl = `${oAuthUrl}/authorize`;
 
 export const client_id = 'c42500c79cf50e14075b01a612fb8d033bf05afb5047bdaa3a097ac15dcf6e40';
@@ -21,3 +23,9 @@ const data = {
 const params = querystring.stringify(data);
 
 export const authorizeUrl = `${authorizationUrl}?${params}`;
+
+export const authHeaders = (token: string) => ({
+  headers: {
+    Authorization: `Bearer ${token}`,
+  },
+});
