@@ -3,6 +3,8 @@ import querystring from 'querystring';
 
 const oAuthUrl = 'https://api.intra.42.fr/oauth';
 
+const baseUrl = 'https://api.intra.42.fr/v2';
+
 export const tokenUrl = `${oAuthUrl}/token`;
 export const tokenInfoUrl = `${tokenUrl}/info`;
 
@@ -29,3 +31,5 @@ export const authHeaders = (token: string) => ({
     Authorization: `Bearer ${token}`,
   },
 });
+
+export const userUrl = (id) => `${baseUrl}/users/${id}`;

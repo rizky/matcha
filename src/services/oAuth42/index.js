@@ -8,13 +8,24 @@ import {
   redirect_uri,
   tokenUrl,
   tokenInfoUrl,
+  userUrl,
   authHeaders,
 } from 'src/services/oAuth42/config';
+
+export const getUser = async (token: string, id: string) => {
+  try {
+    const response = await axios.get(userUrl(id), authHeaders(token));
+    console.log(response);
+  } catch (err) {
+    console.error(err);
+  }
+};
 
 export const getTokenInfo = async (token: string) => {
   try {
     const response = await axios.get(tokenInfoUrl, authHeaders(token));
-    console.log(response);
+    const { data: { resource_owner_id: userId } } = response;
+    await getUser(token, userId);
   } catch (err) {
     console.error(err);
   }
