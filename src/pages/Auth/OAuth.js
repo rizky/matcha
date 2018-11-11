@@ -8,11 +8,12 @@ import Layout from 'src/components/Layout/Basic';
 import { WebView } from 'react-native-webview';
 import url from 'url';
 import URLSearchParams from 'url-search-params';
-import { login } from 'src/pages/Auth/actions';
+import { login, type LoginAction } from 'src/pages/Auth/actions';
 import { authorizeUrl } from 'src/services/oAuth42/config';
 
 type Props = {
     currentUser: UserType,
+    login: (string) => LoginAction,
 };
 
 const { width } = Dimensions.get('window');
@@ -20,7 +21,7 @@ const { width } = Dimensions.get('window');
 class Landing extends Component<Props> {
   componentWillMount() {
     if (this.props.currentUser !== undefined) {
-      Actions.replace('feed');
+      Actions.replace('profile');
     }
   }
 

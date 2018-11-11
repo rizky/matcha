@@ -32,13 +32,13 @@ type Props = {
 
 const Nav = (props: Props) => (
   <View style={styles.nav}>
-    <TouchableOpacity style={styles.body} onPress={() => Actions.replace('feed')}>
+    <TouchableOpacity style={styles.body} onPress={() => Actions.replace('profile')}>
       <Text style={styles.title}>{props.intl.formatMessage({ id: 'Nav.home' })}</Text>
     </TouchableOpacity>
-    <TouchableOpacity style={styles.body} onPress={() => Actions.replace('discover')}>
+    <TouchableOpacity style={styles.body} onPress={() => Actions.replace('profile')}>
       <Text style={styles.title}>{props.intl.formatMessage({ id: 'Nav.discover' })}</Text>
     </TouchableOpacity>
-    <TouchableOpacity style={styles.body} onPress={() => Actions.replace('messages')}>
+    <TouchableOpacity style={styles.body} onPress={() => Actions.replace('profile')}>
       <Text style={styles.title}>{props.intl.formatMessage({ id: 'Nav.messages' })}</Text>
     </TouchableOpacity>
     <TouchableOpacity style={styles.body} onPress={() => Actions.replace('profile')}>

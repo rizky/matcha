@@ -2,25 +2,18 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Layout from 'src/components/Layout/Basic';
 import { selectCurrentUser } from 'src/pages/Auth/selector';
-import { onLoadPhotosUser } from 'src/pages/Feed/actions';
 import ProfileComponent from 'src/components/Users/Profile';
-import { selectPhotosUser } from 'src/pages/Feed/selector';
 
 type Props = {
   currentUser: UserType,
-  onLoadPhotosUser: Function,
-  photos: Array<PhotoType>,
 };
 
+// eslint-disable-next-line react/prefer-stateless-function
 class Profile extends Component<Props> {
-  componentWillMount() {
-    this.props.onLoadPhotosUser(this.props.currentUser.id);
-  }
-
   render() {
     return (
       <Layout style={{ flexDirection: 'row', justifyContent: 'center' }}>
-        <ProfileComponent user={this.props.currentUser} photos={this.props.photos} />
+        <ProfileComponent user={this.props.currentUser} />
       </Layout>
     );
   }
@@ -28,11 +21,6 @@ class Profile extends Component<Props> {
 
 const mapStateToProps = (state) => ({
   currentUser: selectCurrentUser(state),
-  photos: selectPhotosUser(state),
 });
 
-const mapDispatchToProps = {
-  onLoadPhotosUser,
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Profile);
+export default connect(mapStateToProps)(Profile);

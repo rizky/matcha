@@ -1,9 +1,8 @@
 // @flow
 import React from 'react';
-import { ScrollView, StyleSheet, View, Image } from 'react-native';
+import { ScrollView, StyleSheet } from 'react-native';
 import { COLORS, MARGINS } from 'src/constants/design';
 import { User } from 'src/components/Users';
-import LoadingHOC from 'src/components/HOC/LoaderHOC';
 
 const styles = StyleSheet.create({
   container: {
@@ -29,39 +28,13 @@ const styles = StyleSheet.create({
   },
 });
 
-type PhotoThumbnailProps = {
-  photo: PhotoType,
-};
-
-const PhotoThumbnail = (props: PhotoThumbnailProps) => (
-  <Image style={styles.photoImageThumbnail} source={{ uri: props.photo.url }} />
-);
-
-type PhotoThumbnailsProps = {
-  photo: PhotoType,
-  photos: Array<PhotoType>,
-};
-
-const PhotoThumbnails = (props: PhotoThumbnailsProps) => (
-  props.photos.length !== 0 &&
-  <View style={styles.photosContainer}>
-    {
-      props.photos.map((photo) => (<PhotoThumbnail key={photo.id} photo={photo} />))
-    }
-  </View>
-);
-
-const ExtendedPhotoThumbnails = LoadingHOC('photos')(PhotoThumbnails);
-
 type Props = {
   user: UserType,
-  photos: Array<PhotoType>,
 };
 
 const Profile = (props: Props) => (
   <ScrollView style={styles.container} contentContainerStyle={{ alignItems: 'center' }}>
     <User user={props.user} />
-    <ExtendedPhotoThumbnails photos={props.photos} />
   </ScrollView>
 );
 

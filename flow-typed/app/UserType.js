@@ -1,16 +1,12 @@
 export type UserType = {
-  activeAt: string,
-  createdAt: string,
   dob: any,
   email: any,
   id: string,
   lat: number,
   long: number,
   name: string,
-  password: string,
   picture: string,
   subscribed: boolean,
   token: string,
-  updatedAt: ?string,
   username: any,
 };

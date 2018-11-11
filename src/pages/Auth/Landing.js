@@ -24,7 +24,7 @@ type Props = {
 class Landing extends Component<Props> {
   componentWillMount() {
     if (this.props.currentUser !== undefined) {
-      Actions.replace('feed');
+      Actions.replace('profile');
     }
   }
 

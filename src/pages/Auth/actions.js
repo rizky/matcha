@@ -17,7 +17,7 @@ export const login = (code: string) => ({
   code,
   type: LOGIN,
 });
-export type LoginAction = { type: typeof LOGIN, username: string, password: string };
+export type LoginAction = { type: typeof LOGIN, code: string };
 
 export const LOGOUT: '@AUTH_SAGA/LOGOUT' = '@AUTH_SAGA/LOGOUT';
 export const logout = () => ({
@@ -25,43 +25,8 @@ export const logout = () => ({
 });
 export type LogoutAction = { type: typeof LOGOUT};
 
-export const RESET_PASSWORD: '@AUTH_SAGA/RESET_PASSWORD' = '@AUTH_SAGA/RESET_PASSWORD';
-export const resetPassword = (email: string) => ({
-  email,
-  type: RESET_PASSWORD,
-});
-export type ResetPasswordAction = { type: typeof RESET_PASSWORD, email: string };
-
-export const CHANGE_PASSWORD: '@AUTH_SAGA/CHANGE_PASSWORD' = '@AUTH_SAGA/CHANGE_PASSWORD';
-export const changePassword = (token: string, password: string, password2: string) => ({
-  password,
-  password2,
-  token,
-  type: CHANGE_PASSWORD,
-});
-export type ChangePasswordAction = { type: typeof CHANGE_PASSWORD, token: string, password: string, password2: string };
-
-export const SIGNUP: '@AUTH_SAGA/SIGNUP' = '@AUTH_SAGA/SIGNUP';
-export const signUp = (user : UserType) => ({
-  type: SIGNUP,
-  user,
-});
-export type SignUpAction = { type: typeof SIGNUP, user : UserType };
-
-export const CONFIRMATION: '@AUTH_SAGA/CONFIRMATION' = '@AUTH_SAGA/CONFIRMATION';
-export const confirmation = (email: string, token: string) => ({
-  email,
-  token,
-  type: CONFIRMATION,
-});
-export type ConfirmationAction = { type: typeof CONFIRMATION, email: string, token: string };
-
 export type Action =
 | SetUserAction
 | UnsetUserAction
 | LoginAction
 | LogoutAction
-| ResetPasswordAction
-| ChangePasswordAction
-| SignUpAction
-| ConfirmationAction

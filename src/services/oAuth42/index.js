@@ -12,7 +12,7 @@ import {
   authHeaders,
 } from 'src/services/oAuth42/config';
 
-export const getUser = async (token: string, id: string): UserType => {
+export const getUser = async (token: string, id: string): Promise<?UserType> => {
   try {
     const response = await axios.get(userUrl(id), authHeaders(token));
     const { data } = response;
@@ -35,7 +35,7 @@ export const getUser = async (token: string, id: string): UserType => {
   }
 };
 
-export const getTokenInfo = async (token: string): string => {
+export const getTokenInfo = async (token: string): Promise<?string> => {
   try {
     const response = await axios.get(tokenInfoUrl, authHeaders(token));
     const { data: { resource_owner_id: userId } } = response;
@@ -46,7 +46,7 @@ export const getTokenInfo = async (token: string): string => {
   }
 };
 
-export const getToken = async (code: string): string => {
+export const getToken = async (code: string): Promise<?string> => {
   try {
     const response = await axios.post(tokenUrl, {
       client_id,

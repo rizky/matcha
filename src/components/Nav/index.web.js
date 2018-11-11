@@ -74,13 +74,13 @@ class Nav extends Component <Props, State> {
     return (
       <View style={styles.header}>
         <View style={styles.left}>
-          <TouchableOpacity style={styles.nav} onPress={() => Actions.replace('feed')}>
+          <TouchableOpacity style={styles.nav} onPress={() => Actions.replace('profile')}>
             <Text style={styles.title}>{this.props.intl.formatMessage({ id: 'Nav.home' })}</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.nav} onPress={() => Actions.replace('discover')}>
+          <TouchableOpacity style={styles.nav} onPress={() => Actions.replace('profile')}>
             <Text style={styles.title}>{this.props.intl.formatMessage({ id: 'Nav.discover' })}</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.nav} onPress={() => Actions.replace('messages')}>
+          <TouchableOpacity style={styles.nav} onPress={() => Actions.replace('profile')}>
             <Text style={styles.title}>{this.props.intl.formatMessage({ id: 'Nav.messages' })}</Text>
           </TouchableOpacity>
         </View>
