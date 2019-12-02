@@ -1,6 +1,10 @@
 # Matcha Mobile
 
 ## Run Project
+```
+yarn install
+```
+
 
 ### Web
 
