@@ -57,7 +57,7 @@
     "setupTestFrameworkScriptFile": "<rootDir>/src/test/setupTests.js"
   },
   "dependencies": {
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "crypto-js": "^3.1.9-1",
     "deep-freeze": "^0.0.1",
     "enzyme": "^3.3.0",
